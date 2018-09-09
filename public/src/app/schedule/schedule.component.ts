@@ -84,11 +84,11 @@ doublesCheck(shift){
 }
 //The below function schedules the bartender for a single shift. This will be run on every day first, so that qualified bartenders will not be scheduled to serving shifts until all bartender shifts are filled.
 scheduleBartender(shift) {
-  for(var key in this.schedule){
-    if(key.toString()===shift.toString()){
-      var shift:any=key;
-    }
-  }
+  // for(var key in this.schedule){
+  //   if(key.toString()===shift.toString()){
+  //     var shift:any=key;
+  //   }
+  // }
 	var sortedEmployees = this.prioritySort(this.employees);
 	for (var i = 0; i < sortedEmployees.length; i++) {
 		var server = sortedEmployees[i];
@@ -99,7 +99,6 @@ scheduleBartender(shift) {
 		) {
       console.log("Scheduling " + server.name + " on " + shift + " as bartender.")
       this.schedule[shift].bartender = server.name;
-			shift.bartender = server.name;
 			server.bartenderScheduled++;
 			server.shiftsScheduled++;
       server.shifts[shift] = false;
