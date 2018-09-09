@@ -1,0 +1,92 @@
+<form name="employeeForm" #employeeForm= "ngForm" (submit)="addEmployee(employeeForm)">
+  Name: <input type="text" name="name" #name= "ngModel" [(ngModel)]="employeeToAdd.name" required><br>
+  <h3 *ngIf="name.errors?.required">Name is required!</h3>
+  Desired shifts per week: <input type="number" name="shiftsPerWeek" #shiftsPerWeek="ngModel" [(ngModel)]="employeeToAdd.shiftsPerWeek" required><br>
+  <h3 *ngIf="shiftsPerWeek.errors?.required">Please specify how many shifts per week this employee should work.</h3>
+  Bartender shifts per week: <input type="number" name="bartenderPerWeek" #bartenderPerWeek="ngModel" [(ngModel)]="employeeToAdd.bartenderPerWeek" required><br>
+  <h3 *ngIf="bartenderPerWeek.errors?.required">Please specify how many times per week this employee should bartend.</h3>
+  <div *ngIf="employeeToAdd.bartenderPerWeek>0">
+    Should this employee also be scheduled as a server?
+    <select name="alsoServer" #alsoServer="ngModel" [(ngModel)]="employeeToAdd.alsoServer">
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select><br>
+  </div>
+  Shifts led per week: <input type="number" name="shiftLeaderPerWeek" #shiftLeaderPerWeek="ngModel" [(ngModel)]="employeeToAdd.shiftLeaderPerWeek" required><br>
+  <h3 *ngIf="shiftLeaderPerWeek.errors?.required">Please specify how many shifts per week this employee should lead.</h3>
+  <h2>Availability</h2><br>
+  Monday Morning:
+  <select name="mondayAM" #mondayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.mondayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Monday Evening:
+  <select name="mondayPM" #mondayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.mondayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Tuesday Morning:
+  <select name="tuesdayAM" #tuesdayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.tuesdayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Tuesday Evening:
+  <select name="tuesdayPM" #tuesdayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.tuesdayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Wednesday Morning:
+  <select name="wednesdayAM" #wednesdayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.wednesdayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Wednesday Evening:
+  <select name="wednesdayPM" #wednesdayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.wednesdayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Thursday Morning:
+  <select name="thursdayAM" #thursdayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.thursdayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Thursday Evening:
+  <select name="thursdayPM" #thursdayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.thursdayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Friday Morning:
+  <select name="fridayAM" #fridayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.fridayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Friday Evening:
+  <select name="fridayPM" #fridayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.fridayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Saturday Morning:
+  <select name="saturdayAM" #saturdayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.saturdayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Saturday Evening:
+  <select name="saturdayPM" #saturdayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.saturdayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Sunday Morning:
+  <select name="sundayAM" #sundayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.sundayAM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+  Sunday Evening:
+  <select name="sundayPM" #sundayPM="ngModel" [(ngModel)]="employeeToAdd.shifts.sundayPM">
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+  </select><br>
+
+<button type= "submit" [disabled]="!employeeForm.valid"> Add employee! </button>
+</form>
+
+{{ employeeToAdd | json }}

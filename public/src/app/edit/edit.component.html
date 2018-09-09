@@ -1,0 +1,94 @@
+<h1>Editing details for {{employee.name}}</h1>
+
+<form name="editForm" #editForm= "ngForm" (submit)="updateEmployee(editForm)">
+    Name: <input type="text" name="name" #name= "ngModel" [(ngModel)]="employee.name" required><br>
+    <h3 *ngIf="name.errors?.required">Name is required!</h3>
+    Desired shifts per week: <input type="number" name="shiftsPerWeek" #shiftsPerWeek="ngModel" [(ngModel)]="employee.shiftsPerWeek" required><br>
+    <h3 *ngIf="shiftsPerWeek.errors?.required">Please specify how many shifts per week this employee should work.</h3>
+    Bartender shifts per week: <input type="number" name="bartenderPerWeek" #bartenderPerWeek="ngModel" [(ngModel)]="employee.bartenderPerWeek" required><br>
+    <h3 *ngIf="bartenderPerWeek.errors?.required">Please specify how many times per week this employee should bartend.</h3>
+    <div *ngIf="employee.bartenderPerWeek>0">
+      Should this employee also be scheduled as a server?
+      <select name="alsoServer" #alsoServer="ngModel" [(ngModel)]="employee.alsoServer">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select><br>
+    </div>
+    Shifts led per week: <input type="number" name="shiftLeaderPerWeek" #shiftLeaderPerWeek="ngModel" [(ngModel)]="employee.shiftLeaderPerWeek" required><br>
+    <h3 *ngIf="shiftLeaderPerWeek.errors?.required">Please specify how many shifts per week this employee should lead.</h3>
+    <h2>Availability</h2><br>
+    Monday Morning:
+    <select name="mondayAM" #mondayAM="ngModel" [(ngModel)]="employee.shifts.mondayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Monday Evening:
+    <select name="mondayPM" #mondayPM="ngModel" [(ngModel)]="employee.shifts.mondayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Tuesday Morning:
+    <select name="tuesdayAM" #tuesdayAM="ngModel" [(ngModel)]="employee.shifts.tuesdayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Tuesday Evening:
+    <select name="tuesdayPM" #tuesdayPM="ngModel" [(ngModel)]="employee.shifts.tuesdayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Wednesday Morning:
+    <select name="wednesdayAM" #wednesdayAM="ngModel" [(ngModel)]="employee.shifts.wednesdayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Wednesday Evening:
+    <select name="wednesdayPM" #wednesdayPM="ngModel" [(ngModel)]="employee.shifts.wednesdayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Thursday Morning:
+    <select name="thursdayAM" #thursdayAM="ngModel" [(ngModel)]="employee.shifts.thursdayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Thursday Evening:
+    <select name="thursdayPM" #thursdayPM="ngModel" [(ngModel)]="employee.shifts.thursdayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Friday Morning:
+    <select name="fridayAM" #fridayAM="ngModel" [(ngModel)]="employee.shifts.fridayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Friday Evening:
+    <select name="fridayPM" #fridayPM="ngModel" [(ngModel)]="employee.shifts.fridayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Saturday Morning:
+    <select name="saturdayAM" #saturdayAM="ngModel" [(ngModel)]="employee.shifts.saturdayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Saturday Evening:
+    <select name="saturdayPM" #saturdayPM="ngModel" [(ngModel)]="employee.shifts.saturdayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Sunday Morning:
+    <select name="sundayAM" #sundayAM="ngModel" [(ngModel)]="employee.shifts.sundayAM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+    Sunday Evening:
+    <select name="sundayPM" #sundayPM="ngModel" [(ngModel)]="employee.shifts.sundayPM">
+      <option value="true">Available</option>
+      <option value="false">Unavailable</option>
+    </select><br>
+  
+  <button type= "submit" [disabled]="!employeeForm.valid">Update details</button>
+  </form>
+  
+  <a [routerLink]="['/']">Back to main page</a><button (click)="deleteEmployee(employee['_id'])">Delete</button>
