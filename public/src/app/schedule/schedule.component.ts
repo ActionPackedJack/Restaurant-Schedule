@@ -13,6 +13,7 @@ export class ScheduleComponent implements OnInit {
   schedule: any;
   problems: any[];
   doubles: any[];
+  shifts;
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) {
     this.employees= [];
     this.schedule = {
@@ -102,9 +103,10 @@ scheduleBartender(shift) {
 			server.bartenderScheduled++;
 			server.shiftsScheduled++;
       server.shifts[shift] = false;
-			//If this is a morning shift, the below code checks that server's availability for the corresponding night shift. If they are available, their availability will be set to false but a note will be made in their file that this has happened in case the manager needs to schedule someone to a double shift.
-			if (this.isMorning(shift !="false")) {
+      //If this is a morning shift, the below code checks that server's availability for the corresponding night shift. If they are available, their availability will be set to false but a note will be made in their file that this has happened in case the manager needs to schedule someone to a double shift.
+			if (this.isMorning(shift) !="false") {
         if(server.shifts[this.isMorning(shift)]===true){
+          
 				  server.shifts[this.isMorning(shift)] = false;
 				  this.doubles.push(this.isMorning(shift) + " " + server.name);
         }
@@ -134,7 +136,7 @@ scheduleShiftLeader(shift) {
 			server.shiftLeaderScheduled++;
 			server.shiftsScheduled++;
       server.shifts[shift] = false;
-			if (this.isMorning(shift !="false")) {
+			if (this.isMorning(shift) !="false") {
         if(server.shifts[this.isMorning(shift)]===true){
 				  server.shifts[this.isMorning(shift)] = false;
 				  server.doubles.push(this.isMorning(shift));
@@ -161,7 +163,7 @@ scheduleRemainder(shift, totalServers=5){
 			  this.schedule[shift][section] = server.name;
 			  server.shiftsScheduled++;
         server.shifts[shift] = false;
-			  if (this.isMorning(shift !="false")) {
+			  if (this.isMorning(shift) !="false") {
           if(server.shifts[this.isMorning(shift)]===true){
 				    server.shifts[this.isMorning(shift)] = false;
 				    server.doubles.push(this.isMorning(shift));
@@ -252,8 +254,9 @@ makeSchedule(
         this.problems.push(this.employees[q].name + " did not get the desired amount of shifts (" + this.employees[q].shiftsPerWeek + " expected, " + this.employees[q].shiftsScheduled + " received).")
       }
     }
-    console.log(this.schedule);
+    //console.log(this.schedule);
     console.log("Potential problems with this schedule:", this.problems);
+    return this.schedule;
   }
   //employees=[];
   getEmployees() {
@@ -282,7 +285,10 @@ makeSchedule(
             server.priority = server.shiftsPerWeek + 14 - server.availability;
             //Priority decides who is scheduled when multiple employees can work the same shift. An employee will receive higher priority if there are less other shifts available for them, to guarantee that someone who can only work one particular shift will always get it. An employee who can work more shifts per week will receive higher priority; their priority will be higher than that of an employee with open availability who can only work once a week, but lower than that of a server who can only work one specific shift.
         }
-        this.makeSchedule();
+        this.schedule = this.makeSchedule();
+        //this.shifts = this.schedule.keys;
+        console.log("HERE IS SCHEDULE: ", this.schedule);
+        //console.log("HERE ARE SHIFTS: ", this.shifts);
     })
 }
 }
