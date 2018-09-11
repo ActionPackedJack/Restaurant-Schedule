@@ -139,7 +139,7 @@ scheduleShiftLeader(shift) {
 			if (this.isMorning(shift) !="false") {
         if(server.shifts[this.isMorning(shift)]===true){
 				  server.shifts[this.isMorning(shift)] = false;
-				  server.doubles.push(this.isMorning(shift));
+				  this.doubles.push(this.isMorning(shift) + " " + server.name);
         }
 			}
       return;
@@ -166,7 +166,7 @@ scheduleRemainder(shift, totalServers=5){
 			  if (this.isMorning(shift) !="false") {
           if(server.shifts[this.isMorning(shift)]===true){
 				    server.shifts[this.isMorning(shift)] = false;
-				    server.doubles.push(this.isMorning(shift));
+				    this.doubles.push(this.isMorning(shift) + " " + server.name);
           }
 			  }
         break;
