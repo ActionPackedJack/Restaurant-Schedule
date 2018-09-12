@@ -2,6 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../http.service';
+import {Pipe, PipeTransform} from '@angular/core'
+
+@Pipe({
+  name: 'keys',
+  pure: false
+})
+export class KeysPipe implements PipeTransform {
+  transform(value: any, args: any[] = null): any {
+    return Object.keys(value)
+  }
+}
+
+@Pipe({
+  name: 'values',
+  pure: false
+})
+export class ValuesPipe implements PipeTransform {
+  transform(value: any, args: any[] = null): any {
+    return Object.keys(value).map(key => value[key])
+  }
+}
 
 @Component({
   selector: 'app-list',
@@ -14,6 +35,7 @@ export class ScheduleComponent implements OnInit {
   problems: any[];
   doubles: any[];
   shifts;
+  newShifts;
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) {
     this.employees= [];
     this.schedule = {
@@ -289,6 +311,20 @@ makeSchedule(
         console.log(this.schedule.fridayAM);
         console.log("HERE IS SCHEDULE: ", this.schedule);
         this.shifts= Object.entries(this.schedule);
+        this.newShifts=[];
+        for(let i=0; i<this.shifts.length;i++){
+          var temp=[];
+          
+          var parts = Object.entries(this.shifts[i][1]);
+          for( let partNum=0; partNum < parts.length; partNum++ ){
+              temp.push({
+                  section:    parts[partNum][0],
+                  employee:    parts[partNum][1]
+              })
+          }
+          this.newShifts.push(temp);
+      }
+        console.log(this.newShifts);
         // for(var shift in this.shifts){
         //   console.log(this.schedule.shift)
         // }

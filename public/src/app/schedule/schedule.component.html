@@ -1,12 +1,14 @@
 
 <h1>Your Schedule</h1>
 <div *ngFor= "let shift of shifts">
-    <h3>{{shift[0]}}</h3>
    <table>
       <th>Section</th><th>Employee</th>
-      <!-- <span *ngFor= "let section of shift[1]">
-        <td>{{section.key}}</td><td>{{section.value}}</td>
-      </span> -->
+      <span *ngFor= "let newShift of newShifts">
+          <h3>{{newShift[0]}}</h3>
+        <tr *ngFor= "let person of newShift">
+          <td>{{person.section}}:</td><td>{{person.employee}}</td>
+        </tr>
+      </span>
     </table>
 </div>
 <h2 *ngIf="this.problems.length>0">Potential problems with this schedule:</h2>
