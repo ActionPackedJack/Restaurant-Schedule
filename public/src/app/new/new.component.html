@@ -1,3 +1,5 @@
+<a [routerLink]="['/employees/']">Back to employee directory</a>
+
 <form name="employeeForm" #employeeForm= "ngForm" (submit)="addEmployee(employeeForm)">
   Name: <input type="text" name="name" #name= "ngModel" [(ngModel)]="employeeToAdd.name" required><br>
   <h3 *ngIf="name.errors?.required">Name is required!</h3>
