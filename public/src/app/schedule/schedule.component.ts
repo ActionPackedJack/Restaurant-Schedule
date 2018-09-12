@@ -286,8 +286,13 @@ makeSchedule(
             //Priority decides who is scheduled when multiple employees can work the same shift. An employee will receive higher priority if there are less other shifts available for them, to guarantee that someone who can only work one particular shift will always get it. An employee who can work more shifts per week will receive higher priority; their priority will be higher than that of an employee with open availability who can only work once a week, but lower than that of a server who can only work one specific shift.
         }
         this.schedule = this.makeSchedule();
-        //this.shifts = this.schedule.keys;
+        console.log(this.schedule.fridayAM);
         console.log("HERE IS SCHEDULE: ", this.schedule);
+        this.shifts= Object.entries(this.schedule);
+        // for(var shift in this.shifts){
+        //   console.log(this.schedule.shift)
+        // }
+        console.log(this.shifts);
         //console.log("HERE ARE SHIFTS: ", this.shifts);
     })
 }
