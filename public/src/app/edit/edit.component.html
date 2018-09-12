@@ -16,6 +16,32 @@
     </div>
     Shifts led per week: <input type="number" name="shiftLeaderPerWeek" #shiftLeaderPerWeek="ngModel" [(ngModel)]="employee.shiftLeaderPerWeek" required><br>
     <h3 *ngIf="shiftLeaderPerWeek.errors?.required">Please specify how many shifts per week this employee should lead.</h3>
+    <h2>Requests</h2>
+    <input type = "checkbox" name= "mondayAM" value= "mondayAM" class = "request"> mondayAM
+    <input type = "checkbox" name= "mondayPM" value= "mondayPM" class = "request"> mondayPM<br>
+    <input type = "checkbox" name= "tuesdayAM" value= "tuesdayAM" class = "request"> tuesdayAM
+    <input type = "checkbox" name= "tuesdayPM" value= "tuesdayPM" class = "request"> tuesdayPM<br>
+    <input type = "checkbox" name= "wednesdayAM" value= "wednesdayAM" class = "request"> wednesdayAM
+    <input type = "checkbox" name= "wednesdayPM" value= "wednesdayPM" class = "request"> wednesdayAM<br>
+    <input type = "checkbox" name= "thursdayAM" value= "thursdayAM" class = "request"> thursdayAM
+    <input type = "checkbox" name= "thursdayPM" value= "thursdayPM" class = "request"> thursdayPM<br>
+    <input type = "checkbox" name= "fridayAM" value= "fridayAM" class = "request"> fridayAM
+    <input type = "checkbox" name= "fridayPM" value= "fridayPM" class = "request"> fridayPM<br>
+    <input type = "checkbox" name= "saturdayAM" value= "saturdayAM" class = "request"> saturdayAM
+    <input type = "checkbox" name= "saturdayPM" value= "saturdayPM" class = "request"> saturdayPM<br>
+    <input type = "checkbox" name= "sundayAM" value= "sundayAM" class = "request"> sundayAM
+    <input type = "checkbox" name= "sundayPM" value= "sundayPM" class = "request"> sundayPM<br>
+    <button id="uncheckAll" onclick= "requestReset()" value= "uncheckAll">Uncheck all</button>
+    <script type="text/javascript">
+        function requestReset(){
+          console.log("EXECUTING SELECTIVE RESET...")
+				  var items=document.getElementsByClassName('request');
+				  for(var i=0; i<items.length; i++){
+					  if(items[i].type=='checkbox')
+						  items[i].checked=false;
+				}
+			}	
+  </script>
     <h2>Availability</h2><br>
     Monday Morning:
     <select name="mondayAM" #mondayAM="ngModel" [(ngModel)]="employee.shifts.mondayAM">
