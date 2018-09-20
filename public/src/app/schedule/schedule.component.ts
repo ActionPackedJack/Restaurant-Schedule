@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {HttpService} from '../http.service';
 import {Pipe, PipeTransform} from '@angular/core'
 
@@ -62,6 +62,11 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
     //var employees = [];
     this.getEmployees();
+    //let mondayAMServers=this._route.snapshot.queryParams["mondayAMServers"];
+    //console.log(mondayAMServers);
+    // this._route.params.subscribe((params: Params) => {
+    //   console.log(params['mondayAMServers']);
+    // });
     //employees = this.getEmployees();
     
 
@@ -95,7 +100,7 @@ prioritySort(arr) {
 	}
 	return arr;
 }
-//This algorithm will not schedule an employ to a double shift, because anyone scheduled in the morning will be marked as unavailable for the evening. In the event that a PM shift cannot be filled, the below code will check and see if there is anyone eligible to work it who is already scheduled that morning, and return a list of employees who could be scheduled to a double if necessary.
+//This algorithm will not schedule an employee to a double shift, because anyone scheduled in the morning will be marked as unavailable for the evening. In the event that a PM shift cannot be filled, the below code will check and see if there is anyone eligible to work it who is already scheduled that morning, and return a list of employees who could be scheduled to a double if necessary.
 doublesCheck(shift){
   var result=[]
   for (let i=0; i<this.doubles.length; i++){
@@ -214,20 +219,21 @@ scheduleRemainder(shift, totalServers=5){
 // console.log(problems)
 
 makeSchedule(
-  fridayAMServers=7, 
-  fridayPMServers=7, 
-  saturdayAMServers=7, 
-  saturdayPMServers=7,
-  sundayAMServers=5,
-  sundayPMServers=5,
-  mondayAMServers=5,
-  mondayPMServers=5,
-  tuesdayAMServers=5,
-  tuesdayPMServers=5,
-  wednesdayAMServers=5,
-  wednesdayPMServers=5,
-  thursdayAMServers=5,
-  thursdayPMServers=5)
+  fridayAMServers=this._route.snapshot.queryParams["fridayAMServers"],
+  fridayPMServers=this._route.snapshot.queryParams["fridayPMServers"],
+  saturdayAMServers=this._route.snapshot.queryParams["saturdayAMServers"],
+  saturdayPMServers=this._route.snapshot.queryParams["saturdayPMServers"],
+  sundayAMServers=this._route.snapshot.queryParams["sundayAMServers"],
+  sundayPMServers=this._route.snapshot.queryParams["sundayPMServers"],
+  mondayAMServers=this._route.snapshot.queryParams["mondayAMServers"],
+  mondayPMServers=this._route.snapshot.queryParams["mondayAMServers"],
+  tuesdayAMServers=this._route.snapshot.queryParams["tuesdayAMServers"],
+  tuesdayPMServers=this._route.snapshot.queryParams["tuesdayPMServers"],
+  wednesdayAMServers=this._route.snapshot.queryParams["wednesdayAMServers"],
+  wednesdayPMServers=this._route.snapshot.queryParams["wednesdayPMServers"],
+  thursdayAMServers=this._route.snapshot.queryParams["thursdayAMServers"],
+  thursdayPMServers=this._route.snapshot.queryParams["thursdayPMServers"],
+  )
   {
     console.log(this.employees);
     this.scheduleBartender("fridayAM");

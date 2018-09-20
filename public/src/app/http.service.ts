@@ -25,6 +25,9 @@ export class HttpService{
         console.log(this._http.get('/api/things'))
         return this._http.get('/api/things')
      }
+    generateSchedule(){
+        
+    }
      getOneEmployee(id){
         console.log("HERE IS THE REQUESTED ID")
         console.log(id);

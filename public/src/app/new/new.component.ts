@@ -44,7 +44,7 @@ addEmployee(){
     bartenderPerWeek: this.employeeToAdd.bartenderPerWeek,
     alsoServer: this.employeeToAdd.alsoServer,
     shiftLeaderPerWeek: this.employeeToAdd.shiftLeaderPerWeek,
-    shifts: this.employeeToAdd.shifts,    
+    shifts: this.employeeToAdd.shifts,
   };
   console.log("ADDING EMPLOYEE FROM NEW.COMPONENT.TS")
   let observable= this._dataService.addEmployee({newEmployee: data});

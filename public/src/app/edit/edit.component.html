@@ -31,17 +31,18 @@
     <input type = "checkbox" name= "saturdayPM" value= "saturdayPM" class = "request"> saturdayPM<br>
     <input type = "checkbox" name= "sundayAM" value= "sundayAM" class = "request"> sundayAM
     <input type = "checkbox" name= "sundayPM" value= "sundayPM" class = "request"> sundayPM<br>
-    <button id="uncheckAll" onclick= "requestReset()" value= "uncheckAll">Uncheck all</button>
     <script type="text/javascript">
-        function requestReset(){
-          console.log("EXECUTING SELECTIVE RESET...")
-				  var items=document.getElementsByClassName('request');
-				  for(var i=0; i<items.length; i++){
-					  if(items[i].type=='checkbox')
-						  items[i].checked=false;
-				}
-			}	
-  </script>
+      function requestReset(event){
+        event.preventDefault();
+        console.log("EXECUTING SELECTIVE RESET...")
+        var items=document.getElementsByClassName('request');
+        for(var i=0; i<items.length; i++){
+          if(items[i].type=='checkbox')
+            items[i].checked=false;
+      }
+    }	
+</script>
+    <button id="uncheckAll" onclick= "requestReset()" value= "uncheckAll">Uncheck all</button>
     <h2>Availability</h2><br>
     Monday Morning:
     <select name="mondayAM" #mondayAM="ngModel" [(ngModel)]="employee.shifts.mondayAM">

@@ -11,6 +11,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from './list/list.component';
 import {FormsModule} from '@angular/forms';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { GenerateComponent } from './generate/generate.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     EditComponent,
     DeleteComponent,
     ListComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    GenerateComponent
   ],
   imports: [
     BrowserModule,
