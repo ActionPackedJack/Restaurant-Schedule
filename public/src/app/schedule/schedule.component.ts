@@ -264,20 +264,20 @@ makeSchedule(
     this.scheduleShiftLeader("tuesdayPM");
     this.scheduleShiftLeader("mondayAM");
     this.scheduleShiftLeader("mondayPM");
-    this.scheduleRemainder("fridayAM", fridayAMServers);
-    this.scheduleRemainder("fridayPM", fridayPMServers);
-    this.scheduleRemainder("saturdayAM", saturdayAMServers);
-    this.scheduleRemainder("saturdayPM", saturdayPMServers);
-    this.scheduleRemainder("sundayAM", sundayAMServers);
-    this.scheduleRemainder("sundayPM", sundayPMServers);
-    this.scheduleRemainder("thursdayAM", thursdayAMServers);
-    this.scheduleRemainder("thursdayPM", thursdayPMServers);
-    this.scheduleRemainder("wednesdayAM", wednesdayAMServers);
-    this.scheduleRemainder("wednesdayPM", wednesdayPMServers);
-    this.scheduleRemainder("tuesdayAM", tuesdayAMServers);
-    this.scheduleRemainder("tuesdayPM", tuesdayPMServers);
-    this.scheduleRemainder("mondayAM", mondayAMServers);
-    this.scheduleRemainder("mondayPM", mondayPMServers);
+    this.scheduleRemainder("fridayAM", fridayAMServers=7);
+    this.scheduleRemainder("fridayPM", fridayPMServers=7);
+    this.scheduleRemainder("saturdayAM", saturdayAMServers=7);
+    this.scheduleRemainder("saturdayPM", saturdayPMServers=7);
+    this.scheduleRemainder("sundayAM", sundayAMServers=5);
+    this.scheduleRemainder("sundayPM", sundayPMServers=5);
+    this.scheduleRemainder("thursdayAM", thursdayAMServers=5);
+    this.scheduleRemainder("thursdayPM", thursdayPMServers=5);
+    this.scheduleRemainder("wednesdayAM", wednesdayAMServers=4);
+    this.scheduleRemainder("wednesdayPM", wednesdayPMServers=4);
+    this.scheduleRemainder("tuesdayAM", tuesdayAMServers=4);
+    this.scheduleRemainder("tuesdayPM", tuesdayPMServers=4);
+    this.scheduleRemainder("mondayAM", mondayAMServers=4);
+    this.scheduleRemainder("mondayPM", mondayPMServers=4);
     console.log(this.schedule);
     for(let q=0; q<this.employees.length;q++){
       if(this.employees[q].shiftsPerWeek > this.employees[q].shiftsScheduled){

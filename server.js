@@ -9,6 +9,6 @@ app.set('views', path.join(__dirname, '/public/dist'))
 require('./server/config/mongoose.js');
 var routes_setter = require('./server/config/routes.js');
 routes_setter(app);
-app.listen(8000, function(){
-    console.log("listening on port 8000")
+app.listen(5000, function(){
+    console.log("listening on port 5000")
 })
