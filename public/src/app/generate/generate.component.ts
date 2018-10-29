@@ -10,20 +10,20 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class GenerateComponent implements OnInit {
   newSchedule={
-    mondayAMServers:0,
-    mondayPMServers:0,
-    tuesdayAMServers:0,
-    tuesdayPMServers:0,
-    wednesdayAMServers:0,
-    wednesdayPMServers:0,
-    thursdayAMServers:0,
-    thursdayPMServers:0,
-    fridayAMServers:0,
-    fridayPMServers:0,
-    saturdayAMServers:0,
-    saturdayPMServers:0,
-    sundayAMServers:0,
-    sundayPMServers:0
+    mondayAMServers:4,
+    mondayPMServers:4,
+    tuesdayAMServers:4,
+    tuesdayPMServers:4,
+    wednesdayAMServers:4,
+    wednesdayPMServers:4,
+    thursdayAMServers:5,
+    thursdayPMServers:5,
+    fridayAMServers:6,
+    fridayPMServers:6,
+    saturdayAMServers:6,
+    saturdayPMServers:6,
+    sundayAMServers:4,
+    sundayPMServers:4
   }
 
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) { }
