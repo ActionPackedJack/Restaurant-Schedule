@@ -31,7 +31,7 @@
     <input type = "checkbox" name= "saturdayPMRequest" value= "saturdayPMRequest" class = "request" #saturdayPMRequest="ngModel" [(ngModel)]="employee.requests.saturdayPMRequest"> saturdayPM<br>
     <input type = "checkbox" name= "sundayAMRequest" value= "sundayAMRequest" class = "request" #sundayAMRequest="ngModel" [(ngModel)]="employee.requests.sundayAMRequest"> sundayAM
     <input type = "checkbox" name= "sundayPMRequest" value= "sundayPMRequest" class = "request" #sundayPMRequest="ngModel" [(ngModel)]="employee.requests.sundayPMRequest"> sundayPM<br>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       function requestReset(event){
         event.preventDefault();
         console.log("EXECUTING SELECTIVE RESET...")
@@ -41,8 +41,9 @@
             items[i].checked=false;
       }
     }	
-</script>
-    <button id="uncheckAll" onclick= "requestReset()" value= "uncheckAll">Uncheck all</button>
+</script> -->
+    <button id="checkAll" (click)="requestAll()" value= "checkAll">Check all</button>
+    <button id="uncheckAll" (click)="requestReset()" value= "uncheckAll">Uncheck all</button>
     <h2>Availability</h2><br>
     Monday Morning:
     <select name="mondayAM" #mondayAM="ngModel" [(ngModel)]="employee.shifts.mondayAM">

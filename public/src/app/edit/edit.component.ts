@@ -36,6 +36,24 @@ export class EditComponent implements OnInit {
         observable.subscribe(data => {this.employee=data['employee']});
         this.router.navigate(['/'])
       }
+      requestReset(){
+        event.preventDefault();
+        console.log("EXECUTING SELECTIVE RESET...")
+        var items=document.getElementsByClassName('request');
+        for(var i=0; i<items.length; i++){
+          if(items[i].type=='checkbox')
+            items[i].checked=false;
+      }
+    }	
+      requestAll(){
+        event.preventDefault();
+        console.log("CHECKING ALL BOXEN...")
+        var items=document.getElementsByClassName('request');
+        for(var i=0; i<items.length; i++){
+          if(items[i].type=='checkbox')
+            items[i].checked=true;
+      }
+    }	
       deleteEmployee(id){
         console.log("RUNNING DELETE FROM COMPONENT WITH ID: ", id)
         let observable = this._dataService.delete(id);
