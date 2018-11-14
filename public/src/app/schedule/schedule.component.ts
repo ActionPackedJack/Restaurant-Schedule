@@ -268,7 +268,6 @@ makeSchedule(
     this.scheduleShiftLeader("tuesdayPM");
     this.scheduleShiftLeader("mondayAM");
     this.scheduleShiftLeader("mondayPM");
-    console.log("FRIDAYAMSERVERS: ",fridayAMServers);
     this.scheduleRemainder("fridayAM", fridayAMServers);
     this.scheduleRemainder("fridayPM", fridayPMServers);
     this.scheduleRemainder("saturdayAM", saturdayAMServers);
@@ -310,8 +309,12 @@ makeSchedule(
             server.shiftLeaderScheduled = 0;
             server.availability = 0;
             for (var key in server.shifts) {
-                if (server.requests.indexOf(key.toString()) > -1) {
-                    server.shifts[key] = false;
+                let requestSearch = key.toString()+"Request";
+                //console.log(requestSearch);
+                //console.log(server.name, server.requests, server.requests.tuesdayPMRequest);
+                if (server.requests[requestSearch] === true) {
+                  console.log ("REQUEST FOUND FOR " + server.name + " ON " + key.toString());
+                  server.shifts[key] = false;
                 }
                 if (server.shifts[key] === true) {
                     server.availability++;

@@ -17,20 +17,20 @@
     Shifts led per week: <input type="number" name="shiftLeaderPerWeek" #shiftLeaderPerWeek="ngModel" [(ngModel)]="employee.shiftLeaderPerWeek" required><br>
     <h3 *ngIf="shiftLeaderPerWeek.errors?.required">Please specify how many shifts per week this employee should lead.</h3>
     <h2>Requests</h2>
-    <input type = "checkbox" name= "mondayAM" value= "mondayAM" class = "request"> mondayAM
-    <input type = "checkbox" name= "mondayPM" value= "mondayPM" class = "request"> mondayPM<br>
-    <input type = "checkbox" name= "tuesdayAM" value= "tuesdayAM" class = "request"> tuesdayAM
-    <input type = "checkbox" name= "tuesdayPM" value= "tuesdayPM" class = "request"> tuesdayPM<br>
-    <input type = "checkbox" name= "wednesdayAM" value= "wednesdayAM" class = "request"> wednesdayAM
-    <input type = "checkbox" name= "wednesdayPM" value= "wednesdayPM" class = "request"> wednesdayAM<br>
-    <input type = "checkbox" name= "thursdayAM" value= "thursdayAM" class = "request"> thursdayAM
-    <input type = "checkbox" name= "thursdayPM" value= "thursdayPM" class = "request"> thursdayPM<br>
-    <input type = "checkbox" name= "fridayAM" value= "fridayAM" class = "request"> fridayAM
-    <input type = "checkbox" name= "fridayPM" value= "fridayPM" class = "request"> fridayPM<br>
-    <input type = "checkbox" name= "saturdayAM" value= "saturdayAM" class = "request"> saturdayAM
-    <input type = "checkbox" name= "saturdayPM" value= "saturdayPM" class = "request"> saturdayPM<br>
-    <input type = "checkbox" name= "sundayAM" value= "sundayAM" class = "request"> sundayAM
-    <input type = "checkbox" name= "sundayPM" value= "sundayPM" class = "request"> sundayPM<br>
+    <input type = "checkbox" name= "mondayAMRequest" value= "mondayAMRequest" class = "request" #mondayAMRequest="ngModel" [(ngModel)]="employee.requests.mondayAMRequest"> mondayAM
+    <input type = "checkbox" name= "mondayPMRequest" value= "mondayPMRequest" class = "request" #mondayPMRequest="ngModel" [(ngModel)]="employee.requests.mondayPMRequest"> mondayPM<br>
+    <input type = "checkbox" name= "tuesdayAMRequest" value= "tuesdayAMRequest" class = "request" #tuesdayAMRequest="ngModel" [(ngModel)]="employee.requests.tuesdayAMRequest"> tuesdayAM
+    <input type = "checkbox" name= "tuesdayPMRequest" value= "tuesdayPMRequest" class = "request" #tuesdayPMRequest="ngModel" [(ngModel)]="employee.requests.tuesdayPMRequest"> tuesdayPM<br>
+    <input type = "checkbox" name= "wednesdayAMRequest" value= "wednesdayAMRequest" class = "request" #wednesdayAMRequest="ngModel" [(ngModel)]="employee.requests.wednesdayAMRequest"> wednesdayAM
+    <input type = "checkbox" name= "wednesdayPMRequest" value= "wednesdayPMRequest" class = "request" #wednesdayPMRequest="ngModel" [(ngModel)]="employee.requests.wednesdayPMRequest"> wednesdayAM<br>
+    <input type = "checkbox" name= "thursdayAMRequest" value= "thursdayAMRequest" class = "request" #thursdayAMRequest="ngModel" [(ngModel)]="employee.requests.thursdayAMRequest"> thursdayAM
+    <input type = "checkbox" name= "thursdayPMRequest" value= "thursdayPMRequest" class = "request" #thursdayPMRequest="ngModel" [(ngModel)]="employee.requests.thursdayPMRequest"> thursdayPM<br>
+    <input type = "checkbox" name= "fridayAMRequest" value= "fridayAMRequest" class = "request" #fridayAMRequest="ngModel" [(ngModel)]="employee.requests.fridayAMRequest"> fridayAM
+    <input type = "checkbox" name= "fridayPMRequest" value= "fridayPMRequest" class = "request" #fridayPMRequest="ngModel" [(ngModel)]="employee.requests.fridayPMRequest"> fridayPM<br>
+    <input type = "checkbox" name= "saturdayAMRequest" value= "saturdayAMRequest" class = "request" #saturdayAMRequest="ngModel" [(ngModel)]="employee.requests.saturdayAMRequest"> saturdayAM
+    <input type = "checkbox" name= "saturdayPMRequest" value= "saturdayPMRequest" class = "request" #saturdayPMRequest="ngModel" [(ngModel)]="employee.requests.saturdayPMRequest"> saturdayPM<br>
+    <input type = "checkbox" name= "sundayAMRequest" value= "sundayAMRequest" class = "request" #sundayAMRequest="ngModel" [(ngModel)]="employee.requests.sundayAMRequest"> sundayAM
+    <input type = "checkbox" name= "sundayPMRequest" value= "sundayPMRequest" class = "request" #sundayPMRequest="ngModel" [(ngModel)]="employee.requests.sundayPMRequest"> sundayPM<br>
     <script type="text/javascript">
       function requestReset(event){
         event.preventDefault();
@@ -117,5 +117,7 @@
   
   <button type= "submit" [disabled]="!employeeForm.valid">Update details</button>
   </form>
+
+  {{employee}}
   
   <a [routerLink]="['/']">Back to main page</a><button (click)="deleteEmployee(employee['_id'])">Delete</button>

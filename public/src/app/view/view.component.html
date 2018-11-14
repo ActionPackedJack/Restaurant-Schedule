@@ -1,10 +1,24 @@
-<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">Back to employee directory</a> | <a [routerLink]="['/schedule']">Make Schedule</a> 
+<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">Back to employee directory</a> | <a [routerLink]="['/']">Make Schedule</a> 
 <h3>{{employee.name}}</h3>
 <p>Desired shifts per week: {{employee.shiftsPerWeek}}</p><br>
 <p>Maximum bartender shifts allowed per week: {{employee.bartenderPerWeek}}</p><br>
 <p *ngIf="employee.bartenderPerWeek>0">Is this employee also a server: {{employee.alsoServer}}</p>
 <p>Maximum shift leader allowed per week: {{employee.shiftLeaderPerWeek}}</p><br>
 <h3>Shifts requested off</h3>
+<p *ngIf= "employee.requests.mondayAMRequest"> Monday AM</p>
+<p *ngIf= "employee.requests.mondayPMRequest"> Monday PM</p>
+<p *ngIf= "employee.requests.tuesdayAMRequest"> Tuesday AM</p>
+<p *ngIf= "employee.requests.tuesdayAMRequest"> Tuesday PM</p>
+<p *ngIf= "employee.requests.wednesdayAMRequest"> Wednesday AM</p>
+<p *ngIf= "employee.requests.wednesdayPMRequest"> Wednesday PM</p>
+<p *ngIf= "employee.requests.thursdayAMRequest"> Thuraday AM</p>
+<p *ngIf= "employee.requests.thursdayPMRequest"> Thursday PM</p>
+<p *ngIf= "employee.requests.fridayAMRequest"> Friday AM</p>
+<p *ngIf= "employee.requests.fridayPMRequest"> Friday PM</p>
+<p *ngIf= "employee.requests.saturdayAMRequest"> Saturday AM</p>
+<p *ngIf= "employee.requests.saturdayAMRequest"> Saturday PM</p>
+<p *ngIf= "employee.requests.sundayAMRequest"> Sunday AM</p>
+<p *ngIf= "employee.requests.sundayAMRequest"> Sunday PM</p>
 <!-- ADD LOOP THROUGH REQUESTS HERE -->
 <h3>Availability</h3>
 <table>

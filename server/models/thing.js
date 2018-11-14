@@ -34,7 +34,22 @@ var EmployeeSchema = new mongoose.Schema({
         sundayAM: {type: Boolean},
         sundayPM: {type: Boolean},
         },
-    requests: [],
+    requests: {
+        mondayAMRequest: {type: Boolean},
+        mondayPMRequest: {type: Boolean},
+        tuesdayAMRequest: {type: Boolean},
+        tuesdayPMRequest: {type: Boolean},
+        wednesdayAMRequest: {type: Boolean},
+        wednesdayPMRequest: {type: Boolean},
+        thursdayAMRequest: {type: Boolean},
+        thursdayPMRequest: {type: Boolean},
+        fridayAMRequest: {type: Boolean},
+        fridayPMRequest: {type: Boolean},
+        saturdayAMRequest: {type: Boolean},
+        saturdayPMRequest: {type: Boolean},
+        sundayAMRequest: {type: Boolean},
+        sundayPMRequest: {type: Boolean},
+        },
 }, {timestamps: true})
 var DefaultSchema = new mongoose.Schema({
     name: {type: String,

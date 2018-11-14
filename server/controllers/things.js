@@ -10,7 +10,22 @@ module.exports = {
         employee.shiftLeaderPerWeek = req.body.newEmployee.shiftLeaderPerWeek;
         employee.bartenderPerWeek = req.body.newEmployee.bartenderPerWeek;
         employee.alsoServer = req.body.newEmployee.alsoServer;
-        employee.requests = [];
+        employee.requests = {
+            mondayAMRequest: false,
+            mondayPMRequest: false,
+            tuesdayAMRequest: false,
+            tuesdayPMRequest: false,
+            wednesdayAMRequest: false,
+            wednesdayPMRequest: false,
+            thursdayAMRequest: false,
+            thursdayPMRequest: false,
+            fridayAMRequest: false,
+            fridayPMRequest: false,
+            saturdayAMRequest: false,
+            saturdayPMRequest: false,
+            sundayAMRequest: false,
+            sundayPMRequest: false,
+            },
         employee.shifts = req.body.newEmployee.shifts;
         console.log("EMPLOYEE: ", employee);
         employee.save(function(err, employee){

@@ -7,6 +7,7 @@ import {HttpService} from '../http.service';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
+
 export class ViewComponent implements OnInit {
   employee;
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) { }
