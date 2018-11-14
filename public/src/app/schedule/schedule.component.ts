@@ -34,6 +34,7 @@ export class ScheduleComponent implements OnInit {
   schedule: any;
   problems: any[];
   doubles: any[];
+  requestList: any[];
   shifts;
   newShifts;
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) {
@@ -55,7 +56,7 @@ export class ScheduleComponent implements OnInit {
       sundayPM: {},
     };
     this.problems= [];
-    
+    this. requestList = [];
     this.doubles = [];
    }
 
@@ -106,10 +107,19 @@ prioritySort(arr) {
 }
 //This algorithm will not schedule an employee to a double shift, because anyone scheduled in the morning will be marked as unavailable for the evening. In the event that a PM shift cannot be filled, the below code will check and see if there is anyone eligible to work it who is already scheduled that morning, and return a list of employees who could be scheduled to a double if necessary.
 doublesCheck(shift){
-  var result=[]
+  var result=[];
   for (let i=0; i<this.doubles.length; i++){
     if(this.doubles[i].indexOf(shift)===0){
-      result.push(this.doubles[i].slice(shift.length+1, this.doubles[i].length));
+      result.push(" " + this.doubles[i].slice(shift.length+1, this.doubles[i].length));
+    }
+  }
+  return result;
+}
+requestCheck(shift){
+  var result = [];
+  for (let i=0; i<this.requestList.length; i++){
+    if(this.requestList[i].indexOf(shift)===0){
+      result.push(this.requestList[i].slice(shift.length+1, this.requestList[i].length));
     }
   }
   return result;
@@ -209,6 +219,9 @@ scheduleRemainder(shift, totalServers=5){
     let problem = ("Could not find employee to work " + section + " on " + shift + ".");
     if(this.doublesCheck(shift).length>0){
       problem+= (" Potential doubles: " + this.doublesCheck(shift));
+    }
+    if(this.requestCheck(shift).length>0){
+      problem+= (". Employees requesting this shift off: " + this.requestCheck(shift)) + ".";
     }
     this.problems.push(problem);
   }
@@ -315,6 +328,7 @@ makeSchedule(
                 if (server.requests[requestSearch] === true) {
                   console.log ("REQUEST FOUND FOR " + server.name + " ON " + key.toString());
                   server.shifts[key] = false;
+                  this.requestList.push(key + " " + server.name);
                 }
                 if (server.shifts[key] === true) {
                     server.availability++;
