@@ -1,0 +1,8 @@
+{
+    "name": "Restaurant Scheduler",
+    "description": "Analyzes a database of servers and bartenders and creates a schedule for a week according to each employee's availability, training, and requests off.",
+    "repository": "https://github.com/ActionPackedJack/Restaurant-Schedule",
+    "logo": "http://node-js-sample.herokuapp.com/node.svg",
+    "keywords": ["node", "express", "static", "angular"],
+    "image": "heroku/nodejs"
+}
