@@ -5,8 +5,11 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}))
 var path = require('path');
-app.use(express.static(path.join(__dirname, './public/dist/public/')))
-app.set('views', path.join(__dirname, '/public/dist'))
+app.use(express.static(path.join(__dirname, './public/dist/public/')));
+app.get('/*', function(req,res){
+    res.sendFile(path.join(__dirname, '/public/dist'));
+})
+//app.set('views', path.join(__dirname, '/public/dist'))
 require('./server/config/mongoose.js');
 var routes_setter = require('./server/config/routes.js');
 routes_setter(app);
