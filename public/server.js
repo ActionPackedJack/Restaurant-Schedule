@@ -5,9 +5,9 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}))
 var path = require('path');
-app.use(express.static(path.join(__dirname, './public/dist/public/')));
+app.use(express.static(path.join(__dirname, './dist/public/')));
 app.get('/*', function(req,res){
-    res.sendFile(path.join(__dirname, '/public/dist'));
+    res.sendFile(path.join(__dirname, '/dist'));
 })
 //app.set('views', path.join(__dirname, '/public/dist'))
 require('./server/config/mongoose.js');

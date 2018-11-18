@@ -20,6 +20,6 @@ module.exports = function(app){
         Things.update(req, res)
     })
     app.all("*", (req, res, next) => {
-        res.sendFile(path.resolve("./dist/public/index.html"))
+        res.sendFile(path.resolve("dist/public/index.html"))
     });
 }

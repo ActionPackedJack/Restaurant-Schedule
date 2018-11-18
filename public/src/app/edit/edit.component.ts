@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
       requestReset(){
         event.preventDefault();
         console.log("EXECUTING SELECTIVE RESET...")
-        var items=document.getElementsByClassName('request');
+        var items : HTMLCollectionOf<HTMLInputElement> =document.getElementsByClassName('request') as HTMLCollectionOf<HTMLInputElement>;
         for(var i=0; i<items.length; i++){
           if(items[i].type=='checkbox')
             items[i].checked=false;
@@ -48,7 +48,7 @@ export class EditComponent implements OnInit {
       requestAll(){
         event.preventDefault();
         console.log("CHECKING ALL BOXEN...")
-        var items=document.getElementsByClassName('request');
+        var items : HTMLCollectionOf<HTMLInputElement> =document.getElementsByClassName('request') as HTMLCollectionOf<HTMLInputElement>;
         for(var i=0; i<items.length; i++){
           if(items[i].type=='checkbox')
             items[i].checked=true;
