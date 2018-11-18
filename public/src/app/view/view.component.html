@@ -1,4 +1,6 @@
-<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">Back to employee directory</a> | <a [routerLink]="['/']">Make Schedule</a> 
+<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">Back to employee directory</a> | <a [routerLink]="['/']">Make Schedule</a>
+<h1 *ngIf= "!employee"> Employee not found.  If this employee has been recently edited, refresh the page.</h1>
+<span *ngIf= "employee">
 <h3>{{employee.name}}</h3>
 <p>Desired shifts per week: {{employee.shiftsPerWeek}}</p><br>
 <p>Maximum bartender shifts allowed per week: {{employee.bartenderPerWeek}}</p><br>
@@ -61,4 +63,5 @@
     <td>{{employee.shifts.sundayPM}}</td>
   </tr>
 </table>
+</span>
 <a [routerLink]="['/employees']">Back</a> <a [routerLink]="['/edit', employee['_id']]">Edit</a>
