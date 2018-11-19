@@ -6,9 +6,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}))
 var path = require('path');
 app.use(express.static(path.join(__dirname, './dist/public/')));
-app.get('/*', function(req,res){
-    res.sendFile(path.join(__dirname, '/dist'));
-})
+app.get('*', function(req,res){
+    res.sendFile(path.join(__dirname, 'dist'));
+});
 //app.set('views', path.join(__dirname, '/public/dist'))
 require('./server/config/mongoose.js');
 var routes_setter = require('./server/config/routes.js');
@@ -16,3 +16,4 @@ routes_setter(app);
 app.listen(app.get('port'), function(){
     console.log('Node app is running on port', app.get('port'))
 });
+
