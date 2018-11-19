@@ -1,6 +1,6 @@
 import {Component, OnInit } from '@angular/core';
 import {HttpService} from '../http.service';
-import * as $ from 'jquery';
+//import * as $ from 'jquery';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 
