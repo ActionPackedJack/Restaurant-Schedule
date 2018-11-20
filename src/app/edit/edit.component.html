@@ -1,3 +1,5 @@
+<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/']">Make Schedule</a>
+
 <h1>Editing details for {{employee.name}}</h1>
 
 <form name="editForm" #editForm= "ngForm" (submit)="updateEmployee(editForm)">

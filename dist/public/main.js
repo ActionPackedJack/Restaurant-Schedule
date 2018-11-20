@@ -41,12 +41,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _view_view_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./view/view.component */ "./src/app/view/view.component.ts");
 /* harmony import */ var _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schedule/schedule.component */ "./src/app/schedule/schedule.component.ts");
 /* harmony import */ var _generate_generate_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./generate/generate.component */ "./src/app/generate/generate.component.ts");
+/* harmony import */ var _requests_requests_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./requests/requests.component */ "./src/app/requests/requests.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -63,6 +65,7 @@ var routes = [
     { path: 'edit/:id', component: _edit_edit_component__WEBPACK_IMPORTED_MODULE_2__["EditComponent"] },
     { path: 'delete/:id', component: _edit_edit_component__WEBPACK_IMPORTED_MODULE_2__["EditComponent"] },
     { path: 'schedule', component: _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_6__["ScheduleComponent"] },
+    { path: 'requests', component: _requests_requests_component__WEBPACK_IMPORTED_MODULE_8__["RequestsComponent"] },
     //{path: 'schedule/:mondayAM/:mondayPM/:tuesdayAM/:tuesdayPM/:wednesdayAM/:wednesdayPM/:thursdayAM/:thursdayPM/:fridayAM/:fridayPM/:saturdayAM/:saturdayPM/:sundayAM/:sundayPM', component: ScheduleComponent},
     { path: '', component: _generate_generate_component__WEBPACK_IMPORTED_MODULE_7__["GenerateComponent"] },
 ];
@@ -171,12 +174,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./schedule/schedule.component */ "./src/app/schedule/schedule.component.ts");
 /* harmony import */ var _generate_generate_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./generate/generate.component */ "./src/app/generate/generate.component.ts");
+/* harmony import */ var _requests_requests_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./requests/requests.component */ "./src/app/requests/requests.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -204,7 +209,8 @@ var AppModule = /** @class */ (function () {
                 _delete_delete_component__WEBPACK_IMPORTED_MODULE_9__["DeleteComponent"],
                 _list_list_component__WEBPACK_IMPORTED_MODULE_10__["ListComponent"],
                 _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_12__["ScheduleComponent"],
-                _generate_generate_component__WEBPACK_IMPORTED_MODULE_13__["GenerateComponent"]
+                _generate_generate_component__WEBPACK_IMPORTED_MODULE_13__["GenerateComponent"],
+                _requests_requests_component__WEBPACK_IMPORTED_MODULE_14__["RequestsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -304,7 +310,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Editing details for {{employee.name}}</h1>\n\n<form name=\"editForm\" #editForm= \"ngForm\" (submit)=\"updateEmployee(editForm)\">\n    Name: <input type=\"text\" name=\"name\" #name= \"ngModel\" [(ngModel)]=\"employee.name\" required><br>\n    <h3 *ngIf=\"name.errors?.required\">Name is required!</h3>\n    Desired shifts per week: <input type=\"number\" name=\"shiftsPerWeek\" #shiftsPerWeek=\"ngModel\" [(ngModel)]=\"employee.shiftsPerWeek\" required><br>\n    <h3 *ngIf=\"shiftsPerWeek.errors?.required\">Please specify how many shifts per week this employee should work.</h3>\n    Bartender shifts per week: <input type=\"number\" name=\"bartenderPerWeek\" #bartenderPerWeek=\"ngModel\" [(ngModel)]=\"employee.bartenderPerWeek\" required><br>\n    <h3 *ngIf=\"bartenderPerWeek.errors?.required\">Please specify how many times per week this employee should bartend.</h3>\n    <div *ngIf=\"employee.bartenderPerWeek>0\">\n      Should this employee also be scheduled as a server?\n      <select name=\"alsoServer\" #alsoServer=\"ngModel\" [(ngModel)]=\"employee.alsoServer\">\n        <option value=\"true\">Yes</option>\n        <option value=\"false\">No</option>\n      </select><br>\n    </div>\n    Shifts led per week: <input type=\"number\" name=\"shiftLeaderPerWeek\" #shiftLeaderPerWeek=\"ngModel\" [(ngModel)]=\"employee.shiftLeaderPerWeek\" required><br>\n    <h3 *ngIf=\"shiftLeaderPerWeek.errors?.required\">Please specify how many shifts per week this employee should lead.</h3>\n    <h2>Requests</h2>\n    <input type = \"checkbox\" name= \"mondayAMRequest\" value= \"mondayAMRequest\" class = \"request\" #mondayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.mondayAMRequest\"> mondayAM\n    <input type = \"checkbox\" name= \"mondayPMRequest\" value= \"mondayPMRequest\" class = \"request\" #mondayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.mondayPMRequest\"> mondayPM<br>\n    <input type = \"checkbox\" name= \"tuesdayAMRequest\" value= \"tuesdayAMRequest\" class = \"request\" #tuesdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.tuesdayAMRequest\"> tuesdayAM\n    <input type = \"checkbox\" name= \"tuesdayPMRequest\" value= \"tuesdayPMRequest\" class = \"request\" #tuesdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.tuesdayPMRequest\"> tuesdayPM<br>\n    <input type = \"checkbox\" name= \"wednesdayAMRequest\" value= \"wednesdayAMRequest\" class = \"request\" #wednesdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.wednesdayAMRequest\"> wednesdayAM\n    <input type = \"checkbox\" name= \"wednesdayPMRequest\" value= \"wednesdayPMRequest\" class = \"request\" #wednesdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.wednesdayPMRequest\"> wednesdayAM<br>\n    <input type = \"checkbox\" name= \"thursdayAMRequest\" value= \"thursdayAMRequest\" class = \"request\" #thursdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.thursdayAMRequest\"> thursdayAM\n    <input type = \"checkbox\" name= \"thursdayPMRequest\" value= \"thursdayPMRequest\" class = \"request\" #thursdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.thursdayPMRequest\"> thursdayPM<br>\n    <input type = \"checkbox\" name= \"fridayAMRequest\" value= \"fridayAMRequest\" class = \"request\" #fridayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.fridayAMRequest\"> fridayAM\n    <input type = \"checkbox\" name= \"fridayPMRequest\" value= \"fridayPMRequest\" class = \"request\" #fridayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.fridayPMRequest\"> fridayPM<br>\n    <input type = \"checkbox\" name= \"saturdayAMRequest\" value= \"saturdayAMRequest\" class = \"request\" #saturdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.saturdayAMRequest\"> saturdayAM\n    <input type = \"checkbox\" name= \"saturdayPMRequest\" value= \"saturdayPMRequest\" class = \"request\" #saturdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.saturdayPMRequest\"> saturdayPM<br>\n    <input type = \"checkbox\" name= \"sundayAMRequest\" value= \"sundayAMRequest\" class = \"request\" #sundayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.sundayAMRequest\"> sundayAM\n    <input type = \"checkbox\" name= \"sundayPMRequest\" value= \"sundayPMRequest\" class = \"request\" #sundayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.sundayPMRequest\"> sundayPM<br>\n    <!-- <script type=\"text/javascript\">\n      function requestReset(event){\n        event.preventDefault();\n        console.log(\"EXECUTING SELECTIVE RESET...\")\n        var items=document.getElementsByClassName('request');\n        for(var i=0; i<items.length; i++){\n          if(items[i].type=='checkbox')\n            items[i].checked=false;\n      }\n    }\t\n</script> -->\n    <button id=\"checkAll\" (click)=\"requestAll()\" value= \"checkAll\">Check all</button>\n    <button id=\"uncheckAll\" (click)=\"requestReset()\" value= \"uncheckAll\">Uncheck all</button>\n    <h2>Availability</h2><br>\n    Monday Morning:\n    <select name=\"mondayAM\" #mondayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.mondayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Monday Evening:\n    <select name=\"mondayPM\" #mondayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.mondayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Tuesday Morning:\n    <select name=\"tuesdayAM\" #tuesdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.tuesdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Tuesday Evening:\n    <select name=\"tuesdayPM\" #tuesdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.tuesdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Wednesday Morning:\n    <select name=\"wednesdayAM\" #wednesdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.wednesdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Wednesday Evening:\n    <select name=\"wednesdayPM\" #wednesdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.wednesdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Thursday Morning:\n    <select name=\"thursdayAM\" #thursdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.thursdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Thursday Evening:\n    <select name=\"thursdayPM\" #thursdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.thursdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Friday Morning:\n    <select name=\"fridayAM\" #fridayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.fridayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Friday Evening:\n    <select name=\"fridayPM\" #fridayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.fridayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Saturday Morning:\n    <select name=\"saturdayAM\" #saturdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.saturdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Saturday Evening:\n    <select name=\"saturdayPM\" #saturdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.saturdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Sunday Morning:\n    <select name=\"sundayAM\" #sundayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.sundayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Sunday Evening:\n    <select name=\"sundayPM\" #sundayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.sundayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n  \n  <button type= \"submit\" [disabled]=\"!editForm.valid\">Update details</button>\n  </form>\n  \n  <a [routerLink]=\"['/']\">Back to main page</a><button (click)=\"deleteEmployee(employee['_id'])\">Delete</button>"
+module.exports = "<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/']\">Make Schedule</a>\n\n<h1>Editing details for {{employee.name}}</h1>\n\n<form name=\"editForm\" #editForm= \"ngForm\" (submit)=\"updateEmployee(editForm)\">\n    Name: <input type=\"text\" name=\"name\" #name= \"ngModel\" [(ngModel)]=\"employee.name\" required><br>\n    <h3 *ngIf=\"name.errors?.required\">Name is required!</h3>\n    Desired shifts per week: <input type=\"number\" name=\"shiftsPerWeek\" #shiftsPerWeek=\"ngModel\" [(ngModel)]=\"employee.shiftsPerWeek\" required><br>\n    <h3 *ngIf=\"shiftsPerWeek.errors?.required\">Please specify how many shifts per week this employee should work.</h3>\n    Bartender shifts per week: <input type=\"number\" name=\"bartenderPerWeek\" #bartenderPerWeek=\"ngModel\" [(ngModel)]=\"employee.bartenderPerWeek\" required><br>\n    <h3 *ngIf=\"bartenderPerWeek.errors?.required\">Please specify how many times per week this employee should bartend.</h3>\n    <div *ngIf=\"employee.bartenderPerWeek>0\">\n      Should this employee also be scheduled as a server?\n      <select name=\"alsoServer\" #alsoServer=\"ngModel\" [(ngModel)]=\"employee.alsoServer\">\n        <option value=\"true\">Yes</option>\n        <option value=\"false\">No</option>\n      </select><br>\n    </div>\n    Shifts led per week: <input type=\"number\" name=\"shiftLeaderPerWeek\" #shiftLeaderPerWeek=\"ngModel\" [(ngModel)]=\"employee.shiftLeaderPerWeek\" required><br>\n    <h3 *ngIf=\"shiftLeaderPerWeek.errors?.required\">Please specify how many shifts per week this employee should lead.</h3>\n    <h2>Requests</h2>\n    <input type = \"checkbox\" name= \"mondayAMRequest\" value= \"mondayAMRequest\" class = \"request\" #mondayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.mondayAMRequest\"> mondayAM\n    <input type = \"checkbox\" name= \"mondayPMRequest\" value= \"mondayPMRequest\" class = \"request\" #mondayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.mondayPMRequest\"> mondayPM<br>\n    <input type = \"checkbox\" name= \"tuesdayAMRequest\" value= \"tuesdayAMRequest\" class = \"request\" #tuesdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.tuesdayAMRequest\"> tuesdayAM\n    <input type = \"checkbox\" name= \"tuesdayPMRequest\" value= \"tuesdayPMRequest\" class = \"request\" #tuesdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.tuesdayPMRequest\"> tuesdayPM<br>\n    <input type = \"checkbox\" name= \"wednesdayAMRequest\" value= \"wednesdayAMRequest\" class = \"request\" #wednesdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.wednesdayAMRequest\"> wednesdayAM\n    <input type = \"checkbox\" name= \"wednesdayPMRequest\" value= \"wednesdayPMRequest\" class = \"request\" #wednesdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.wednesdayPMRequest\"> wednesdayAM<br>\n    <input type = \"checkbox\" name= \"thursdayAMRequest\" value= \"thursdayAMRequest\" class = \"request\" #thursdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.thursdayAMRequest\"> thursdayAM\n    <input type = \"checkbox\" name= \"thursdayPMRequest\" value= \"thursdayPMRequest\" class = \"request\" #thursdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.thursdayPMRequest\"> thursdayPM<br>\n    <input type = \"checkbox\" name= \"fridayAMRequest\" value= \"fridayAMRequest\" class = \"request\" #fridayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.fridayAMRequest\"> fridayAM\n    <input type = \"checkbox\" name= \"fridayPMRequest\" value= \"fridayPMRequest\" class = \"request\" #fridayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.fridayPMRequest\"> fridayPM<br>\n    <input type = \"checkbox\" name= \"saturdayAMRequest\" value= \"saturdayAMRequest\" class = \"request\" #saturdayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.saturdayAMRequest\"> saturdayAM\n    <input type = \"checkbox\" name= \"saturdayPMRequest\" value= \"saturdayPMRequest\" class = \"request\" #saturdayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.saturdayPMRequest\"> saturdayPM<br>\n    <input type = \"checkbox\" name= \"sundayAMRequest\" value= \"sundayAMRequest\" class = \"request\" #sundayAMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.sundayAMRequest\"> sundayAM\n    <input type = \"checkbox\" name= \"sundayPMRequest\" value= \"sundayPMRequest\" class = \"request\" #sundayPMRequest=\"ngModel\" [(ngModel)]=\"employee.requests.sundayPMRequest\"> sundayPM<br>\n    <!-- <script type=\"text/javascript\">\n      function requestReset(event){\n        event.preventDefault();\n        console.log(\"EXECUTING SELECTIVE RESET...\")\n        var items=document.getElementsByClassName('request');\n        for(var i=0; i<items.length; i++){\n          if(items[i].type=='checkbox')\n            items[i].checked=false;\n      }\n    }\t\n</script> -->\n    <button id=\"checkAll\" (click)=\"requestAll()\" value= \"checkAll\">Check all</button>\n    <button id=\"uncheckAll\" (click)=\"requestReset()\" value= \"uncheckAll\">Uncheck all</button>\n    <h2>Availability</h2><br>\n    Monday Morning:\n    <select name=\"mondayAM\" #mondayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.mondayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Monday Evening:\n    <select name=\"mondayPM\" #mondayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.mondayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Tuesday Morning:\n    <select name=\"tuesdayAM\" #tuesdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.tuesdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Tuesday Evening:\n    <select name=\"tuesdayPM\" #tuesdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.tuesdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Wednesday Morning:\n    <select name=\"wednesdayAM\" #wednesdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.wednesdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Wednesday Evening:\n    <select name=\"wednesdayPM\" #wednesdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.wednesdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Thursday Morning:\n    <select name=\"thursdayAM\" #thursdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.thursdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Thursday Evening:\n    <select name=\"thursdayPM\" #thursdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.thursdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Friday Morning:\n    <select name=\"fridayAM\" #fridayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.fridayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Friday Evening:\n    <select name=\"fridayPM\" #fridayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.fridayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Saturday Morning:\n    <select name=\"saturdayAM\" #saturdayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.saturdayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Saturday Evening:\n    <select name=\"saturdayPM\" #saturdayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.saturdayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Sunday Morning:\n    <select name=\"sundayAM\" #sundayAM=\"ngModel\" [(ngModel)]=\"employee.shifts.sundayAM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n    Sunday Evening:\n    <select name=\"sundayPM\" #sundayPM=\"ngModel\" [(ngModel)]=\"employee.shifts.sundayPM\">\n      <option value=\"true\">Available</option>\n      <option value=\"false\">Unavailable</option>\n    </select><br>\n  \n  <button type= \"submit\" [disabled]=\"!editForm.valid\">Update details</button>\n  </form>\n  \n  <a [routerLink]=\"['/']\">Back to main page</a><button (click)=\"deleteEmployee(employee['_id'])\">Delete</button>"
 
 /***/ }),
 
@@ -739,7 +745,6 @@ var NewComponent = /** @class */ (function () {
         this.router = router;
         this.employeeToAdd = {
             name: '',
-            requests: [],
             shiftsPerWeek: 5,
             bartenderPerWeek: 0,
             shiftLeaderPerWeek: 0,
@@ -759,6 +764,22 @@ var NewComponent = /** @class */ (function () {
                 sundayAM: true,
                 sundayPM: true,
             },
+            requests: {
+                mondayAMRequest: false,
+                mondayPMRequest: false,
+                tuesdayAMRequest: false,
+                tuesdayPMRequest: false,
+                wednesdayAMRequest: false,
+                wednesdayPMRequest: false,
+                thursdayAMRequest: false,
+                thursdayPMRequest: false,
+                fridayAMRequest: false,
+                fridayPMRequest: false,
+                saturdayAMRequest: false,
+                saturdayPMRequest: false,
+                sundayAMRequest: false,
+                sundayPMRequest: false,
+            }
         };
     }
     NewComponent.prototype.ngOnInit = function () {
@@ -785,6 +806,88 @@ var NewComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], NewComponent);
     return NewComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/requests/requests.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/requests/requests.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/requests/requests.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/requests/requests.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/']\">Make Schedule</a>\n<h1>Requests</h1>\n<div *ngFor=\"let employee of employees\">\n  {{employee.requests}}\n    <ul *ngFor=\"let request of employee.requests\">\n      <li *ngIf= \"employee.requests.request===true\">\n          <a [routerLink]=\"['/employees', employee['_id']]\">{{employee.name}}</a>\n          <p>{{employee.requests.request}}</p>\n      </li>\n    </ul>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/requests/requests.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/requests/requests.component.ts ***!
+  \************************************************/
+/*! exports provided: RequestsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RequestsComponent", function() { return RequestsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var RequestsComponent = /** @class */ (function () {
+    function RequestsComponent(_dataService, _route, router) {
+        this._dataService = _dataService;
+        this._route = _route;
+        this.router = router;
+        this.employees = [];
+    }
+    RequestsComponent.prototype.ngOnInit = function () {
+        this.getEmployees();
+    };
+    RequestsComponent.prototype.getEmployees = function () {
+        var _this = this;
+        var observable = this._dataService.getEmployees();
+        observable.subscribe(function (data) {
+            console.log("HERE IS THE OBSERVABLE", data);
+            _this.employees = data['employees'];
+            console.log("EMPLOYEES: ", _this.employees);
+        });
+    };
+    RequestsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-requests',
+            template: __webpack_require__(/*! ./requests.component.html */ "./src/app/requests/requests.component.html"),
+            styles: [__webpack_require__(/*! ./requests.component.css */ "./src/app/requests/requests.component.css")]
+        }),
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], RequestsComponent);
+    return RequestsComponent;
 }());
 
 

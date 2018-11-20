@@ -11,7 +11,6 @@ import {ActivatedRoute} from '@angular/router';
 export class NewComponent implements OnInit {
   employeeToAdd={
     name: '', 
-    requests: [], 
     shiftsPerWeek: 5, 
     bartenderPerWeek: 0,
     shiftLeaderPerWeek: 0,
@@ -30,7 +29,23 @@ export class NewComponent implements OnInit {
 			saturdayAM: true,
 			sundayAM: true,
 			sundayPM: true,
-		},
+    },
+    requests: {
+      mondayAMRequest: false,
+      mondayPMRequest: false,
+      tuesdayAMRequest: false,
+      tuesdayPMRequest: false,
+      wednesdayAMRequest: false,
+      wednesdayPMRequest: false,
+      thursdayAMRequest: false,
+      thursdayPMRequest: false,
+      fridayAMRequest: false,
+      fridayPMRequest: false,
+      saturdayAMRequest: false,
+      saturdayPMRequest: false,
+      sundayAMRequest: false,
+      sundayPMRequest: false,
+      }
   };
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) { }
 

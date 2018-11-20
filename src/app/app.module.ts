@@ -12,6 +12,7 @@ import { ListComponent } from './list/list.component';
 import {FormsModule} from '@angular/forms';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { GenerateComponent } from './generate/generate.component';
+import { RequestsComponent } from './requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GenerateComponent } from './generate/generate.component';
     DeleteComponent,
     ListComponent,
     ScheduleComponent,
-    GenerateComponent
+    GenerateComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/']">Make Schedule</a>
+<h1>Requests</h1>
+<div *ngFor="let employee of employees">
+  {{employee.requests}}
+    <ul *ngFor="let request of employee.requests">
+      <li *ngIf= "employee.requests.request===true">
+          <a [routerLink]="['/employees', employee['_id']]">{{employee.name}}</a>
+          <p>{{employee.requests.request}}</p>
+      </li>
+    </ul>
+</div>
