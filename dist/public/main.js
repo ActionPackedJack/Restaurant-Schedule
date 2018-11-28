@@ -830,7 +830,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/']\">Make Schedule</a>\n<h1>Requests</h1>\n<div *ngFor=\"let employee of employees\">\n  {{employee.requests}}\n    <ul *ngFor=\"let request of employee.requests\">\n      <li *ngIf= \"employee.requests.request===true\">\n          <a [routerLink]=\"['/employees', employee['_id']]\">{{employee.name}}</a>\n          <p>{{employee.requests.request}}</p>\n      </li>\n    </ul>\n</div>\n"
+module.exports = "<!-- <a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/']\">Make Schedule</a>\n<h1>Requests</h1>\n<div *ngFor=\"let employee of employees\">\n  {{employee.requests}}\n    <ul *ngFor=\"let request of employee.requests\">\n      <li *ngIf= \"employee.requests.request===true\">\n          <a [routerLink]=\"['/employees', employee['_id']]\">{{employee.name}}</a>\n          <p>{{employee.requests.request}}</p>\n      </li>\n    </ul>\n</div>\n<h2>Create new request</h2>\n<select #ngFor=\"let employee of employees\">\n  <option value=\"employee['name']\"> {{employee.name}}</option>\n</select> -->\n"
 
 /***/ }),
 

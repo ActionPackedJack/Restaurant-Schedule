@@ -11,9 +11,19 @@ app.get('*', function(req,res){
 });
 //app.set('views', path.join(__dirname, '/public/dist'))
 require('./server/config/mongoose.js');
+var mongodb = require('mongodb');
+var MongoClient = mongodb.MongoClient;
+var url = "mongodb://manager:password123@ds135514.mlab.com:35514/employees";
+
+MongoClient.connect(url, function (err, db) {
+    if (err) {
+      console.log('Unable to connect to the mongoDB server. Error:', err);
+    } else {
+      console.log('Connection established to', url);
+    };
 var routes_setter = require('./server/config/routes.js');
 routes_setter(app);
 app.listen(app.get('port'), function(){
     console.log('Node app is running on port', app.get('port'))
 });
-
+})

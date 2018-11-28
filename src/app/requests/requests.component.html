@@ -1,4 +1,4 @@
-<a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/']">Make Schedule</a>
+<!-- <a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/']">Make Schedule</a>
 <h1>Requests</h1>
 <div *ngFor="let employee of employees">
   {{employee.requests}}
@@ -9,3 +9,7 @@
       </li>
     </ul>
 </div>
+<h2>Create new request</h2>
+<select #ngFor="let employee of employees">
+  <option value="employee['name']"> {{employee.name}}</option>
+</select> -->
