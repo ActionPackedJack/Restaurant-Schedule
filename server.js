@@ -9,12 +9,10 @@ app.use(express.static(path.join(__dirname, './dist/public/')));
 app.get('*', function(req,res){
     res.sendFile(path.join(__dirname, 'dist'));
 });
-//app.set('views', path.join(__dirname, '/public/dist'))
 require('./server/config/mongoose.js');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = process.env.MONGOLAB_URI;
-//var url = "mongodb://manager:password123@ds135514.mlab.com:35514/employees";
+var url = process.env.MONGODB_URI;
 
 MongoClient.connect(url, function (err, db) {
     if (err) {
