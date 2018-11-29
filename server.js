@@ -12,7 +12,7 @@ app.get('*', function(req,res){
 require('./server/config/mongoose.js');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = process.env.MONGODB_URI;
+var url = process.env.MONGOLAB_OLIVE_URI;
 
 MongoClient.connect(url, function (err, db) {
     if (err) {
