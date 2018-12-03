@@ -1002,6 +1002,7 @@ var ScheduleComponent = /** @class */ (function () {
         this.problems = [];
         this.requestList = [];
         this.doubles = [];
+        this.hourmax = [];
     }
     ScheduleComponent.prototype.ngOnInit = function () {
         //var employees = [];
@@ -1061,6 +1062,15 @@ var ScheduleComponent = /** @class */ (function () {
         }
         return result;
     };
+    ScheduleComponent.prototype.hourmaxCheck = function (shift) {
+        var result = [];
+        for (var i = 0; i < this.hourmax.length; i++) {
+            if (this.hourmax[i].indexOf(shift) === 0) {
+                result.push(" " + this.hourmax[i].slice(shift.length + 1, this.hourmax[i].length));
+            }
+        }
+        return result;
+    };
     //The below function schedules the bartender for a single shift. This will be run on every day first, so that qualified bartenders will not be scheduled to serving shifts until all bartender shifts are filled.
     ScheduleComponent.prototype.scheduleBartender = function (shift) {
         // for(var key in this.schedule){
@@ -1071,9 +1081,13 @@ var ScheduleComponent = /** @class */ (function () {
         var sortedEmployees = this.prioritySort(this.employees);
         for (var i = 0; i < sortedEmployees.length; i++) {
             var server = sortedEmployees[i];
-            if (server.shiftsScheduled < server.shiftsPerWeek &&
-                server.bartenderScheduled < server.bartenderPerWeek &&
-                server.shifts[shift] === true) {
+            if (server.shifts[shift] === true) {
+                if (server.shiftsScheduled >= server.shiftsPerWeek
+                    //|| server.bartenderScheduled >= server.bartenderPerWeek
+                    && this.hourmax.indexOf(shift + " " + server.name) === -1) {
+                    this.hourmax.push(shift + " " + server.name);
+                    continue;
+                }
                 console.log("Scheduling " + server.name + " on " + shift + " as bartender.");
                 this.schedule[shift].bartender = server.name;
                 server.bartenderScheduled++;
@@ -1101,10 +1115,14 @@ var ScheduleComponent = /** @class */ (function () {
         var sortedEmployees = this.prioritySort(this.employees);
         for (var i = 0; i < sortedEmployees.length; i++) {
             var server = sortedEmployees[i];
-            if (server.shiftsScheduled < server.shiftsPerWeek &&
-                server.shiftLeaderScheduled < server.shiftLeaderPerWeek &&
-                server.alsoServer === true &&
+            if (server.alsoServer === true &&
                 server.shifts[shift] === true) {
+                if (server.shiftsScheduled >= server.shiftsPerWeek
+                    //||server.shiftLeaderScheduled >= server.shiftLeaderPerWeek
+                    && this.hourmax.indexOf(shift + " " + server.name) === -1) {
+                    this.hourmax.push(shift + " " + server.name);
+                    continue;
+                }
                 console.log("Scheduling " + server.name + " on " + shift + " as shift leader.");
                 this.schedule[shift].section1 = server.name;
                 server.shiftLeaderScheduled++;
@@ -1129,9 +1147,13 @@ var ScheduleComponent = /** @class */ (function () {
             var section = "section" + i.toString();
             for (var q = 0; q < sortedEmployees.length; q++) {
                 var server = sortedEmployees[q];
-                if (server.shiftsScheduled < server.shiftsPerWeek &&
-                    server.alsoServer === true &&
+                if (server.alsoServer === true &&
                     server.shifts[shift] === true) {
+                    if (server.shiftsScheduled >= server.shiftsPerWeek
+                        && this.hourmax.indexOf(shift + " " + server.name) === -1) {
+                        this.hourmax.push(shift + " " + server.name);
+                        continue;
+                    }
                     console.log("Scheduling " + server.name + " on " + shift + " as " + section + ".");
                     this.schedule[shift][section] = server.name;
                     server.shiftsScheduled++;
@@ -1152,6 +1174,9 @@ var ScheduleComponent = /** @class */ (function () {
             }
             if (this.requestCheck(shift).length > 0) {
                 problem += (". Employees requesting this shift off: " + this.requestCheck(shift)) + ".";
+            }
+            if (this.hourmaxCheck(shift).length > 0) {
+                problem += (" The following employees are available but have reached their allotted shifts for the week: " + this.hourmaxCheck(shift));
             }
             this.problems.push(problem);
         }

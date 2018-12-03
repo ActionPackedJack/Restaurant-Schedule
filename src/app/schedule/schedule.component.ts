@@ -34,6 +34,7 @@ export class ScheduleComponent implements OnInit {
   schedule: any;
   problems: any[];
   doubles: any[];
+  hourmax: any[];
   requestList: any[];
   shifts;
   newShifts;
@@ -56,8 +57,9 @@ export class ScheduleComponent implements OnInit {
       sundayPM: {},
     };
     this.problems= [];
-    this. requestList = [];
+    this.requestList = [];
     this.doubles = [];
+    this.hourmax = [];
    }
 
   ngOnInit() {
@@ -124,6 +126,15 @@ requestCheck(shift){
   }
   return result;
 }
+hourmaxCheck(shift){
+  var result=[];
+  for (let i=0; i<this.hourmax.length; i++){
+    if(this.hourmax[i].indexOf(shift)===0){
+      result.push(" " + this.hourmax[i].slice(shift.length+1, this.hourmax[i].length));
+    }
+  }
+  return result;
+}
 //The below function schedules the bartender for a single shift. This will be run on every day first, so that qualified bartenders will not be scheduled to serving shifts until all bartender shifts are filled.
 scheduleBartender(shift) {
   // for(var key in this.schedule){
@@ -135,10 +146,16 @@ scheduleBartender(shift) {
 	for (var i = 0; i < sortedEmployees.length; i++) {
 		var server = sortedEmployees[i];
 		if (
-			server.shiftsScheduled < server.shiftsPerWeek &&
-			server.bartenderScheduled < server.bartenderPerWeek &&
 			server.shifts[shift] === true
 		) {
+      if(
+        server.shiftsScheduled >= server.shiftsPerWeek 
+       //|| server.bartenderScheduled >= server.bartenderPerWeek
+       && this.hourmax.indexOf(shift + " " + server.name) === -1
+      ){
+        this.hourmax.push(shift + " " + server.name);
+        continue;
+      }
       console.log("Scheduling " + server.name + " on " + shift + " as bartender.")
       this.schedule[shift].bartender = server.name;
 			server.bartenderScheduled++;
@@ -168,11 +185,17 @@ scheduleShiftLeader(shift) {
 	for (var i = 0; i < sortedEmployees.length; i++) {
 		var server = sortedEmployees[i];
 		if (
-			server.shiftsScheduled < server.shiftsPerWeek &&
-      server.shiftLeaderScheduled < server.shiftLeaderPerWeek &&
       server.alsoServer === true &&
 			server.shifts[shift] === true
-		) {
+    ) {
+      if(
+        server.shiftsScheduled >= server.shiftsPerWeek
+        //||server.shiftLeaderScheduled >= server.shiftLeaderPerWeek
+        && this.hourmax.indexOf(shift + " " + server.name) === -1
+      ) {
+        this.hourmax.push(shift + " " + server.name);
+        continue;
+      }
       console.log("Scheduling " + server.name + " on " + shift + " as shift leader.")
 			this.schedule[shift].section1 = server.name;
 			server.shiftLeaderScheduled++;
@@ -197,11 +220,17 @@ scheduleRemainder(shift, totalServers=5){
     var section = "section" + i.toString();
     for (var q = 0; q < sortedEmployees.length; q++) {
 		  var server = sortedEmployees[q];
-		  if (
-        server.shiftsScheduled < server.shiftsPerWeek &&
+      if (
         server.alsoServer === true &&
-			  server.shifts[shift] === true
-		  ) {
+        server.shifts[shift] === true
+      ) {
+        if(
+          server.shiftsScheduled >= server.shiftsPerWeek
+          && this.hourmax.indexOf(shift + " " + server.name) === -1
+        ) {
+          this.hourmax.push(shift + " " + server.name);
+          continue;
+        }
         console.log("Scheduling " + server.name + " on " + shift + " as " + section + ".")
 			  this.schedule[shift][section] = server.name;
 			  server.shiftsScheduled++;
@@ -222,6 +251,9 @@ scheduleRemainder(shift, totalServers=5){
     }
     if(this.requestCheck(shift).length>0){
       problem+= (". Employees requesting this shift off: " + this.requestCheck(shift)) + ".";
+    }
+    if(this.hourmaxCheck(shift).length>0){
+      problem+= (" The following employees are available but have reached their allotted shifts for the week: " + this.hourmaxCheck(shift));
     }
     this.problems.push(problem);
   }
