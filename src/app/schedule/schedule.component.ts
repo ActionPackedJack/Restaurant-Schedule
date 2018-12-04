@@ -295,8 +295,10 @@ scheduleShiftLeader(shift) {
 //The below code fills out the shift with non-shift-leader, non-bartender servers. totalServers represents the total number of people working the shift, including shift leader and bartender.
 scheduleRemainder(shift, totalServers=5){
   var sortedEmployees = this.prioritySort(this.employees);
+  outerloop:
   for(var i =2; i< totalServers; i++){
     var section = "section" + i.toString();
+    innerloop:
     for (var q = 0; q < sortedEmployees.length; q++) {
 		  var server = sortedEmployees[q];
       if (
@@ -304,12 +306,12 @@ scheduleRemainder(shift, totalServers=5){
         server.shifts[shift] === true
         && server.alreadyScheduled[shift] === false
       ) {
-        if(
-          server.shiftsScheduled >= server.shiftsPerWeek
-          && this.hourmax.indexOf(shift + " " + server.name) === -1
-        ) {
-          this.hourmax.push(shift + " " + server.name);
-          continue;
+        if(server.shiftsScheduled >= server.shiftsPerWeek){
+          if(this.hourmax.indexOf(shift + " " + server.name) === -1){
+            console.log("Adding to hourmax: " + shift + " " + server.name)
+            this.hourmax.push(shift + " " + server.name);
+          }
+          continue innerloop;
         }
         console.log("Scheduling " + server.name + " on " + shift + " as " + section + ".")
 			  this.schedule[shift][section] = server.name;

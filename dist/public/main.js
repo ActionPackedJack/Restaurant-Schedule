@@ -1216,17 +1216,19 @@ var ScheduleComponent = /** @class */ (function () {
     ScheduleComponent.prototype.scheduleRemainder = function (shift, totalServers) {
         if (totalServers === void 0) { totalServers = 5; }
         var sortedEmployees = this.prioritySort(this.employees);
-        for (var i = 2; i < totalServers; i++) {
+        outerloop: for (var i = 2; i < totalServers; i++) {
             var section = "section" + i.toString();
-            for (var q = 0; q < sortedEmployees.length; q++) {
+            innerloop: for (var q = 0; q < sortedEmployees.length; q++) {
                 var server = sortedEmployees[q];
                 if (server.alsoServer === true &&
                     server.shifts[shift] === true
                     && server.alreadyScheduled[shift] === false) {
-                    if (server.shiftsScheduled >= server.shiftsPerWeek
-                        && this.hourmax.indexOf(shift + " " + server.name) === -1) {
-                        this.hourmax.push(shift + " " + server.name);
-                        continue;
+                    if (server.shiftsScheduled >= server.shiftsPerWeek) {
+                        if (this.hourmax.indexOf(shift + " " + server.name) === -1) {
+                            console.log("Adding to hourmax: " + shift + " " + server.name);
+                            this.hourmax.push(shift + " " + server.name);
+                        }
+                        continue innerloop;
                     }
                     console.log("Scheduling " + server.name + " on " + shift + " as " + section + ".");
                     this.schedule[shift][section] = server.name;
