@@ -64,5 +64,7 @@ addEmployee(){
   console.log("ADDING EMPLOYEE FROM NEW.COMPONENT.TS")
   let observable= this._dataService.addEmployee({newEmployee: data});
   observable.subscribe(data => console.log("Got our data!", data));
+  console.log("ROUTER NAVIGATE?")
+  this.router.navigate(['/employees'])
 }
 }

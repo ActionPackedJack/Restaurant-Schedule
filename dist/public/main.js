@@ -796,6 +796,8 @@ var NewComponent = /** @class */ (function () {
         console.log("ADDING EMPLOYEE FROM NEW.COMPONENT.TS");
         var observable = this._dataService.addEmployee({ newEmployee: data });
         observable.subscribe(function (data) { return console.log("Got our data!", data); });
+        console.log("ROUTER NAVIGATE?");
+        this.router.navigate(['/employees']);
     };
     NewComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1240,9 +1242,9 @@ var ScheduleComponent = /** @class */ (function () {
                             this.doubles.push(this.isMorning(shift) + " " + server.name);
                         }
                     }
-                    break;
+                    break innerloop;
                 }
-                continue;
+                //continue;
             }
             var problem = ("Could not find employee to work " + section + " on " + shift + ".");
             if (this.doublesCheck(shift).length > 0) {
