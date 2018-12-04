@@ -35,6 +35,8 @@ export class ScheduleComponent implements OnInit {
   problems: any[];
   doubles: any[];
   hourmax: any[];
+  barmax: any[];
+  leadmax: any[];
   requestList: any[];
   shifts;
   newShifts;
@@ -60,6 +62,8 @@ export class ScheduleComponent implements OnInit {
     this.requestList = [];
     this.doubles = [];
     this.hourmax = [];
+    this.barmax = [];
+    this.leadmax = [];
    }
 
   ngOnInit() {
@@ -117,6 +121,7 @@ doublesCheck(shift){
   }
   return result;
 }
+//In the event that a shift cannot be filled, the below code checks whether anyone has requested it off.
 requestCheck(shift){
   var result = [];
   for (let i=0; i<this.requestList.length; i++){
@@ -126,11 +131,53 @@ requestCheck(shift){
   }
   return result;
 }
+//In the event that a shift cannot be filled, the below code checks whether anyone could work it but has reached their allotted shifts for the week.
 hourmaxCheck(shift){
   var result=[];
   for (let i=0; i<this.hourmax.length; i++){
     if(this.hourmax[i].indexOf(shift)===0){
       result.push(" " + this.hourmax[i].slice(shift.length+1, this.hourmax[i].length));
+    }
+  }
+  return result;
+}
+//The below functions work like hourmaxCheck but check for bartender and shift leader designations.
+leadmaxCheck(shift){
+  let result=[];
+  for (let i=0; i<this.leadmax.length; i++){
+    if(this.leadmax[i].indexOf(shift)===0){
+      result.push(" " + this.leadmax[i].slice(shift.length+1, this.leadmax[i].length));
+    }
+  }
+  return result;
+}
+barmaxCheck(shift){
+  let result=[];
+  for (let i=0; i<this.barmax.length; i++){
+    if(this.barmax[i].indexOf(shift)===0){
+    }
+  }
+  return result;
+}
+//The below functions check for whether an employee has maxed their hours AND bartender/shift leader allotments so that they won't show up on both problem reports.
+barmaxFilter(shift){
+  let result = this.barmaxCheck(shift);
+  for (let i=result.length; i>=0; i--){
+    if(this.hourmaxCheck(shift).indexOf(result[i])>-1){
+      result[i]=result[result.length-1];
+      result.pop();
+      i++;
+    }
+  }
+  return result;
+}
+leadmaxFilter(shift){
+  let result = this.leadmaxCheck(shift);
+  for (let i=result.length; i>=0; i--){
+    if(this.hourmaxCheck(shift).indexOf(result[i])>-1){
+      result[i]=result[result.length-1];
+      result.pop();
+      i++;
     }
   }
   return result;
@@ -146,33 +193,49 @@ scheduleBartender(shift) {
 	for (var i = 0; i < sortedEmployees.length; i++) {
 		var server = sortedEmployees[i];
 		if (
-			server.shifts[shift] === true
+      server.shifts[shift] === true
+      && server.alreadyScheduled[shift] === false
 		) {
       if(
         server.shiftsScheduled >= server.shiftsPerWeek 
-       //|| server.bartenderScheduled >= server.bartenderPerWeek
        && this.hourmax.indexOf(shift + " " + server.name) === -1
       ){
         this.hourmax.push(shift + " " + server.name);
+      }
+      if(
+        server.bartenderScheduled >= server.bartenderPerWeek
+        && server. bartenderPerWeek > 0
+       && this.barmax.indexOf(shift + " " + server.name) === -1
+      ){
+        this.barmax.push(shift + " " + server.name);
+      }
+      if(this.barmax.indexOf(shift + " " + server.name) > -1 || this.hourmax.indexOf(shift + " " + server.name) > -1){
         continue;
       }
       console.log("Scheduling " + server.name + " on " + shift + " as bartender.")
       this.schedule[shift].bartender = server.name;
 			server.bartenderScheduled++;
 			server.shiftsScheduled++;
-      server.shifts[shift] = false;
+      server.alreadyScheduled[shift] = true;
       //If this is a morning shift, the below code checks that server's availability for the corresponding night shift. If they are available, their availability will be set to false but a note will be made in their file that this has happened in case the manager needs to schedule someone to a double shift.
 			if (this.isMorning(shift) !="false") {
         if(server.shifts[this.isMorning(shift)]===true){
           
-				  server.shifts[this.isMorning(shift)] = false;
+				  server.alreadyScheduled[this.isMorning(shift)] = true;
 				  this.doubles.push(this.isMorning(shift) + " " + server.name);
         }
 			}
       return;
 		}
 	}
-  this.problems.push("Could not find eligible bartender on " + shift + ".")
+  let problem = "Could not find eligible shift leader on " + shift + ".";
+  if(this.hourmaxCheck(shift).length>0){
+    problem+= (" The following employees are available but have reached their allotted shifts for the week: " + this.hourmaxCheck(shift));
+  }
+  if(this.barmaxFilter(shift).length>0){
+    problem+= (" The following employees are available but have already been assigned their alloted bartender shifts for the week: " + this.barmaxFilter(shift));
+  }
+  this.problems.push(problem);
 }
 //The below code is nearly identical to the bartender scheduling logic, but handles shift leaders.
 scheduleShiftLeader(shift) {
@@ -186,31 +249,47 @@ scheduleShiftLeader(shift) {
 		var server = sortedEmployees[i];
 		if (
       server.alsoServer === true &&
-			server.shifts[shift] === true
+      server.shifts[shift] === true
+      && server.alreadyScheduled[shift] === false
     ) {
       if(
-        server.shiftsScheduled >= server.shiftsPerWeek
-        //||server.shiftLeaderScheduled >= server.shiftLeaderPerWeek
-        && this.hourmax.indexOf(shift + " " + server.name) === -1
-      ) {
+        server.shiftsScheduled >= server.shiftsPerWeek 
+       && this.hourmax.indexOf(shift + " " + server.name) === -1
+      ){
         this.hourmax.push(shift + " " + server.name);
+      }
+      if(
+        server.shiftLeaderScheduled >= server.shiftLeaderPerWeek
+        && server.shiftLeaderPerWeek > 0
+       && this.leadmax.indexOf(shift + " " + server.name) === -1
+      ){
+        this.leadmax.push(shift + " " + server.name);
+      }
+      if(this.leadmax.indexOf(shift + " " + server.name) > -1 || this.hourmax.indexOf(shift + " " + server.name) > -1){
         continue;
       }
       console.log("Scheduling " + server.name + " on " + shift + " as shift leader.")
 			this.schedule[shift].section1 = server.name;
 			server.shiftLeaderScheduled++;
 			server.shiftsScheduled++;
-      server.shifts[shift] = false;
+      server.alreadyScheduled[shift] = true;
 			if (this.isMorning(shift) !="false") {
         if(server.shifts[this.isMorning(shift)]===true){
-				  server.shifts[this.isMorning(shift)] = false;
+				  server.alreadyScheduled[this.isMorning(shift)] = true;
 				  this.doubles.push(this.isMorning(shift) + " " + server.name);
         }
 			}
       return;
 		}
 	}
-  this.problems.push("Could not find eligible shift leader on " + shift + ".");
+  let problem = "Could not find eligible shift leader on " + shift + ".";
+  if(this.hourmaxCheck(shift).length>0){
+    problem+= (" The following employees are available but have reached their allotted shifts for the week: " + this.hourmaxCheck(shift));
+  }
+  if(this.leadmaxFilter(shift).length>0){
+    problem+= (" The following employees are available but are already leading their alotted number of shifts for the week: " + this.leadmaxFilter(shift));
+  }
+  this.problems.push(problem);
 }
 
 //The below code fills out the shift with non-shift-leader, non-bartender servers. totalServers represents the total number of people working the shift, including shift leader and bartender.
@@ -223,6 +302,7 @@ scheduleRemainder(shift, totalServers=5){
       if (
         server.alsoServer === true &&
         server.shifts[shift] === true
+        && server.alreadyScheduled[shift] === false
       ) {
         if(
           server.shiftsScheduled >= server.shiftsPerWeek
@@ -234,10 +314,10 @@ scheduleRemainder(shift, totalServers=5){
         console.log("Scheduling " + server.name + " on " + shift + " as " + section + ".")
 			  this.schedule[shift][section] = server.name;
 			  server.shiftsScheduled++;
-        server.shifts[shift] = false;
+        server.alreadyScheduled[shift] = true;
 			  if (this.isMorning(shift) !="false") {
           if(server.shifts[this.isMorning(shift)]===true){
-				    server.shifts[this.isMorning(shift)] = false;
+				    server.alreadyScheduled[this.isMorning(shift)] = true;
 				    this.doubles.push(this.isMorning(shift) + " " + server.name);
           }
 			  }
@@ -353,6 +433,21 @@ makeSchedule(
             server.bartenderScheduled = 0;
             server.shiftLeaderScheduled = 0;
             server.availability = 0;
+            server.alreadyScheduled = {
+              mondayAM:false,
+              mondayPM:false,
+              tuesdayAM:false,
+              tuesdayPM:false,
+              wednesdayAM:false,
+              wednesdayPM:false,
+              thursdayAM:false,
+              fridayAM:false,
+              fridayPM:false,
+              saturdayAM:false,
+              saturdayPM:false,
+              sundayAM:false,
+              sundayPM:false
+            }
             for (var key in server.shifts) {
                 let requestSearch = key.toString()+"Request";
                 //console.log(requestSearch);
