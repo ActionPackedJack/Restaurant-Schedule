@@ -323,9 +323,9 @@ scheduleRemainder(shift, totalServers=5){
 				    this.doubles.push(this.isMorning(shift) + " " + server.name);
           }
 			  }
-        break;
+        break innerloop;
       }
-        continue;
+        //continue;
     }
     let problem = ("Could not find employee to work " + section + " on " + shift + ".");
     if(this.doublesCheck(shift).length>0){
