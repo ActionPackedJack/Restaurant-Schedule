@@ -81,7 +81,8 @@ module.exports = {
         })         
     },
     update: function(req, res){
-        console.log( "RUNNING UPDATE FUNCTION...")
+        console.log( "RUNNING UPDATE FUNCTION...");
+        console.log("BODY: ",req.body.requests);
         //req.body.updated_at = new Date();
         Employee.update({_id: req.params.id}, {$set :
         req.body}, function(err){

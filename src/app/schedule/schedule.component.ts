@@ -295,7 +295,7 @@ scheduleShiftLeader(shift) {
 //The below code fills out the shift with non-shift-leader, non-bartender servers. totalServers represents the total number of people working the shift, including shift leader and bartender.
 scheduleRemainder(shift, totalServers=5){
   var sortedEmployees = this.prioritySort(this.employees);
-  outerloop:
+  //outerloop:
   for(var i =2; i< totalServers; i++){
     var section = "section" + i.toString();
     innerloop:

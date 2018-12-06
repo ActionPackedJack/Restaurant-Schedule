@@ -43,16 +43,25 @@ export class EditComponent implements OnInit {
         for(var i=0; i<items.length; i++){
           if(items[i].type=='checkbox')
             items[i].checked=false;
+            var requestedShift=items[i].value;
+            this.employee.requests[requestedShift]=false;
+            //console.log(this.employee.requests);
       }
     }	
       requestAll(){
         event.preventDefault();
-        console.log("CHECKING ALL BOXEN...")
+        console.log("CHECKING ALL BOXEN...");
         var items : HTMLCollectionOf<HTMLInputElement> =document.getElementsByClassName('request') as HTMLCollectionOf<HTMLInputElement>;
         for(var i=0; i<items.length; i++){
           if(items[i].type=='checkbox')
             items[i].checked=true;
+            var requestedShift=items[i].value;
+            this.employee.requests[requestedShift]=true;
+            //console.log(this.employee.requests);
       }
+        // for (let request in this.employee.requests){
+        //   this.employee.requests[request]=true;
+        // }
     }	
       deleteEmployee(id){
         console.log("RUNNING DELETE FROM COMPONENT WITH ID: ", id)

@@ -377,6 +377,9 @@ var EditComponent = /** @class */ (function () {
         for (var i = 0; i < items.length; i++) {
             if (items[i].type == 'checkbox')
                 items[i].checked = false;
+            var requestedShift = items[i].value;
+            this.employee.requests[requestedShift] = false;
+            //console.log(this.employee.requests);
         }
     };
     EditComponent.prototype.requestAll = function () {
@@ -386,7 +389,13 @@ var EditComponent = /** @class */ (function () {
         for (var i = 0; i < items.length; i++) {
             if (items[i].type == 'checkbox')
                 items[i].checked = true;
+            var requestedShift = items[i].value;
+            this.employee.requests[requestedShift] = true;
+            //console.log(this.employee.requests);
         }
+        // for (let request in this.employee.requests){
+        //   this.employee.requests[request]=true;
+        // }
     };
     EditComponent.prototype.deleteEmployee = function (id) {
         var _this = this;
@@ -1218,7 +1227,8 @@ var ScheduleComponent = /** @class */ (function () {
     ScheduleComponent.prototype.scheduleRemainder = function (shift, totalServers) {
         if (totalServers === void 0) { totalServers = 5; }
         var sortedEmployees = this.prioritySort(this.employees);
-        outerloop: for (var i = 2; i < totalServers; i++) {
+        //outerloop:
+        for (var i = 2; i < totalServers; i++) {
             var section = "section" + i.toString();
             innerloop: for (var q = 0; q < sortedEmployees.length; q++) {
                 var server = sortedEmployees[q];
