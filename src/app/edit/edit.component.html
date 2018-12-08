@@ -1,3 +1,12 @@
+<head>
+  <script>
+    console.log("RUNNING SCRIPT TAG...")
+    var boxCheckSound = new Audio();
+    boxCheckSound.src="./static/sounds/boxCheck1.wav";
+    console.log(boxCheckSound);
+  </script>
+</head>
+
 <a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/']">Make Schedule</a>
 
 <h1>Editing details for {{employee.name}}</h1>
@@ -20,8 +29,10 @@
     <h3 *ngIf="shiftLeaderPerWeek.errors?.required">Please specify how many shifts per week this employee should lead.</h3>
     <h2>Requests</h2>
     <input type = "checkbox" name= "mondayAMRequest" value= "mondayAMRequest" class = "request" #mondayAMRequest="ngModel" [(ngModel)]="employee.requests.mondayAMRequest"> mondayAM
-    <input type = "checkbox" name= "mondayPMRequest" value= "mondayPMRequest" class = "request" #mondayPMRequest="ngModel" [(ngModel)]="employee.requests.mondayPMRequest"> mondayPM<br>
-    <input type = "checkbox" name= "tuesdayAMRequest" value= "tuesdayAMRequest" class = "request" #tuesdayAMRequest="ngModel" [(ngModel)]="employee.requests.tuesdayAMRequest"> tuesdayAM
+    <input type = "checkbox" name= "mondayPMRequest" onmousedown= "var boxCheckSound = new Audio();
+    boxCheckSound.src= 'boxCheck1.wav'; 
+    console.log(boxCheckSound); boxCheckSound.load(); boxCheckSound.play();" value= "mondayPMRequest" class = "request" #mondayPMRequest="ngModel" [(ngModel)]="employee.requests.mondayPMRequest"> mondayPM<br>
+    <input type = "checkbox" name= "tuesdayAMRequest" onmousedown= "boxCheckSound()" value= "tuesdayAMRequest" class = "request" #tuesdayAMRequest="ngModel" [(ngModel)]="employee.requests.tuesdayAMRequest"> tuesdayAM
     <input type = "checkbox" name= "tuesdayPMRequest" value= "tuesdayPMRequest" class = "request" #tuesdayPMRequest="ngModel" [(ngModel)]="employee.requests.tuesdayPMRequest"> tuesdayPM<br>
     <input type = "checkbox" name= "wednesdayAMRequest" value= "wednesdayAMRequest" class = "request" #wednesdayAMRequest="ngModel" [(ngModel)]="employee.requests.wednesdayAMRequest"> wednesdayAM
     <input type = "checkbox" name= "wednesdayPMRequest" value= "wednesdayPMRequest" class = "request" #wednesdayPMRequest="ngModel" [(ngModel)]="employee.requests.wednesdayPMRequest"> wednesdayAM<br>

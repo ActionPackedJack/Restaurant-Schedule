@@ -18,6 +18,12 @@ export class EditComponent implements OnInit {
 
 
   ngOnInit() {
+    this.boxCheckSound = function(){
+      var boxCheckSound = new Audio();
+      boxCheckSound.src="./static/sounds/boxCheck1.wav";
+      console.log(boxCheckSound);
+      boxCheckSound.play();
+    }
     this._route.params.subscribe((params: Params) => this.id = params['id']);
     this._dataService.getOneEmployee(this.id).subscribe(data => {
       console.log("HERE IS DATA: ", data);
@@ -30,6 +36,13 @@ export class EditComponent implements OnInit {
           //   // this._route.navigateByUrl('')
           // }
         })
+      }
+      boxCheckSound(){
+        console.log("RUNNING SCRIPT TAG...")
+        var boxCheckSound = new Audio();
+        boxCheckSound.src="./static/sounds/boxCheck1.wav";
+        console.log(boxCheckSound);
+        boxCheckSound.play();
       }
       updateEmployee(form){
         let observable= this._dataService.updateEmployee(this.id, this.employee);
