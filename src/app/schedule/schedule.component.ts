@@ -192,10 +192,14 @@ scheduleBartender(shift) {
 	var sortedEmployees = this.prioritySort(this.employees);
 	for (var i = 0; i < sortedEmployees.length; i++) {
 		var server = sortedEmployees[i];
+    // if(shift==="thursdayPM" && server.name=== "Alexander Thursdaybartenderman"){
+    //   console.log("AVAILABILITY: ",server.shifts[shift]);
+    //   console.log("ALREADY SCHEDULED: ", server.alreadyScheduled[shift]);
 		if (
       server.shifts[shift] === true
-      && server.alreadyScheduled[shift] === false
-		) {
+      && server.alreadyScheduled[shift] !== true
+    ) 
+    {
       if(
         server.shiftsScheduled >= server.shiftsPerWeek 
        && this.hourmax.indexOf(shift + " " + server.name) === -1
@@ -228,7 +232,7 @@ scheduleBartender(shift) {
       return;
 		}
 	}
-  let problem = "Could not find eligible shift leader on " + shift + ".";
+  let problem = "Could not find eligible bartender on " + shift + ".";
   if(this.hourmaxCheck(shift).length>0){
     problem+= (" The following employees are available but have reached their allotted shifts for the week: " + this.hourmaxCheck(shift));
   }
@@ -237,6 +241,7 @@ scheduleBartender(shift) {
   }
   this.problems.push(problem);
 }
+//}
 //The below code is nearly identical to the bartender scheduling logic, but handles shift leaders.
 scheduleShiftLeader(shift) {
   for(var key in this.schedule){
@@ -250,7 +255,7 @@ scheduleShiftLeader(shift) {
 		if (
       server.alsoServer === true &&
       server.shifts[shift] === true
-      && server.alreadyScheduled[shift] === false
+      && server.alreadyScheduled[shift] !== true
     ) {
       if(
         server.shiftsScheduled >= server.shiftsPerWeek 
@@ -304,7 +309,7 @@ scheduleRemainder(shift, totalServers=5){
       if (
         server.alsoServer === true &&
         server.shifts[shift] === true
-        && server.alreadyScheduled[shift] === false
+        && server.alreadyScheduled[shift] !== true
       ) {
         if(server.shiftsScheduled >= server.shiftsPerWeek){
           if(this.hourmax.indexOf(shift + " " + server.name) === -1){
