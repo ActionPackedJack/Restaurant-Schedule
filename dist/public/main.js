@@ -1359,7 +1359,7 @@ var ScheduleComponent = /** @class */ (function () {
         this.scheduleRemainder("mondayPM", mondayPMServers);
         console.log(this.schedule);
         for (var q = 0; q < this.employees.length; q++) {
-            if (this.employees[q].shiftsPerWeek > this.employees[q].shiftsScheduled) {
+            if (this.employees[q].shiftsPerWeek > this.employees[q].shiftsScheduled && this.employees[q].hiatus === false) {
                 this.problems.push(this.employees[q].name +
                     " did not get the desired amount of shifts (" +
                     this.employees[q].shiftsPerWeek +
@@ -1386,6 +1386,13 @@ var ScheduleComponent = /** @class */ (function () {
                 server.bartenderScheduled = 0;
                 server.shiftLeaderScheduled = 0;
                 server.availability = 0;
+                //The below code checks whether the employee has requested the entire week off, in order to keep someone who is on hiatus from being recommended for shifts.
+                server.hiatus = true;
+                for (var key_1 in server.requests) {
+                    if (server.requests[key_1] === false) {
+                        server.hiatus = false;
+                    }
+                }
                 //We keep track of whether an employee has already been scheduled to a particular shift so that they will not work two sections on the same shift.
                 server.alreadyScheduled = {
                     mondayAM: false,
@@ -1409,7 +1416,9 @@ var ScheduleComponent = /** @class */ (function () {
                     if (server.requests[requestSearch] === true) {
                         console.log("REQUEST FOUND FOR " + server.name + " ON " + key.toString());
                         server.shifts[key] = false;
-                        _this.requestList.push(key + " " + server.name);
+                        if (server.hiatus === false) {
+                            _this.requestList.push(key + " " + server.name);
+                        }
                     }
                     if (server.shifts[key] === true) {
                         server.availability++;
