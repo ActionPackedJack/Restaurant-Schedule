@@ -12,7 +12,40 @@
     </table>
 <h2 *ngIf="this.problems.length>0">Potential problems with this schedule:</h2>
   <ul *ngFor= "let problem of problems">
-    <li>{{problem}}</li>
+    <li>{{problem}} 
+      <button *ngIf= "problem.indexOf('Could')===0" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))" value= "moreInfo">MORE INFO</button>
+    </li>
   </ul>
+<span *ngIf="this.scrutinized.name.length>0">
+  <h2>Viewing details for {{scrutinized.name}}</h2>
+  <h3>Current schedule</h3>
+  <span *ngFor= "let assignment of scrutinizedShift">
+    <p>{{assignment[0]}}: {{assignment[1]}}</p>
+  </span>
+  <h3 *ngIf="this.scrutinized.requests.length===0">No employees requesting this shift off</h3>
+  <h3 *ngIf="this.scrutinized.requests.length>0">Employees requesting this shift off:</h3>
+  <span *ngFor= "let employee of this.scrutinized.requests">
+    <p>{{employee}}</p>
+  </span>
+<span *ngIf="this.scrutinized.name[this.scrutinized.name.length-2]!=='A'">
+  <h3 *ngIf="this.scrutinized.doubles.length===0">No eligible doubles</h3>
+  <h3 *ngIf="this.scrutinized.doubles.length>0">Potential doubles:</h3>
+  <span *ngFor= "let employee of this.scrutinized.doubles">
+    <p>{{employee}}</p>
+  </span>
+</span>
+<h3 *ngIf="this.scrutinized.hourmax.length===0">No employees available for overtime.</h3>
+<h3 *ngIf="this.scrutinized.hourmax.length>0">Employees available for overtime:</h3>
+<span *ngFor= "let employee of this.scrutinized.hourmax">
+  <p>{{employee}}</p>
+</span>
+<h3 *ngIf="this.scrutinized.barmax.length>0">Available employees already at capacity for bartending shifts:</h3>
+<span *ngFor= "let employee of this.scrutinized.barmax">
+  <p>{{employee}}</p>
+</span>
+<h3 *ngIf="this.scrutinized.leadmax.length>0">Available employees already at capacity for leading shifts:</h3>
+<span *ngFor= "let employee of this.scrutinized.leadmax">
+  <p>{{employee}}</p>
+</span>
 
 

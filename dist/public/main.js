@@ -936,7 +936,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/employees/']\">View and edit employees</a>\n<h1>Your Schedule</h1>\n   <table>\n      <!-- <th>Section</th><th>Employee</th> -->\n      <span *ngFor= \"let newShift of newShifts\">\n          <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>\n        <tr *ngFor= \"let person of newShift\">\n          <td>{{person.section}}:</td><td>{{person.employee}}</td>\n        </tr>\n      </span>\n    </table>\n<h2 *ngIf=\"this.problems.length>0\">Potential problems with this schedule:</h2>\n  <ul *ngFor= \"let problem of problems\">\n    <li>{{problem}}</li>\n  </ul>\n\n\n"
+module.exports = "\n<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/employees/']\">View and edit employees</a>\n<h1>Your Schedule</h1>\n   <table>\n      <!-- <th>Section</th><th>Employee</th> -->\n      <span *ngFor= \"let newShift of newShifts\">\n          <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>\n        <tr *ngFor= \"let person of newShift\">\n          <td>{{person.section}}:</td><td>{{person.employee}}</td>\n        </tr>\n      </span>\n    </table>\n<h2 *ngIf=\"this.problems.length>0\">Potential problems with this schedule:</h2>\n  <ul *ngFor= \"let problem of problems\">\n    <li>{{problem}} \n      <button *ngIf= \"problem.indexOf('Could')===0\" (click)=\"moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))\" value= \"moreInfo\">MORE INFO</button>\n    </li>\n  </ul>\n<span *ngIf=\"this.scrutinized.name.length>0\">\n  <h2>Viewing details for {{scrutinized.name}}</h2>\n  <h3>Current schedule</h3>\n  <span *ngFor= \"let assignment of scrutinizedShift\">\n    <p>{{assignment[0]}}: {{assignment[1]}}</p>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.requests.length===0\">No employees requesting this shift off</h3>\n  <h3 *ngIf=\"this.scrutinized.requests.length>0\">Employees requesting this shift off:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.requests\">\n    <p>{{employee}}</p>\n  </span>\n<span *ngIf=\"this.scrutinized.name[this.scrutinized.name.length-2]!=='A'\">\n  <h3 *ngIf=\"this.scrutinized.doubles.length===0\">No eligible doubles</h3>\n  <h3 *ngIf=\"this.scrutinized.doubles.length>0\">Potential doubles:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.doubles\">\n    <p>{{employee}}</p>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.hourmax.length===0\">No employees available for overtime.</h3>\n<h3 *ngIf=\"this.scrutinized.hourmax.length>0\">Employees available for overtime:</h3>\n<span *ngFor= \"let employee of this.scrutinized.hourmax\">\n  <p>{{employee}}</p>\n</span>\n<h3 *ngIf=\"this.scrutinized.barmax.length>0\">Available employees already at capacity for bartending shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.barmax\">\n  <p>{{employee}}</p>\n</span>\n<h3 *ngIf=\"this.scrutinized.leadmax.length>0\">Available employees already at capacity for leading shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.leadmax\">\n  <p>{{employee}}</p>\n</span>\n\n\n"
 
 /***/ }),
 
@@ -1029,6 +1029,15 @@ var ScheduleComponent = /** @class */ (function () {
         this.hourmax = [];
         this.barmax = [];
         this.leadmax = [];
+        this.scrutinized = {
+            name: "",
+            roster: {},
+            requests: [],
+            doubles: [],
+            hourmax: [],
+            leadmax: [],
+            barmax: [],
+        };
     }
     ScheduleComponent.prototype.ngOnInit = function () {
         //var employees = [];
@@ -1043,6 +1052,39 @@ var ScheduleComponent = /** @class */ (function () {
         //   console.log(params['mondayAMServers']);
         // });
         //employees = this.getEmployees();
+    };
+    ScheduleComponent.prototype.moreInfo = function (shift) {
+        console.log("RUNNING moreInfo for shift: ", shift);
+        this.scrutinized.name = shift;
+        this.scrutinized.roster = [];
+        this.scrutinizedShift = Object.entries(this.schedule[shift]);
+        console.log(this.scrutinizedShift);
+        for (var i = 0; i < this.scrutinizedShift.length; i++) {
+            var temp = [];
+            temp.push({
+                section: this.scrutinizedShift[i][0],
+                employee: this.scrutinizedShift[i][1]
+            });
+            this.scrutinized.roster.push(temp);
+        }
+        console.log("ROSTER: ", this.scrutinized.roster);
+        console.log(this.scrutinized.roster[0]);
+        if (this.requestCheck(shift).length > 0) {
+            this.scrutinized.requests = this.requestCheck(shift);
+        }
+        if (this.hourmaxCheck(shift).length > 0) {
+            this.scrutinized.hourmax = this.hourmaxCheck(shift);
+        }
+        if (this.barmaxCheck(shift).length > 0) {
+            this.scrutinized.barmax = this.barmaxCheck(shift);
+        }
+        if (this.leadmaxCheck(shift).length > 0) {
+            this.scrutinized.requests = this.leadmaxCheck(shift);
+        }
+        if (this.doublesCheck(shift).length > 0) {
+            this.scrutinized.doubles = this.doublesCheck(shift);
+        }
+        return (this.scrutinized);
     };
     //The below function checks whether the shift currently being scheduled is a morning. If it is, it returns the night shift of the same day.
     ScheduleComponent.prototype.isMorning = function (shift) {
@@ -1177,14 +1219,10 @@ var ScheduleComponent = /** @class */ (function () {
         }
         var problem = "Could not find eligible bartender on " + shift + ".";
         if (this.hourmaxCheck(shift).length > 0) {
-            problem +=
-                " The following employees are available but have reached their allotted shifts for the week: " +
-                    this.hourmaxCheck(shift);
+            problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options.";
         }
         if (this.barmaxFilter(shift).length > 0) {
-            problem +=
-                " The following employees are available but have already been assigned their alloted bartender shifts for the week: " +
-                    this.barmaxFilter(shift);
+            problem = problem + " " + this.barmaxCheck(shift).length + " bartender overschedule options.";
         }
         this.problems.push(problem);
     };
@@ -1230,14 +1268,10 @@ var ScheduleComponent = /** @class */ (function () {
         }
         var problem = "Could not find eligible shift leader on " + shift + ".";
         if (this.hourmaxCheck(shift).length > 0) {
-            problem +=
-                " The following employees are available but have reached their allotted shifts for the week: " +
-                    this.hourmaxCheck(shift);
+            problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options.";
         }
         if (this.leadmaxFilter(shift).length > 0) {
-            problem +=
-                " The following employees are available but are already leading their alotted number of shifts for the week: " +
-                    this.leadmaxFilter(shift);
+            problem = problem + " " + this.leadmaxFilter(shift).length + " leader overschedule options.";
         }
         this.problems.push(problem);
     };
@@ -1282,18 +1316,13 @@ var ScheduleComponent = /** @class */ (function () {
             if (!this.schedule[shift][section]) {
                 var problem = "Could not find employee to work " + section + " on " + shift + ".";
                 if (this.doublesCheck(shift).length > 0) {
-                    problem += " Potential doubles: " + this.doublesCheck(shift);
+                    problem = problem + " " + this.doublesCheck(shift).length + " potential doubles.";
                 }
                 if (this.requestCheck(shift).length > 0) {
-                    problem +=
-                        ". Employees requesting this shift off: " +
-                            this.requestCheck(shift) +
-                            ".";
+                    problem = problem + " " + this.requestCheck(shift).length + " requests.";
                 }
                 if (this.hourmaxCheck(shift).length > 0) {
-                    problem +=
-                        " The following employees are available but have reached their allotted shifts for the week: " +
-                            this.hourmaxCheck(shift);
+                    problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options.";
                 }
                 this.problems.push(problem);
             }
@@ -1369,6 +1398,8 @@ var ScheduleComponent = /** @class */ (function () {
             }
         }
         console.log("Potential problems with this schedule:", this.problems);
+        this.moreInfo("tuesdayPM");
+        console.log("SCRUTINIZED: ", this.scrutinized);
         return this.schedule;
     };
     ScheduleComponent.prototype.getEmployees = function () {

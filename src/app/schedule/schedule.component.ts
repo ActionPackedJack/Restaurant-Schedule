@@ -38,8 +38,10 @@ export class ScheduleComponent implements OnInit {
   barmax: any[];
   leadmax: any[];
   requestList: any[];
+  scrutinized: any;
   shifts;
   newShifts;
+  scrutinizedShift;
   constructor(
     private _dataService: HttpService,
     private _route: ActivatedRoute,
@@ -68,6 +70,15 @@ export class ScheduleComponent implements OnInit {
     this.hourmax = [];
     this.barmax = [];
     this.leadmax = [];
+    this.scrutinized = {
+      name: "",
+      roster: {},
+      requests: [],
+      doubles: [],
+      hourmax: [],
+      leadmax: [],
+      barmax: [],
+    }
   }
 
   ngOnInit() {
@@ -83,6 +94,40 @@ export class ScheduleComponent implements OnInit {
     //   console.log(params['mondayAMServers']);
     // });
     //employees = this.getEmployees();
+  }
+
+  moreInfo(shift){
+    console.log("RUNNING moreInfo for shift: ", shift);
+    this.scrutinized.name = shift;
+    this.scrutinized.roster= [];
+    this.scrutinizedShift = Object.entries(this.schedule[shift]);
+    console.log(this.scrutinizedShift);
+    for (let i = 0; i < this.scrutinizedShift.length; i++) {
+      var temp= [] as object[];
+      temp.push({
+        section: this.scrutinizedShift[i][0],
+        employee: this.scrutinizedShift[i][1]
+      });    
+      this.scrutinized.roster.push(temp);
+    }
+    console.log("ROSTER: ",this.scrutinized.roster);
+    console.log(this.scrutinized.roster[0]);
+    if (this.requestCheck(shift).length > 0){
+      this.scrutinized.requests = this.requestCheck(shift);
+    }
+    if (this.hourmaxCheck(shift).length > 0){
+      this.scrutinized.hourmax = this.hourmaxCheck(shift);
+    }
+    if (this.barmaxCheck(shift).length > 0){
+      this.scrutinized.barmax = this.barmaxCheck(shift);
+    }
+    if (this.leadmaxCheck(shift).length > 0){
+      this.scrutinized.requests = this.leadmaxCheck(shift);
+    }
+    if (this.doublesCheck(shift).length > 0){
+      this.scrutinized.doubles = this.doublesCheck(shift);
+    }
+    return(this.scrutinized);
   }
 
   //The below function checks whether the shift currently being scheduled is a morning. If it is, it returns the night shift of the same day.
@@ -240,14 +285,10 @@ export class ScheduleComponent implements OnInit {
     }
     let problem = "Could not find eligible bartender on " + shift + ".";
     if (this.hourmaxCheck(shift).length > 0) {
-      problem +=
-        " The following employees are available but have reached their allotted shifts for the week: " +
-        this.hourmaxCheck(shift);
+      problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options."
     }
     if (this.barmaxFilter(shift).length > 0) {
-      problem +=
-        " The following employees are available but have already been assigned their alloted bartender shifts for the week: " +
-        this.barmaxFilter(shift);
+      problem = problem + " " + this.barmaxCheck(shift).length + " bartender overschedule options."
     }
     this.problems.push(problem);
   }
@@ -303,14 +344,10 @@ export class ScheduleComponent implements OnInit {
     }
     let problem = "Could not find eligible shift leader on " + shift + ".";
     if (this.hourmaxCheck(shift).length > 0) {
-      problem +=
-        " The following employees are available but have reached their allotted shifts for the week: " +
-        this.hourmaxCheck(shift);
+      problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options."
     }
     if (this.leadmaxFilter(shift).length > 0) {
-      problem +=
-        " The following employees are available but are already leading their alotted number of shifts for the week: " +
-        this.leadmaxFilter(shift);
+      problem = problem + " " + this.leadmaxFilter(shift).length + " leader overschedule options."
     }
     this.problems.push(problem);
   }
@@ -360,18 +397,13 @@ export class ScheduleComponent implements OnInit {
         let problem =
           "Could not find employee to work " + section + " on " + shift + ".";
         if (this.doublesCheck(shift).length > 0) {
-          problem += " Potential doubles: " + this.doublesCheck(shift);
+          problem = problem + " " + this.doublesCheck(shift).length + " potential doubles."
         }
         if (this.requestCheck(shift).length > 0) {
-          problem +=
-            ". Employees requesting this shift off: " +
-            this.requestCheck(shift) +
-            ".";
+          problem = problem + " " + this.requestCheck(shift).length + " requests."
         }
         if (this.hourmaxCheck(shift).length > 0) {
-          problem +=
-            " The following employees are available but have reached their allotted shifts for the week: " +
-            this.hourmaxCheck(shift);
+          problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options."
         }
         this.problems.push(problem);
       }
@@ -451,6 +483,8 @@ export class ScheduleComponent implements OnInit {
       }
     }
     console.log("Potential problems with this schedule:", this.problems);
+    this.moreInfo("tuesdayPM");
+    console.log("SCRUTINIZED: ", this.scrutinized);
     return this.schedule;
   }
   getEmployees() {
