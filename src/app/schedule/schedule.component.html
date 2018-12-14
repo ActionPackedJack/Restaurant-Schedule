@@ -2,7 +2,7 @@
 <a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">View and edit employees</a>
 <h1>Your Schedule</h1>
    <table>
-      <th>Section</th><th>Employee</th>
+      <!-- <th>Section</th><th>Employee</th> -->
       <span *ngFor= "let newShift of newShifts">
           <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>
         <tr *ngFor= "let person of newShift">
