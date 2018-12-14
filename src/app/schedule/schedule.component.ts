@@ -483,7 +483,6 @@ export class ScheduleComponent implements OnInit {
       }
     }
     console.log("Potential problems with this schedule:", this.problems);
-    this.moreInfo("tuesdayPM");
     console.log("SCRUTINIZED: ", this.scrutinized);
     return this.schedule;
   }

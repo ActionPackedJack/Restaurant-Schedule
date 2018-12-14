@@ -1398,7 +1398,6 @@ var ScheduleComponent = /** @class */ (function () {
             }
         }
         console.log("Potential problems with this schedule:", this.problems);
-        this.moreInfo("tuesdayPM");
         console.log("SCRUTINIZED: ", this.scrutinized);
         return this.schedule;
     };
