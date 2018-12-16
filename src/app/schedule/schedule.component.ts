@@ -33,6 +33,7 @@ export class ScheduleComponent implements OnInit {
   employees: any[];
   schedule: any;
   problems: any[];
+  newProblems: any[];
   doubles: any[];
   hourmax: any[];
   barmax: any[];
@@ -77,8 +78,8 @@ export class ScheduleComponent implements OnInit {
       doubles: [],
       hourmax: [],
       leadmax: [],
-      barmax: [],
-    }
+      barmax: []
+    };
   }
 
   ngOnInit() {
@@ -96,38 +97,38 @@ export class ScheduleComponent implements OnInit {
     //employees = this.getEmployees();
   }
 
-  moreInfo(shift){
+  moreInfo(shift) {
     console.log("RUNNING moreInfo for shift: ", shift);
     this.scrutinized.name = shift;
-    this.scrutinized.roster= [];
+    this.scrutinized.roster = [];
     this.scrutinizedShift = Object.entries(this.schedule[shift]);
     console.log(this.scrutinizedShift);
     for (let i = 0; i < this.scrutinizedShift.length; i++) {
-      var temp= [] as object[];
+      var temp = [] as object[];
       temp.push({
         section: this.scrutinizedShift[i][0],
         employee: this.scrutinizedShift[i][1]
-      });    
+      });
       this.scrutinized.roster.push(temp);
     }
-    console.log("ROSTER: ",this.scrutinized.roster);
+    console.log("ROSTER: ", this.scrutinized.roster);
     console.log(this.scrutinized.roster[0]);
-    if (this.requestCheck(shift).length > 0){
+    if (this.requestCheck(shift).length > 0) {
       this.scrutinized.requests = this.requestCheck(shift);
     }
-    if (this.hourmaxCheck(shift).length > 0){
+    if (this.hourmaxCheck(shift).length > 0) {
       this.scrutinized.hourmax = this.hourmaxCheck(shift);
     }
-    if (this.barmaxCheck(shift).length > 0){
+    if (this.barmaxCheck(shift).length > 0) {
       this.scrutinized.barmax = this.barmaxCheck(shift);
     }
-    if (this.leadmaxCheck(shift).length > 0){
+    if (this.leadmaxCheck(shift).length > 0) {
       this.scrutinized.requests = this.leadmaxCheck(shift);
     }
-    if (this.doublesCheck(shift).length > 0){
+    if (this.doublesCheck(shift).length > 0) {
       this.scrutinized.doubles = this.doublesCheck(shift);
     }
-    return(this.scrutinized);
+    return this.scrutinized;
   }
 
   //The below function checks whether the shift currently being scheduled is a morning. If it is, it returns the night shift of the same day.
@@ -283,14 +284,19 @@ export class ScheduleComponent implements OnInit {
         return;
       }
     }
-    let problem = "Could not find eligible bartender on " + shift + ".";
-    if (this.hourmaxCheck(shift).length > 0) {
-      problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options."
-    }
-    if (this.barmaxFilter(shift).length > 0) {
-      problem = problem + " " + this.barmaxCheck(shift).length + " bartender overschedule options."
-    }
-    this.problems.push(problem);
+    // let problem = "Could not find eligible bartender on " + shift + ".";
+    // if (this.hourmaxCheck(shift).length > 0) {
+    //   problem =
+    //     problem + " " + this.hourmaxCheck(shift).length + " overtime options.";
+    // }
+    // if (this.barmaxFilter(shift).length > 0) {
+    //   problem =
+    //     problem +
+    //     " " +
+    //     this.barmaxCheck(shift).length +
+    //     " bartender overschedule options.";
+    // }
+    // this.problems.push(problem);
   }
   //The below code is nearly identical to the bartender scheduling logic, but handles shift leaders.
   scheduleShiftLeader(shift) {
@@ -342,14 +348,19 @@ export class ScheduleComponent implements OnInit {
         return;
       }
     }
-    let problem = "Could not find eligible shift leader on " + shift + ".";
-    if (this.hourmaxCheck(shift).length > 0) {
-      problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options."
-    }
-    if (this.leadmaxFilter(shift).length > 0) {
-      problem = problem + " " + this.leadmaxFilter(shift).length + " leader overschedule options."
-    }
-    this.problems.push(problem);
+    // let problem = "Could not find eligible shift leader on " + shift + ".";
+    // if (this.hourmaxCheck(shift).length > 0) {
+    //   problem =
+    //     problem + " " + this.hourmaxCheck(shift).length + " overtime options.";
+    // }
+    // if (this.leadmaxFilter(shift).length > 0) {
+    //   problem =
+    //     problem +
+    //     " " +
+    //     this.leadmaxFilter(shift).length +
+    //     " leader overschedule options.";
+    // }
+    // this.problems.push(problem);
   }
 
   //The below code fills out the shift with non-shift-leader, non-bartender servers. totalServers represents the total number of people working the shift, including shift leader and bartender.
@@ -393,20 +404,29 @@ export class ScheduleComponent implements OnInit {
           break innerloop;
         }
       }
-      if (!this.schedule[shift][section]) {
-        let problem =
-          "Could not find employee to work " + section + " on " + shift + ".";
-        if (this.doublesCheck(shift).length > 0) {
-          problem = problem + " " + this.doublesCheck(shift).length + " potential doubles."
-        }
-        if (this.requestCheck(shift).length > 0) {
-          problem = problem + " " + this.requestCheck(shift).length + " requests."
-        }
-        if (this.hourmaxCheck(shift).length > 0) {
-          problem = problem + " " + this.hourmaxCheck(shift).length + " overtime options."
-        }
-        this.problems.push(problem);
-      }
+      // if (!this.schedule[shift][section]) {
+      //   let problem =
+      //     "Could not find employee to work " + section + " on " + shift + ".";
+      //   if (this.doublesCheck(shift).length > 0) {
+      //     problem =
+      //       problem +
+      //       " " +
+      //       this.doublesCheck(shift).length +
+      //       " potential doubles.";
+      //   }
+      //   if (this.requestCheck(shift).length > 0) {
+      //     problem =
+      //       problem + " " + this.requestCheck(shift).length + " requests.";
+      //   }
+      //   if (this.hourmaxCheck(shift).length > 0) {
+      //     problem =
+      //       problem +
+      //       " " +
+      //       this.hourmaxCheck(shift).length +
+      //       " overtime options.";
+      //   }
+      //   this.problems.push(problem);
+      // }
     }
   }
 
@@ -470,9 +490,18 @@ export class ScheduleComponent implements OnInit {
     this.scheduleRemainder("mondayAM", mondayAMServers);
     this.scheduleRemainder("mondayPM", mondayPMServers);
     console.log(this.schedule);
+    console.log("Potential problems with this schedule:", this.problems);
+    this.problemCheck();
+    return this.schedule;
+  }
+  problemCheck() {
+    this.newProblems = [];
     for (let q = 0; q < this.employees.length; q++) {
-      if (this.employees[q].shiftsPerWeek > this.employees[q].shiftsScheduled && this.employees[q].hiatus===false) {
-        this.problems.push(
+      if (
+        this.employees[q].shiftsPerWeek > this.employees[q].shiftsScheduled &&
+        this.employees[q].hiatus === false
+      ) {
+        this.newProblems.push(
           this.employees[q].name +
             " did not get the desired amount of shifts (" +
             this.employees[q].shiftsPerWeek +
@@ -482,9 +511,77 @@ export class ScheduleComponent implements OnInit {
         );
       }
     }
-    console.log("Potential problems with this schedule:", this.problems);
-    console.log("SCRUTINIZED: ", this.scrutinized);
-    return this.schedule;
+    for (var shift in this.schedule) {
+      console.log("SHIFT: ", this.schedule[shift].bartender);
+      if (!this.schedule[shift].bartender) {
+        let problem = "Could not find eligible bartender on " + shift + ".";
+        if (this.hourmaxCheck(shift).length > 0) {
+          problem =
+            problem +
+            " " +
+            this.hourmaxCheck(shift).length +
+            " overtime options.";
+        }
+        if (this.barmaxFilter(shift).length > 0) {
+          problem =
+            problem +
+            " " +
+            this.barmaxCheck(shift).length +
+            " bartender overschedule options.";
+        }
+        this.newProblems.push(problem);
+      }
+      if (!this.schedule[shift].section1) {
+        let problem = "Could not find eligible shift leader on " + shift + ".";
+        if (this.hourmaxCheck(shift).length > 0) {
+          problem =
+            problem +
+            " " +
+            this.hourmaxCheck(shift).length +
+            " overtime options.";
+        }
+        if (this.leadmaxFilter(shift).length > 0) {
+          problem =
+            problem +
+            " " +
+            this.leadmaxCheck(shift).length +
+            " leader overschedule options.";
+        }
+        this.newProblems.push(problem);
+      }
+      for (
+        let i = 2;
+        i < this._route.snapshot.queryParams[shift + "Servers"];
+        i++
+      ) {
+      let section= "section" + i;
+      if (!this.schedule[shift][section]) {
+        let problem =
+          "Could not find employee to work " + section + " on " + shift + ".";
+        if (this.doublesCheck(shift).length > 0) {
+          problem =
+            problem +
+            " " +
+            this.doublesCheck(shift).length +
+            " potential doubles.";
+        }
+        if (this.requestCheck(shift).length > 0) {
+          problem =
+            problem + " " + this.requestCheck(shift).length + " requests.";
+        }
+        if (this.hourmaxCheck(shift).length > 0) {
+          problem =
+            problem +
+            " " +
+            this.hourmaxCheck(shift).length +
+            " overtime options.";
+        }
+        this.newProblems.push(problem);
+        }
+      }
+    }
+    console.log("NEWPROBLEMS: ", this.newProblems);
+    this.problems=this.newProblems;
   }
   getEmployees() {
     let observable = this._dataService.getEmployees();
@@ -502,10 +599,10 @@ export class ScheduleComponent implements OnInit {
         server.shiftLeaderScheduled = 0;
         server.availability = 0;
         //The below code checks whether the employee has requested the entire week off, in order to keep someone who is on hiatus from being recommended for shifts.
-        server.hiatus=true;
-        for(let key in server.requests){
-          if(server.requests[key]===false){
-            server.hiatus=false;
+        server.hiatus = true;
+        for (let key in server.requests) {
+          if (server.requests[key] === false) {
+            server.hiatus = false;
           }
         }
         //We keep track of whether an employee has already been scheduled to a particular shift so that they will not work two sections on the same shift.
@@ -533,7 +630,7 @@ export class ScheduleComponent implements OnInit {
               "REQUEST FOUND FOR " + server.name + " ON " + key.toString()
             );
             server.shifts[key] = false;
-            if(server.hiatus===false){
+            if (server.hiatus === false) {
               this.requestList.push(key + " " + server.name);
             }
           }
@@ -553,7 +650,6 @@ export class ScheduleComponent implements OnInit {
       this.newShifts = [];
       for (let i = 0; i < this.shifts.length; i++) {
         var temp = [];
-
         var parts = Object.entries(this.shifts[i][1]);
         for (let partNum = 0; partNum < parts.length; partNum++) {
           temp.push({
