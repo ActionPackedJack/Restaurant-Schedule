@@ -378,7 +378,7 @@ export class ScheduleComponent implements OnInit {
         ) {
           if (server.shiftsScheduled >= server.shiftsPerWeek) {
             if (this.hourmax.indexOf(shift + " " + server.name) === -1) {
-              console.log("Adding to hourmax: " + shift + " " + server.name);
+              //console.log("Adding to hourmax: " + shift + " " + server.name);
               this.hourmax.push(shift + " " + server.name);
             }
             continue innerloop;
@@ -446,7 +446,6 @@ export class ScheduleComponent implements OnInit {
     thursdayAMServers = this._route.snapshot.queryParams["thursdayAMServers"],
     thursdayPMServers = this._route.snapshot.queryParams["thursdayPMServers"]
   ) {
-    console.log(this.employees);
     this.scheduleBartender("fridayAM");
     this.scheduleBartender("fridayPM");
     this.scheduleBartender("saturdayAM");
@@ -490,8 +489,11 @@ export class ScheduleComponent implements OnInit {
     this.scheduleRemainder("mondayAM", mondayAMServers);
     this.scheduleRemainder("mondayPM", mondayPMServers);
     console.log(this.schedule);
-    console.log("Potential problems with this schedule:", this.problems);
+    //console.log("Potential problems with this schedule:", this.problems);
     this.problemCheck();
+    console.log(this.employees[3]);
+    this.patch("Lord Nightstalker","saturdayPM", "section4");
+    console.log(this.employees[3]);
     return this.schedule;
   }
   problemCheck() {
@@ -510,9 +512,21 @@ export class ScheduleComponent implements OnInit {
             " received)."
         );
       }
+      if (
+        this.employees[q].shiftsPerWeek < this.employees[q].shiftsScheduled &&
+        this.employees[q].hiatus === false
+      ) {
+        this.newProblems.push(
+          this.employees[q].name +
+            " did not get the desired amount of shifts (" +
+            this.employees[q].shiftsPerWeek +
+            " expected, " +
+            this.employees[q].shiftsScheduled +
+            " received)."
+        );
+      }
     }
     for (var shift in this.schedule) {
-      console.log("SHIFT: ", this.schedule[shift].bartender);
       if (!this.schedule[shift].bartender) {
         let problem = "Could not find eligible bartender on " + shift + ".";
         if (this.hourmaxCheck(shift).length > 0) {
@@ -583,6 +597,33 @@ export class ScheduleComponent implements OnInit {
     console.log("NEWPROBLEMS: ", this.newProblems);
     this.problems=this.newProblems;
   }
+  //The below function executes when a server is manually scheduled after the automatic schedule creation.
+  patch(employee, shift, section){
+    //console.log("EMPLOYEE: ", employee);
+    console.log("Patching " + employee + " as " + section + " on " + shift);
+    for(var x in this.employees){
+      if(this.employees[x].name===employee){
+        var server = this.employees[x];
+        break;
+      }
+    }
+    this.schedule[shift][section]=server.name;
+    server.shiftsScheduled++;
+    if(shift==="bartender"){
+      server.bartenderScheduled++;
+    }
+    if(shift==="section1"){
+      server.shiftLeaderScheduled++;
+    }
+    server.alreadyScheduled[shift]===true;
+    if (this.isMorning(shift) != "false") {
+      if (server.shifts[this.isMorning(shift)] === true) {
+        server.alreadyScheduled[this.isMorning(shift)] = true;
+        this.doubles.push(this.isMorning(shift) + " " + server.name);
+      }
+    }
+    this.problemCheck();
+  }
   getEmployees() {
     let observable = this._dataService.getEmployees();
     observable.subscribe(data => {
@@ -626,9 +667,9 @@ export class ScheduleComponent implements OnInit {
           //console.log(requestSearch);
           //console.log(server.name, server.requests, server.requests.tuesdayPMRequest);
           if (server.requests[requestSearch] === true) {
-            console.log(
-              "REQUEST FOUND FOR " + server.name + " ON " + key.toString()
-            );
+            // console.log(
+            //   "REQUEST FOUND FOR " + server.name + " ON " + key.toString()
+            // );
             server.shifts[key] = false;
             if (server.hiatus === false) {
               this.requestList.push(key + " " + server.name);
