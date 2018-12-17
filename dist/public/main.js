@@ -1428,7 +1428,7 @@ var ScheduleComponent = /** @class */ (function () {
             if (this.employees[q].shiftsPerWeek < this.employees[q].shiftsScheduled &&
                 this.employees[q].hiatus === false) {
                 this.newProblems.push(this.employees[q].name +
-                    " did not get the desired amount of shifts (" +
+                    " received more shifts than desired (" +
                     this.employees[q].shiftsPerWeek +
                     " expected, " +
                     this.employees[q].shiftsScheduled +

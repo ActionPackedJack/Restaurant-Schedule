@@ -518,7 +518,7 @@ export class ScheduleComponent implements OnInit {
       ) {
         this.newProblems.push(
           this.employees[q].name +
-            " did not get the desired amount of shifts (" +
+            " received more shifts than desired (" +
             this.employees[q].shiftsPerWeek +
             " expected, " +
             this.employees[q].shiftsScheduled +
