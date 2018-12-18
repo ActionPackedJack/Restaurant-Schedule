@@ -1,6 +1,14 @@
-
+<head>
+    <!-- <script>
+      console.log("RUNNING SCRIPT TAG...")
+      var moreInfoSound = new Audio();
+      moreInfoSound.src="./static/sounds/moreInfo1.wav";
+      console.log(boxCheckSound);
+    </script> -->
+  </head>
 <a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">View and edit employees</a>
-<h1>Your Schedule</h1>
+<h1 *ngIf="!newShifts">Generating Schedule...</h1>
+<h1 *ngIf="!!newShifts">Your Schedule</h1>
    <table>
       <!-- <th>Section</th><th>Employee</th> -->
       <span *ngFor= "let newShift of newShifts">
@@ -13,7 +21,14 @@
 <h2 *ngIf="this.problems.length>0">Potential problems with this schedule:</h2>
   <ul *ngFor= "let problem of problems">
     <li>{{problem}} 
-      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))" value= "moreInfo">MORE INFO</button>
+      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))" value= "moreInfo"    
+      onmousedown= 
+      "var moreInfoSound = new Audio();
+      moreInfoSound.src= 'moreInfo1.wav';
+      console.log(moreInfoSound); 
+      moreInfoSound.load(); 
+      moreInfoSound.play();">
+      MORE INFO</button>
     </li>
   </ul>
 <span *ngIf="this.scrutinized.name.length>0">

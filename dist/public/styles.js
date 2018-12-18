@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n"
+module.exports = ".more_Info{\n    color: purple;\n    font-style: italic;\n}"
 
 /***/ }),
 
