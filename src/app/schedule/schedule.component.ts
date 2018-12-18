@@ -193,7 +193,7 @@ export class ScheduleComponent implements OnInit {
       if (this.requestList[i].indexOf(shift) === 0) {
         result.push(
           this.requestList[i].slice(
-            shift.length + 1,
+            shift.length,
             this.requestList[i].length
           )
         );

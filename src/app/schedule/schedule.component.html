@@ -13,7 +13,7 @@
 <h2 *ngIf="this.problems.length>0">Potential problems with this schedule:</h2>
   <ul *ngFor= "let problem of problems">
     <li>{{problem}} 
-      <button *ngIf= "problem.indexOf('Could')===0" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))" value= "moreInfo">MORE INFO</button>
+      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))" value= "moreInfo">MORE INFO</button>
     </li>
   </ul>
 <span *ngIf="this.scrutinized.name.length>0">
