@@ -180,7 +180,7 @@ export class ScheduleComponent implements OnInit {
     for (let i = 0; i < this.doubles.length; i++) {
       if (this.doubles[i].indexOf(shift) === 0) {
         result.push(
-          " " + this.doubles[i].slice(shift.length + 1, this.doubles[i].length)
+          this.doubles[i].slice(shift.length + 1, this.doubles[i].length)
         );
       }
     }
@@ -207,7 +207,7 @@ export class ScheduleComponent implements OnInit {
     for (let i = 0; i < this.hourmax.length; i++) {
       if (this.hourmax[i].indexOf(shift) === 0) {
         result.push(
-          " " + this.hourmax[i].slice(shift.length + 1, this.hourmax[i].length)
+          this.hourmax[i].slice(shift.length + 1, this.hourmax[i].length)
         );
       }
     }
@@ -219,7 +219,7 @@ export class ScheduleComponent implements OnInit {
     for (let i = 0; i < this.leadmax.length; i++) {
       if (this.leadmax[i].indexOf(shift) === 0) {
         result.push(
-          " " + this.leadmax[i].slice(shift.length + 1, this.leadmax[i].length)
+          this.leadmax[i].slice(shift.length + 1, this.leadmax[i].length)
         );
       }
     }
@@ -616,10 +616,10 @@ export class ScheduleComponent implements OnInit {
   }
   //The below method pulls the rest of the data for an employee when only the name is available.
   findEmployeeByName(name){
-    console.log("SEARCHING FOR " + name + "...")''
+    console.log("SEARCHING FOR " + name + "...");
     for(var x in this.employees){
       console.log(this.employees[x].name);
-      if(" "+this.employees[x].name===name){
+      if(this.employees[x].name===name){
         console.log ("FOUND " + name);
         return this.employees[x];
       }
@@ -631,7 +631,7 @@ export class ScheduleComponent implements OnInit {
     console.log("Patching " + employee + " as " + section + " on " + shift);
     var server = this.findEmployeeByName(employee);
     console.log("SERVER: " +server);
-    console.log("PATCHING WITH SERVER.NAME: ", server.name);
+    console.log("PATCHING WITH SERVER.NAME:", server.name);
     // for(var x in this.employees){
     //   if(this.employees[x].name===employee){
     //     var server = this.employees[x];
@@ -651,6 +651,41 @@ export class ScheduleComponent implements OnInit {
       if (server.shifts[this.isMorning(shift)] === true) {
         server.alreadyScheduled[this.isMorning(shift)] = true;
         this.doubles.push(this.isMorning(shift) + " " + server.name);
+      }
+    }
+    for(let i = 0; i < this.doubles.length; i++){
+      if(this.doubles[i].indexOf(server.name)>-1 && this.doubles[i].indexOf(shift)>-1){
+        this.doubles[i]=this.doubles[this.doubles.length-1];
+        this.doubles.pop();
+        break;
+      }
+    }
+    for(let i = 0; i < this.requestList.length; i++){
+      if(this.requestList[i].indexOf(server.name)>-1 && this.requestList[i].indexOf(shift)>-1){
+        this.requestList[i]=this.requestList[this.requestList.length-1];
+        this.requestList.pop();
+        break;
+      }
+    }
+    for(let i = 0; i < this.hourmax.length; i++){
+      if(this.hourmax[i].indexOf(server.name)>-1 && this.hourmax[i].indexOf(shift)>-1){
+        this.hourmax[i]=this.hourmax[this.hourmax.length-1];
+        this.hourmax.pop();
+        break;
+      }
+    }
+    for(let i = 0; i < this.leadmax.length; i++){
+      if(this.leadmax[i].indexOf(server.name)>-1 && this.leadmax[i].indexOf(shift)>-1){
+        this.leadmax[i]=this.leadmax[this.leadmax.length-1];
+        this.leadmax.pop();
+        break;
+      }
+    }
+    for(let i = 0; i < this.barmax.length; i++){
+      if(this.barmax[i].indexOf(server.name)>-1 && this.barmax[i].indexOf(shift)>-1){
+        this.barmax[i]=this.barmax[this.barmax.length-1];
+        this.barmax.pop();
+        break;
       }
     }
     this.problemCheck();
@@ -704,7 +739,7 @@ export class ScheduleComponent implements OnInit {
             // );
             server.shifts[key] = false;
             if (server.hiatus === false) {
-              this.requestList.push(key + " " + server.name);
+              this.requestList.push(key + server.name);
             }
           }
           if (server.shifts[key] === true) {
