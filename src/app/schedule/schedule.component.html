@@ -14,7 +14,7 @@
       <span *ngFor= "let newShift of newShifts">
           <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>
         <tr *ngFor= "let person of newShift">
-          <td>{{person.section}}:</td><td>{{person.employee}}</td>
+          <td>{{person.section}}:</td><td>{{person.employee}}</td><button (click)= "remove(person.employee,shifts[newShifts.indexOf(newShift)][0],person.section)">Remove</button>
         </tr>
       </span>
     </table>    
@@ -35,7 +35,7 @@
   <h2>Viewing details for {{scrutinized.name}}</h2>
   <h3>Current schedule</h3>
   <span *ngFor= "let assignment of scrutinizedShift">
-    <p>{{assignment[0]}}: {{assignment[1]}}</p>
+    <p>{{assignment[0]}}: {{assignment[1]}}</p> <button (click)= "remove(assignment[1], scrutinized.name, assignment[0])">Remove</button>
   </span>
   <h3 *ngIf="this.scrutinized.eligible.length===0">No employees eligible without complications</h3>
   <h3 *ngIf="this.scrutinized.eligible.length>0">Employees eligible without complications:</h3>
