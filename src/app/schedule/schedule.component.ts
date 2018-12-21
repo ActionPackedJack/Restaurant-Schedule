@@ -35,10 +35,15 @@ export class ScheduleComponent implements OnInit {
   problems: any[];
   newProblems: any[];
   doubles: any[];
+  formerDoubles: any[];
   hourmax: any[];
+  formerHourmax: any[];
   barmax: any[];
+  formerBarmax: any[];
   leadmax: any[];
+  formerLeadmax: any[];
   requestList: any[];
+  formerRequestList: any[];
   scrutinized: any;
   shifts;
   newShifts;
@@ -67,10 +72,15 @@ export class ScheduleComponent implements OnInit {
     };
     this.problems = [];
     this.requestList = [];
+    this.formerRequestList = [];
     this.doubles = [];
+    this.formerDoubles = [];
     this.hourmax = [];
+    this.formerHourmax = [];
     this.barmax = [];
+    this.formerBarmax = [];
     this.leadmax = [];
+    this.formerLeadmax = [];
     this.scrutinized = {
       name: "",
       roster: {},
@@ -80,6 +90,7 @@ export class ScheduleComponent implements OnInit {
       leadmax: [],
       barmax: [],
       vacancies: [],
+      eligible: []
     };
   }
 
@@ -128,23 +139,29 @@ export class ScheduleComponent implements OnInit {
     if (this.doublesCheck(shift).length > 0) {
       this.scrutinized.doubles = this.doublesCheck(shift);
     }
-    this.scrutinized.vacancies=[];
-    for(let i = 0; i <this.problems.length; i ++){
-      //console.log(this.problems[i]);
-      //console.log("WORK INDEX: "+ this.problems[i].indexOf('work'+ 5) +  " ON INDEX: " + this.problems[i].indexOf(' on '));
-      if(this.problems[i].indexOf(shift)>-1){
-        if(this.problems[i].indexOf('shift leader')>-1){
-          this.scrutinized.vacancies.push('section1');
-        }
-        else if (this.problems[i].indexOf('bartender')>-1){
-          this.scrutinized.vacancies.push('bartender');
-        }
-        else{
-        this.scrutinized.vacancies.push(this.problems[i].slice(this.problems[i].indexOf('work')+ 5, this.problems[i].indexOf(' on ')));
+    for(let employee of this.employees){
+      if(employee.shifts[shift]===true && employee.alreadyScheduled[shift]===false && employee.requests[shift+"Request"]===false && employee.shiftsPerWeek> employee.shiftsScheduled){
+        this.scrutinized.eligible.push(employee.name);
+      }
+    }
+    console.log("ELIGIBLE: ", this.scrutinized.eligible);
+    this.scrutinized.vacancies = [];
+    for (let i = 0; i < this.problems.length; i++) {
+      if (this.problems[i].indexOf(shift) > -1) {
+        if (this.problems[i].indexOf("shift leader") > -1) {
+          this.scrutinized.vacancies.push("section1");
+        } else if (this.problems[i].indexOf("bartender") > -1) {
+          this.scrutinized.vacancies.push("bartender");
+        } else {
+          this.scrutinized.vacancies.push(
+            this.problems[i].slice(
+              this.problems[i].indexOf("work") + 5,
+              this.problems[i].indexOf(" on ")
+            )
+          );
         }
       }
     }
-    //console.log("VACANCIES: ", this.scrutinized.vacancies);
     return this.scrutinized;
   }
 
@@ -192,10 +209,7 @@ export class ScheduleComponent implements OnInit {
     for (let i = 0; i < this.requestList.length; i++) {
       if (this.requestList[i].indexOf(shift) === 0) {
         result.push(
-          this.requestList[i].slice(
-            shift.length,
-            this.requestList[i].length
-          )
+          this.requestList[i].slice(shift.length, this.requestList[i].length)
         );
       }
     }
@@ -510,6 +524,8 @@ export class ScheduleComponent implements OnInit {
     this.problemCheck();
     //console.log(this.employees[3]);
     //this.patch("Lord Nightstalker","saturdayPM", "section4");
+    console.log("FORMER REQUEST LIST: ", this.formerRequestList);
+    //this.remove("Manuel", "fridayAM", "section2");
     //console.log(this.employees[3]);
     return this.schedule;
   }
@@ -585,109 +601,225 @@ export class ScheduleComponent implements OnInit {
         i < this._route.snapshot.queryParams[shift + "Servers"];
         i++
       ) {
-      let section= "section" + i;
-      if (!this.schedule[shift][section]) {
-        let problem =
-          "Could not find employee to work " + section + " on " + shift + ".";
-        if (this.doublesCheck(shift).length > 0) {
-          problem =
-            problem +
-            " " +
-            this.doublesCheck(shift).length +
-            " potential doubles.";
-        }
-        if (this.requestCheck(shift).length > 0) {
-          problem =
-            problem + " " + this.requestCheck(shift).length + " requests.";
-        }
-        if (this.hourmaxCheck(shift).length > 0) {
-          problem =
-            problem +
-            " " +
-            this.hourmaxCheck(shift).length +
-            " overtime options.";
-        }
-        this.newProblems.push(problem);
+        let section = "section" + i;
+        if (!this.schedule[shift][section]) {
+          let problem =
+            "Could not find employee to work " + section + " on " + shift + ".";
+          if (this.doublesCheck(shift).length > 0) {
+            problem =
+              problem +
+              " " +
+              this.doublesCheck(shift).length +
+              " potential doubles.";
+          }
+          if (this.requestCheck(shift).length > 0) {
+            problem =
+              problem + " " + this.requestCheck(shift).length + " requests.";
+          }
+          if (this.hourmaxCheck(shift).length > 0) {
+            problem =
+              problem +
+              " " +
+              this.hourmaxCheck(shift).length +
+              " overtime options.";
+          }
+          this.newProblems.push(problem);
         }
       }
     }
     console.log("NEWPROBLEMS: ", this.newProblems);
-    this.problems=this.newProblems;
+    this.problems = this.newProblems;
   }
   //The below method pulls the rest of the data for an employee when only the name is available.
-  findEmployeeByName(name){
+  findEmployeeByName(name) {
     console.log("SEARCHING FOR " + name + "...");
-    for(var x in this.employees){
+    for (var x in this.employees) {
       console.log(this.employees[x].name);
-      if(this.employees[x].name===name){
-        console.log ("FOUND " + name);
+      if (this.employees[x].name === name) {
+        console.log("FOUND " + name);
         return this.employees[x];
       }
     }
   }
   //The below function executes when a server is manually scheduled after the automatic schedule creation.
-  patch(employee, shift, section){
+  patch(employee, shift, section) {
     //console.log("EMPLOYEE: ", employee);
     console.log("Patching " + employee + " as " + section + " on " + shift);
     var server = this.findEmployeeByName(employee);
-    console.log("SERVER: " +server);
-    console.log("PATCHING WITH SERVER.NAME:", server.name);
+    //console.log("SERVER: " +server);
+    //console.log("PATCHING WITH SERVER.NAME:", server.name);
     // for(var x in this.employees){
     //   if(this.employees[x].name===employee){
     //     var server = this.employees[x];
     //     break;
     //   }
     // }
-    this.schedule[shift][section]=server.name;
+    this.schedule[shift][section] = server.name;
     server.shiftsScheduled++;
-    if(shift==="bartender"){
+    if (shift === "bartender") {
       server.bartenderScheduled++;
     }
-    if(shift==="section1"){
+    if (shift === "section1") {
       server.shiftLeaderScheduled++;
     }
-    server.alreadyScheduled[shift]===true;
+    server.alreadyScheduled[shift] === true;
     if (this.isMorning(shift) != "false") {
       if (server.shifts[this.isMorning(shift)] === true) {
-        server.alreadyScheduled[this.isMorning(shift)] = true;
-        this.doubles.push(this.isMorning(shift) + " " + server.name);
+        server.alreadyScheduled[this.isMorning(shift)] = false;
       }
     }
-    for(let i = 0; i < this.doubles.length; i++){
-      if(this.doubles[i].indexOf(server.name)>-1 && this.doubles[i].indexOf(shift)>-1){
-        this.doubles[i]=this.doubles[this.doubles.length-1];
+    for (let i = 0; i < this.doubles.length; i++) {
+      if (
+        this.doubles[i].indexOf(server.name) > -1 &&
+        this.doubles[i].indexOf(shift) > -1
+      ) {
+        this.formerDoubles.push(this.doubles[i]);
+        this.doubles[i] = this.doubles[this.doubles.length - 1];
         this.doubles.pop();
         break;
       }
     }
-    for(let i = 0; i < this.requestList.length; i++){
-      if(this.requestList[i].indexOf(server.name)>-1 && this.requestList[i].indexOf(shift)>-1){
-        this.requestList[i]=this.requestList[this.requestList.length-1];
+    for (let i = 0; i < this.requestList.length; i++) {
+      if (
+        this.requestList[i].indexOf(server.name) > -1 &&
+        this.requestList[i].indexOf(shift) > -1
+      ) {
+        this.formerRequestList.push(this.requestList[i]);
+        this.requestList[i] = this.requestList[this.requestList.length - 1];
         this.requestList.pop();
         break;
       }
     }
-    for(let i = 0; i < this.hourmax.length; i++){
-      if(this.hourmax[i].indexOf(server.name)>-1 && this.hourmax[i].indexOf(shift)>-1){
-        this.hourmax[i]=this.hourmax[this.hourmax.length-1];
+    for (let i = 0; i < this.hourmax.length; i++) {
+      if (
+        this.hourmax[i].indexOf(server.name) > -1 &&
+        this.hourmax[i].indexOf(shift) > -1
+      ) {
+        this.formerHourmax.push(this.hourmax[i]);
+        this.hourmax[i] = this.hourmax[this.hourmax.length - 1];
         this.hourmax.pop();
         break;
       }
     }
-    for(let i = 0; i < this.leadmax.length; i++){
-      if(this.leadmax[i].indexOf(server.name)>-1 && this.leadmax[i].indexOf(shift)>-1){
-        this.leadmax[i]=this.leadmax[this.leadmax.length-1];
+    for (let i = 0; i < this.leadmax.length; i++) {
+      if (
+        this.leadmax[i].indexOf(server.name) > -1 &&
+        this.leadmax[i].indexOf(shift) > -1
+      ) {
+        this.formerLeadmax.push(this.leadmax[i]);
+        this.leadmax[i] = this.leadmax[this.leadmax.length - 1];
         this.leadmax.pop();
         break;
       }
     }
-    for(let i = 0; i < this.barmax.length; i++){
-      if(this.barmax[i].indexOf(server.name)>-1 && this.barmax[i].indexOf(shift)>-1){
-        this.barmax[i]=this.barmax[this.barmax.length-1];
+    for (let i = 0; i < this.barmax.length; i++) {
+      if (
+        this.barmax[i].indexOf(server.name) > -1 &&
+        this.barmax[i].indexOf(shift) > -1
+      ) {
+        this.formerBarmax.push(this.barmax[i]);
+        this.barmax[i] = this.barmax[this.barmax.length - 1];
         this.barmax.pop();
         break;
       }
     }
+    console.log("THIS.SCRUTINIZED.ELIGIBLE: ", this.scrutinized.eligible);
+    console.log("SERVER.NAME: ", server.name);
+    for (let i = 0; i < this.scrutinized.eligible.length; i++) {
+      if (
+        this.scrutinized.eligible[i]===server.name
+      ) {
+        this.scrutinized.eligible[i] = this.scrutinized.eligible[this.scrutinized.eligible.length - 1];
+        this.scrutinized.eligible.pop();
+        break;
+      }
+    }
+    for (let i = 0; i < this.schedule[shift].length; i++) {
+
+    }
+    console.log("PATCHED SHIFT: ", this.schedule[shift]);
+    this.problemCheck();
+    this.moreInfo(shift);
+  }
+  remove(employee, shift, section) {
+    //console.log("EMPLOYEE: ", employee);
+    console.log("Removing " + employee + " from " + section + " on " + shift);
+    var server = this.findEmployeeByName(employee);
+    delete this.schedule[shift][section];
+    server.shiftsScheduled--;
+    if (section === "bartender") {
+      server.bartenderScheduled--;
+    }
+    if (section === "section1") {
+      server.shiftLeaderScheduled--;
+    }
+    server.alreadyScheduled[shift] = false;
+    console.log("SERVER ALREADY: ", server.alreadyScheduled[shift]);
+    if (this.isMorning(shift) != "false") {
+      if (server.shifts[this.isMorning(shift)] === true) {
+        server.alreadyScheduled[this.isMorning(shift)] = false;
+        //this.doubles.push(this.isMorning(shift) + " " + server.name);
+      }
+    }
+    for (let i = 0; i < this.formerDoubles.length; i++) {
+      if (
+        this.formerDoubles[i].indexOf(server.name) > -1 &&
+        this.formerDoubles[i].indexOf(shift) > -1
+      ) {
+        this.doubles.push(this.formerDoubles[i]);
+        this.formerDoubles[i] = this.formerDoubles[this.formerDoubles.length - 1];
+        this.formerDoubles.pop();
+        break;
+      }
+    }
+    for (let i = 0; i < this.formerRequestList.length; i++) {
+      if (
+        this.formerRequestList[i].indexOf(server.name) > -1 &&
+        this.formerRequestList[i].indexOf(shift) > -1
+      ) {
+        this.requestList.push(this.formerRequestList[i]);
+        this.formerRequestList[i] = this.formerRequestList[this.formerRequestList.length - 1];
+        this.formerRequestList.pop();
+        break;
+      }
+    }
+    for (let i = 0; i < this.formerHourmax.length; i++) {
+      if (
+        this.formerHourmax[i].indexOf(server.name) > -1 &&
+        this.formerHourmax[i].indexOf(shift) > -1
+      ) {
+        this.hourmax.push(this.formerHourmax[i]);
+        this.formerHourmax[i] = this.formerHourmax[this.formerHourmax.length - 1];
+        this.formerHourmax.pop();
+        break;
+      }
+    }
+    for (let i = 0; i < this.formerLeadmax.length; i++) {
+      if (
+        this.formerLeadmax[i].indexOf(server.name) > -1 &&
+        this.formerLeadmax[i].indexOf(shift) > -1
+      ) {
+        this.leadmax.push(this.leadmax[i]);
+        this.formerLeadmax[i] = this.formerLeadmax[this.formerLeadmax.length - 1];
+        this.formerLeadmax.pop();
+        break;
+      }
+    }
+    for (let i = 0; i < this.formerBarmax.length; i++) {
+      if (
+        this.formerBarmax[i].indexOf(server.name) > -1 &&
+        this.formerBarmax[i].indexOf(shift) > -1
+      ) {
+        this.barmax.push(this.formerBarmax[i]);
+        this.formerBarmax[i] = this.formerBarmax[this.formerBarmax.length - 1];
+        this.formerBarmax.pop();
+        break;
+      }
+    }
+    // for (let i = 0; i < this.schedule[shift].length; i++) {
+
+    // }
+    console.log("TRIMMED SHIFT: ", this.schedule[shift]);
     this.problemCheck();
     this.moreInfo(shift);
   }

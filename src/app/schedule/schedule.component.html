@@ -1,10 +1,10 @@
 <head>
-    <!-- <script>
+    <script>
       console.log("RUNNING SCRIPT TAG...")
       var moreInfoSound = new Audio();
       moreInfoSound.src="./static/sounds/moreInfo1.wav";
       console.log(boxCheckSound);
-    </script> -->
+    </script>
   </head>
 <a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">View and edit employees</a>
 <h1 *ngIf="!newShifts">Generating Schedule...</h1>
@@ -36,6 +36,14 @@
   <h3>Current schedule</h3>
   <span *ngFor= "let assignment of scrutinizedShift">
     <p>{{assignment[0]}}: {{assignment[1]}}</p>
+  </span>
+  <h3 *ngIf="this.scrutinized.eligible.length===0">No employees eligible without complications</h3>
+  <h3 *ngIf="this.scrutinized.eligible.length>0">Employees eligible without complications:</h3>
+  <span *ngFor= "let employee of this.scrutinized.eligible">
+    <p>{{employee}}</p> 
+    <span *ngFor= "let vacancy of this.scrutinized.vacancies">
+      <button (click)="patch(employee, scrutinized.name, vacancy)">Assign to {{vacancy}}</button>
+    </span>
   </span>
   <h3 *ngIf="this.scrutinized.requests.length===0">No employees requesting this shift off</h3>
   <h3 *ngIf="this.scrutinized.requests.length>0">Employees requesting this shift off:</h3>
