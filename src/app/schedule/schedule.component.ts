@@ -740,6 +740,7 @@ export class ScheduleComponent implements OnInit {
     console.log("PATCHED SHIFT: ", this.schedule[shift]);
     this.problemCheck();
     this.moreInfo(shift);
+    this.updateSchedule();
   }
   remove(employee, shift, section) {
     //console.log("EMPLOYEE: ", employee);
@@ -822,6 +823,23 @@ export class ScheduleComponent implements OnInit {
     console.log("TRIMMED SHIFT: ", this.schedule[shift]);
     this.problemCheck();
     this.moreInfo(shift);
+    this.updateSchedule();
+  }
+  updateSchedule(){
+    this.shifts = Object.entries(this.schedule);
+    this.newShifts = [];
+    for (let i = 0; i < this.shifts.length; i++) {
+      var temp = [];
+      var parts = Object.entries(this.shifts[i][1]);
+      for (let partNum = 0; partNum < parts.length; partNum++) {
+        temp.push({
+          section: parts[partNum][0],
+          employee: parts[partNum][1]
+        });
+      }
+      this.newShifts.push(temp);
+    }
+    console.log("NEWSHIFTS: ", this.newShifts);
   }
   getEmployees() {
     let observable = this._dataService.getEmployees();
@@ -886,19 +904,7 @@ export class ScheduleComponent implements OnInit {
       }
       this.schedule = this.makeSchedule();
       console.log("HERE IS SCHEDULE: ", this.schedule);
-      this.shifts = Object.entries(this.schedule);
-      this.newShifts = [];
-      for (let i = 0; i < this.shifts.length; i++) {
-        var temp = [];
-        var parts = Object.entries(this.shifts[i][1]);
-        for (let partNum = 0; partNum < parts.length; partNum++) {
-          temp.push({
-            section: parts[partNum][0],
-            employee: parts[partNum][1]
-          });
-        }
-        this.newShifts.push(temp);
-      }
+      this.updateSchedule();
     });
   }
 }

@@ -1627,6 +1627,7 @@ var ScheduleComponent = /** @class */ (function () {
         console.log("PATCHED SHIFT: ", this.schedule[shift]);
         this.problemCheck();
         this.moreInfo(shift);
+        this.updateSchedule();
     };
     ScheduleComponent.prototype.remove = function (employee, shift, section) {
         //console.log("EMPLOYEE: ", employee);
@@ -1698,6 +1699,23 @@ var ScheduleComponent = /** @class */ (function () {
         console.log("TRIMMED SHIFT: ", this.schedule[shift]);
         this.problemCheck();
         this.moreInfo(shift);
+        this.updateSchedule();
+    };
+    ScheduleComponent.prototype.updateSchedule = function () {
+        this.shifts = Object.entries(this.schedule);
+        this.newShifts = [];
+        for (var i = 0; i < this.shifts.length; i++) {
+            var temp = [];
+            var parts = Object.entries(this.shifts[i][1]);
+            for (var partNum = 0; partNum < parts.length; partNum++) {
+                temp.push({
+                    section: parts[partNum][0],
+                    employee: parts[partNum][1]
+                });
+            }
+            this.newShifts.push(temp);
+        }
+        console.log("NEWSHIFTS: ", this.newShifts);
     };
     ScheduleComponent.prototype.getEmployees = function () {
         var _this = this;
@@ -1762,19 +1780,7 @@ var ScheduleComponent = /** @class */ (function () {
             }
             _this.schedule = _this.makeSchedule();
             console.log("HERE IS SCHEDULE: ", _this.schedule);
-            _this.shifts = Object.entries(_this.schedule);
-            _this.newShifts = [];
-            for (var i_1 = 0; i_1 < _this.shifts.length; i_1++) {
-                var temp = [];
-                var parts = Object.entries(_this.shifts[i_1][1]);
-                for (var partNum = 0; partNum < parts.length; partNum++) {
-                    temp.push({
-                        section: parts[partNum][0],
-                        employee: parts[partNum][1]
-                    });
-                }
-                _this.newShifts.push(temp);
-            }
+            _this.updateSchedule();
         });
     };
     ScheduleComponent = __decorate([
