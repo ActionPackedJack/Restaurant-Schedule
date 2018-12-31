@@ -15,7 +15,7 @@ var MongoClient = mongodb.MongoClient;
 var url = "mongodb://manager:password1234@ds135514.mlab.com:35514/employees"
 //mongoose.Promise= global.Promise;
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, { useNewUrlParser: true },function (err, db) {
     if (err) {
       console.log('Unable to connect to the mongoDB server. Error:', err);
     } else {

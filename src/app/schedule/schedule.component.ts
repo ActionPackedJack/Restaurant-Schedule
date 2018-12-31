@@ -114,7 +114,8 @@ export class ScheduleComponent implements OnInit {
     this.scrutinized.name = shift;
     this.scrutinized.roster = [];
     this.scrutinizedShift = Object.entries(this.schedule[shift]);
-    //console.log(this.scrutinizedShift);
+    console.log(":::", this.scrutinizedShift);
+    this.alphabetizeSections(this.scrutinizedShift);
     for (let i = 0; i < this.scrutinizedShift.length; i++) {
       var temp = [] as object[];
       temp.push({
@@ -524,6 +525,7 @@ export class ScheduleComponent implements OnInit {
     this.problemCheck();
     //console.log(this.employees[3]);
     //this.patch("Lord Nightstalker","saturdayPM", "section4");
+    console.log("DOUBLES: ", this.doubles);
     console.log("FORMER REQUEST LIST: ", this.formerRequestList);
     //this.remove("Manuel", "fridayAM", "section2");
     //console.log(this.employees[3]);
@@ -739,6 +741,7 @@ export class ScheduleComponent implements OnInit {
     }
     console.log("PATCHED SHIFT: ", this.schedule[shift]);
     this.problemCheck();
+    this.alphabetizeSections(this.schedule[shift]);
     this.moreInfo(shift);
     this.updateSchedule();
   }
@@ -831,6 +834,8 @@ export class ScheduleComponent implements OnInit {
     for (let i = 0; i < this.shifts.length; i++) {
       var temp = [];
       var parts = Object.entries(this.shifts[i][1]);
+      console.log("PARTS: ", parts);
+      this.alphabetizeSections(parts);
       for (let partNum = 0; partNum < parts.length; partNum++) {
         temp.push({
           section: parts[partNum][0],
@@ -840,6 +845,17 @@ export class ScheduleComponent implements OnInit {
       this.newShifts.push(temp);
     }
     console.log("NEWSHIFTS: ", this.newShifts);
+  }
+  alphabetizeSections(shift){
+    console.log("ALPHABETIZING ", shift);
+    for(let i=0; i<shift.length-1;i++){
+      if(shift[i][0]>shift[i+1][0]){
+        let temp = shift[i];
+        shift[i]=shift[i+1];
+        shift[i+1]=temp;
+        i=0;
+      }
+    }
   }
   getEmployees() {
     let observable = this._dataService.getEmployees();
