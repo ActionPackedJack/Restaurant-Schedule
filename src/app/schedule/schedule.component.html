@@ -20,8 +20,10 @@
     </table>    
 <h2 *ngIf="this.problems.length>0">Potential problems with this schedule:</h2>
   <ul *ngFor= "let problem of problems">
+      <!-- onclick="console.log('SCROLLING');window.scroll(0,500);" -->
+      <!-- (onclick)="console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);" -->
     <li>{{problem}} 
-      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))" value= "moreInfo"    
+      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.'))); "  onclick="console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);" value= "moreInfo"    
       onmousedown= 
       "var moreInfoSound = new Audio();
       moreInfoSound.src= 'moreInfo1.wav';
@@ -32,7 +34,7 @@
     </li>
   </ul>
 <span *ngIf="this.scrutinized.name.length>0">
-  <h2>Viewing details for {{scrutinized.name}}</h2>
+  <h2 id="scrutinizedHeader">Viewing details for {{scrutinized.name}}</h2>
   <h3>Current schedule</h3>
   <span *ngFor= "let assignment of scrutinizedShift">
     <p>{{assignment[0]}}: {{assignment[1]}}</p> <button (click)= "remove(assignment[1], scrutinized.name, assignment[0])">Remove</button>
@@ -68,7 +70,7 @@
 <span *ngFor= "let employee of this.scrutinized.hourmax">
   <p>{{employee}}</p>
   <span *ngFor= "let vacancy of this.scrutinized.vacancies">
-      <button (click)="patch(employee, scrutinized.name, vacancy)">Assign to {{vacancy}}</button>
+      <button (click)="patch(employee, scrutinized.name, vacancy); ">Assign to {{vacancy}}</button>
   </span>
 </span>
 <h3 *ngIf="this.scrutinized.barmax.length>0">Available employees already at capacity for bartending shifts:</h3>

@@ -936,7 +936,7 @@ module.exports = "a.more_info {\n    cursor: pointer;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<head>\n    <script>\n      console.log(\"RUNNING SCRIPT TAG...\")\n      var moreInfoSound = new Audio();\n      moreInfoSound.src=\"./static/sounds/moreInfo1.wav\";\n      console.log(boxCheckSound);\n    </script>\n  </head>\n<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/employees/']\">View and edit employees</a>\n<h1 *ngIf=\"!newShifts\">Generating Schedule...</h1>\n<h1 *ngIf=\"!!newShifts\">Your Schedule</h1>\n   <table>\n      <!-- <th>Section</th><th>Employee</th> -->\n      <span *ngFor= \"let newShift of newShifts\">\n          <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>\n        <tr *ngFor= \"let person of newShift\">\n          <td>{{person.section}}:</td><td>{{person.employee}}</td><button (click)= \"remove(person.employee,shifts[newShifts.indexOf(newShift)][0],person.section)\">Remove</button>\n        </tr>\n      </span>\n    </table>    \n<h2 *ngIf=\"this.problems.length>0\">Potential problems with this schedule:</h2>\n  <ul *ngFor= \"let problem of problems\">\n    <li>{{problem}} \n      <button *ngIf= \"problem.indexOf('Could')===0\" class=\"more_info\" (click)=\"moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.')))\" value= \"moreInfo\"    \n      onmousedown= \n      \"var moreInfoSound = new Audio();\n      moreInfoSound.src= 'moreInfo1.wav';\n      console.log(moreInfoSound); \n      moreInfoSound.load(); \n      moreInfoSound.play();\">\n      MORE INFO</button>\n    </li>\n  </ul>\n<span *ngIf=\"this.scrutinized.name.length>0\">\n  <h2>Viewing details for {{scrutinized.name}}</h2>\n  <h3>Current schedule</h3>\n  <span *ngFor= \"let assignment of scrutinizedShift\">\n    <p>{{assignment[0]}}: {{assignment[1]}}</p> <button (click)= \"remove(assignment[1], scrutinized.name, assignment[0])\">Remove</button>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.eligible.length===0\">No employees eligible without complications</h3>\n  <h3 *ngIf=\"this.scrutinized.eligible.length>0\">Employees eligible without complications:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.eligible\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.requests.length===0\">No employees requesting this shift off</h3>\n  <h3 *ngIf=\"this.scrutinized.requests.length>0\">Employees requesting this shift off:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.requests\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n<span *ngIf=\"this.scrutinized.name[this.scrutinized.name.length-2]!=='A'\">\n  <h3 *ngIf=\"this.scrutinized.doubles.length===0\">No eligible doubles</h3>\n  <h3 *ngIf=\"this.scrutinized.doubles.length>0\">Potential doubles:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.doubles\">\n    <p>{{employee}}</p>\n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n        <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.hourmax.length===0\">No employees available for overtime.</h3>\n<h3 *ngIf=\"this.scrutinized.hourmax.length>0\">Employees available for overtime:</h3>\n<span *ngFor= \"let employee of this.scrutinized.hourmax\">\n  <p>{{employee}}</p>\n  <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.barmax.length>0\">Available employees already at capacity for bartending shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.barmax\">\n  <p>{{employee}}</p> <button (click= \"patch(employee, scrutinized.name, section1\")>Assign to section1</button>\n\n</span>\n<h3 *ngIf=\"this.scrutinized.leadmax.length>0\">Available employees already at capacity for leading shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.leadmax\">\n  <p>{{employee}}</p>\n</span>\n\n\n"
+module.exports = "<head>\n    <script>\n      console.log(\"RUNNING SCRIPT TAG...\")\n      var moreInfoSound = new Audio();\n      moreInfoSound.src=\"./static/sounds/moreInfo1.wav\";\n      console.log(boxCheckSound);\n    </script>\n  </head>\n<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/employees/']\">View and edit employees</a>\n<h1 *ngIf=\"!newShifts\">Generating Schedule...</h1>\n<h1 *ngIf=\"!!newShifts\">Your Schedule</h1>\n   <table>\n      <!-- <th>Section</th><th>Employee</th> -->\n      <span *ngFor= \"let newShift of newShifts\">\n          <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>\n        <tr *ngFor= \"let person of newShift\">\n          <td>{{person.section}}:</td><td>{{person.employee}}</td><button (click)= \"remove(person.employee,shifts[newShifts.indexOf(newShift)][0],person.section)\">Remove</button>\n        </tr>\n      </span>\n    </table>    \n<h2 *ngIf=\"this.problems.length>0\">Potential problems with this schedule:</h2>\n  <ul *ngFor= \"let problem of problems\">\n      <!-- onclick=\"console.log('SCROLLING');window.scroll(0,500);\" -->\n      <!-- (onclick)=\"console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);\" -->\n    <li>{{problem}} \n      <button *ngIf= \"problem.indexOf('Could')===0\" class=\"more_info\" (click)=\"moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.'))); \"  onclick=\"console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);\" value= \"moreInfo\"    \n      onmousedown= \n      \"var moreInfoSound = new Audio();\n      moreInfoSound.src= 'moreInfo1.wav';\n      console.log(moreInfoSound); \n      moreInfoSound.load(); \n      moreInfoSound.play();\">\n      MORE INFO</button>\n    </li>\n  </ul>\n<span *ngIf=\"this.scrutinized.name.length>0\">\n  <h2 id=\"scrutinizedHeader\">Viewing details for {{scrutinized.name}}</h2>\n  <h3>Current schedule</h3>\n  <span *ngFor= \"let assignment of scrutinizedShift\">\n    <p>{{assignment[0]}}: {{assignment[1]}}</p> <button (click)= \"remove(assignment[1], scrutinized.name, assignment[0])\">Remove</button>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.eligible.length===0\">No employees eligible without complications</h3>\n  <h3 *ngIf=\"this.scrutinized.eligible.length>0\">Employees eligible without complications:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.eligible\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.requests.length===0\">No employees requesting this shift off</h3>\n  <h3 *ngIf=\"this.scrutinized.requests.length>0\">Employees requesting this shift off:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.requests\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n<span *ngIf=\"this.scrutinized.name[this.scrutinized.name.length-2]!=='A'\">\n  <h3 *ngIf=\"this.scrutinized.doubles.length===0\">No eligible doubles</h3>\n  <h3 *ngIf=\"this.scrutinized.doubles.length>0\">Potential doubles:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.doubles\">\n    <p>{{employee}}</p>\n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n        <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.hourmax.length===0\">No employees available for overtime.</h3>\n<h3 *ngIf=\"this.scrutinized.hourmax.length>0\">Employees available for overtime:</h3>\n<span *ngFor= \"let employee of this.scrutinized.hourmax\">\n  <p>{{employee}}</p>\n  <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy); \">Assign to {{vacancy}}</button>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.barmax.length>0\">Available employees already at capacity for bartending shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.barmax\">\n  <p>{{employee}}</p> <button (click= \"patch(employee, scrutinized.name, section1\")>Assign to section1</button>\n\n</span>\n<h3 *ngIf=\"this.scrutinized.leadmax.length>0\">Available employees already at capacity for leading shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.leadmax\">\n  <p>{{employee}}</p>\n</span>\n\n\n"
 
 /***/ }),
 
@@ -955,6 +955,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -964,10 +965,16 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 
 
+
+
+//import { DOCUMENT } from '@angular/common'; 
 
 var KeysPipe = /** @class */ (function () {
     function KeysPipe() {
@@ -1002,7 +1009,8 @@ var ValuesPipe = /** @class */ (function () {
 }());
 
 var ScheduleComponent = /** @class */ (function () {
-    function ScheduleComponent(_dataService, _route, router) {
+    function ScheduleComponent(document, _dataService, _route, router) {
+        this.document = document;
         this._dataService = _dataService;
         this._route = _route;
         this.router = router;
@@ -1023,6 +1031,7 @@ var ScheduleComponent = /** @class */ (function () {
             sundayAM: {},
             sundayPM: {}
         };
+        this.scrutinizedWindow;
         this.problems = [];
         this.requestList = [];
         this.formerRequestList = [];
@@ -1047,25 +1056,13 @@ var ScheduleComponent = /** @class */ (function () {
         };
     }
     ScheduleComponent.prototype.ngOnInit = function () {
-        //var employees = [];
-        // this._route.params.subscribe((params: Params) => {
-        //   this.mondayAMServers=params['mondayAM'];
-        //   console.log("ID: ", this.id);
-        // })
         this.getEmployees();
-        //let mondayAMServers=this._route.snapshot.queryParams["mondayAMServers"];
-        //console.log(mondayAMServers);
-        // this._route.params.subscribe((params: Params) => {
-        //   console.log(params['mondayAMServers']);
-        // });
-        //employees = this.getEmployees();
     };
     ScheduleComponent.prototype.moreInfo = function (shift) {
         console.log("RUNNING moreInfo for shift: ", shift);
         this.scrutinized.name = shift;
         this.scrutinized.roster = [];
         this.scrutinizedShift = Object.entries(this.schedule[shift]);
-        console.log(":::", this.scrutinizedShift);
         this.alphabetizeSections(this.scrutinizedShift);
         for (var i = 0; i < this.scrutinizedShift.length; i++) {
             var temp = [];
@@ -1075,7 +1072,6 @@ var ScheduleComponent = /** @class */ (function () {
             });
             this.scrutinized.roster.push(temp);
         }
-        console.log("ROSTER: ", this.scrutinized.roster);
         if (this.requestCheck(shift).length > 0) {
             this.scrutinized.requests = this.requestCheck(shift);
         }
@@ -1097,7 +1093,6 @@ var ScheduleComponent = /** @class */ (function () {
                 this.scrutinized.eligible.push(employee.name);
             }
         }
-        console.log("ELIGIBLE: ", this.scrutinized.eligible);
         this.scrutinized.vacancies = [];
         for (var i = 0; i < this.problems.length; i++) {
             if (this.problems[i].indexOf(shift) > -1) {
@@ -1112,6 +1107,10 @@ var ScheduleComponent = /** @class */ (function () {
                 }
             }
         }
+        // var scrutinizedWindow=document.getElementById("scrutinizedWindow");
+        // console.log("SCRUTINIZEDWINDOW: ", scrutinizedWindow);
+        // this.document.body.scrollTop=500;
+        // console.log("SCROLLTOP: ", this.document.body.scrollTop);
         return this.scrutinized;
     };
     //The below function checks whether the shift currently being scheduled is a morning. If it is, it returns the night shift of the same day.
@@ -1327,7 +1326,6 @@ var ScheduleComponent = /** @class */ (function () {
                     server.alreadyScheduled[shift] !== true) {
                     if (server.shiftsScheduled >= server.shiftsPerWeek) {
                         if (this.hourmax.indexOf(shift + " " + server.name) === -1) {
-                            //console.log("Adding to hourmax: " + shift + " " + server.name);
                             this.hourmax.push(shift + " " + server.name);
                         }
                         continue innerloop;
@@ -1351,29 +1349,6 @@ var ScheduleComponent = /** @class */ (function () {
                     break innerloop;
                 }
             }
-            // if (!this.schedule[shift][section]) {
-            //   let problem =
-            //     "Could not find employee to work " + section + " on " + shift + ".";
-            //   if (this.doublesCheck(shift).length > 0) {
-            //     problem =
-            //       problem +
-            //       " " +
-            //       this.doublesCheck(shift).length +
-            //       " potential doubles.";
-            //   }
-            //   if (this.requestCheck(shift).length > 0) {
-            //     problem =
-            //       problem + " " + this.requestCheck(shift).length + " requests.";
-            //   }
-            //   if (this.hourmaxCheck(shift).length > 0) {
-            //     problem =
-            //       problem +
-            //       " " +
-            //       this.hourmaxCheck(shift).length +
-            //       " overtime options.";
-            //   }
-            //   this.problems.push(problem);
-            // }
         }
     };
     ScheduleComponent.prototype.makeSchedule = function (fridayAMServers, fridayPMServers, saturdayAMServers, saturdayPMServers, sundayAMServers, sundayPMServers, mondayAMServers, mondayPMServers, tuesdayAMServers, tuesdayPMServers, wednesdayAMServers, wednesdayPMServers, thursdayAMServers, thursdayPMServers) {
@@ -1434,14 +1409,7 @@ var ScheduleComponent = /** @class */ (function () {
         this.scheduleRemainder("mondayAM", mondayAMServers);
         this.scheduleRemainder("mondayPM", mondayPMServers);
         console.log(this.schedule);
-        //console.log("Potential problems with this schedule:", this.problems);
         this.problemCheck();
-        //console.log(this.employees[3]);
-        //this.patch("Lord Nightstalker","saturdayPM", "section4");
-        console.log("DOUBLES: ", this.doubles);
-        console.log("FORMER REQUEST LIST: ", this.formerRequestList);
-        //this.remove("Manuel", "fridayAM", "section2");
-        //console.log(this.employees[3]);
         return this.schedule;
     };
     ScheduleComponent.prototype.problemCheck = function () {
@@ -1529,14 +1497,12 @@ var ScheduleComponent = /** @class */ (function () {
                 }
             }
         }
-        console.log("NEWPROBLEMS: ", this.newProblems);
         this.problems = this.newProblems;
     };
     //The below method pulls the rest of the data for an employee when only the name is available.
     ScheduleComponent.prototype.findEmployeeByName = function (name) {
         console.log("SEARCHING FOR " + name + "...");
         for (var x in this.employees) {
-            console.log(this.employees[x].name);
             if (this.employees[x].name === name) {
                 console.log("FOUND " + name);
                 return this.employees[x];
@@ -1545,17 +1511,8 @@ var ScheduleComponent = /** @class */ (function () {
     };
     //The below function executes when a server is manually scheduled after the automatic schedule creation.
     ScheduleComponent.prototype.patch = function (employee, shift, section) {
-        //console.log("EMPLOYEE: ", employee);
         console.log("Patching " + employee + " as " + section + " on " + shift);
         var server = this.findEmployeeByName(employee);
-        //console.log("SERVER: " +server);
-        //console.log("PATCHING WITH SERVER.NAME:", server.name);
-        // for(var x in this.employees){
-        //   if(this.employees[x].name===employee){
-        //     var server = this.employees[x];
-        //     break;
-        //   }
-        // }
         this.schedule[shift][section] = server.name;
         server.shiftsScheduled++;
         if (shift === "bartender") {
@@ -1615,8 +1572,6 @@ var ScheduleComponent = /** @class */ (function () {
                 break;
             }
         }
-        console.log("THIS.SCRUTINIZED.ELIGIBLE: ", this.scrutinized.eligible);
-        console.log("SERVER.NAME: ", server.name);
         for (var i = 0; i < this.scrutinized.eligible.length; i++) {
             if (this.scrutinized.eligible[i] === server.name) {
                 this.scrutinized.eligible[i] = this.scrutinized.eligible[this.scrutinized.eligible.length - 1];
@@ -1626,14 +1581,12 @@ var ScheduleComponent = /** @class */ (function () {
         }
         for (var i = 0; i < this.schedule[shift].length; i++) {
         }
-        console.log("PATCHED SHIFT: ", this.schedule[shift]);
         this.problemCheck();
         this.alphabetizeSections(this.schedule[shift]);
         this.moreInfo(shift);
         this.updateSchedule();
     };
     ScheduleComponent.prototype.remove = function (employee, shift, section) {
-        //console.log("EMPLOYEE: ", employee);
         console.log("Removing " + employee + " from " + section + " on " + shift);
         var server = this.findEmployeeByName(employee);
         delete this.schedule[shift][section];
@@ -1645,7 +1598,6 @@ var ScheduleComponent = /** @class */ (function () {
             server.shiftLeaderScheduled--;
         }
         server.alreadyScheduled[shift] = false;
-        console.log("SERVER ALREADY: ", server.alreadyScheduled[shift]);
         if (this.isMorning(shift) != "false") {
             if (server.shifts[this.isMorning(shift)] === true) {
                 server.alreadyScheduled[this.isMorning(shift)] = false;
@@ -1697,9 +1649,6 @@ var ScheduleComponent = /** @class */ (function () {
                 break;
             }
         }
-        // for (let i = 0; i < this.schedule[shift].length; i++) {
-        // }
-        console.log("TRIMMED SHIFT: ", this.schedule[shift]);
         this.problemCheck();
         this.moreInfo(shift);
         this.updateSchedule();
@@ -1710,7 +1659,6 @@ var ScheduleComponent = /** @class */ (function () {
         for (var i = 0; i < this.shifts.length; i++) {
             var temp = [];
             var parts = Object.entries(this.shifts[i][1]);
-            console.log("PARTS: ", parts);
             this.alphabetizeSections(parts);
             for (var partNum = 0; partNum < parts.length; partNum++) {
                 temp.push({
@@ -1720,10 +1668,10 @@ var ScheduleComponent = /** @class */ (function () {
             }
             this.newShifts.push(temp);
         }
-        console.log("NEWSHIFTS: ", this.newShifts);
+        //console.log("NEWSHIFTS: ", this.newShifts);
     };
     ScheduleComponent.prototype.alphabetizeSections = function (shift) {
-        console.log("ALPHABETIZING ", shift);
+        //console.log("ALPHABETIZING ", shift);
         for (var i = 0; i < shift.length - 1; i++) {
             if (shift[i][0] > shift[i + 1][0]) {
                 var temp = shift[i];
@@ -1773,12 +1721,7 @@ var ScheduleComponent = /** @class */ (function () {
                 };
                 for (var key in server.shifts) {
                     var requestSearch = key.toString() + "Request";
-                    //console.log(requestSearch);
-                    //console.log(server.name, server.requests, server.requests.tuesdayPMRequest);
                     if (server.requests[requestSearch] === true) {
-                        // console.log(
-                        //   "REQUEST FOUND FOR " + server.name + " ON " + key.toString()
-                        // );
                         server.shifts[key] = false;
                         if (server.hiatus === false) {
                             _this.requestList.push(key + server.name);
@@ -1795,7 +1738,6 @@ var ScheduleComponent = /** @class */ (function () {
                 //Priority decides who is scheduled when multiple employees can work the same shift. An employee will receive higher priority if there are less other shifts available for them, to guarantee that someone who can only work one particular shift will always get it. An employee who can work more shifts per week will receive higher priority; their priority will be higher than that of an employee with open availability who can only work once a week, but lower than that of a server who can only work one specific shift.  Also, an employee who only bartends and never serves will receive a sizable bump in priority for bartending shifts.
             }
             _this.schedule = _this.makeSchedule();
-            console.log("HERE IS SCHEDULE: ", _this.schedule);
             _this.updateSchedule();
         });
     };
@@ -1805,7 +1747,9 @@ var ScheduleComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./schedule.component.html */ "./src/app/schedule/schedule.component.html"),
             styles: [__webpack_require__(/*! ./schedule.component.css */ "./src/app/schedule/schedule.component.css")]
         }),
-        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"],
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DOCUMENT"])),
+        __metadata("design:paramtypes", [Document,
+            _http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], ScheduleComponent);
