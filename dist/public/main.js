@@ -23,6 +23,69 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/about/about.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/about/about.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/about/about.component.html":
+/*!********************************************!*\
+  !*** ./src/app/about/about.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  <a [routerLink]=\"['employees']\">View employee directory</a> | <a [routerLink]=\"['/']\">Make Schedule</a>\n</p>\n\n<h3>Overview</h3>\n<p>Restaurant Scheduler allows you to modify a database of servers and bartenders, then generates a schedule for a week based on everyone's availability, qualifications, and requests off.</p>\n\n<h3>Scheduling Logic</h3>\n<p>Schedules are made for days of the week in order of most traditionally busy to least traditionally busy; Friday and Saturday, then Sunday, then backwards Thursday through Monday.  First all bartender shifts for the week are filled, then all shift leaders are assigned, then all other shifts are scheduled.\nBefore any shifts are filled, each employee is given a priority rating; every shift will be given to the available employee with the highest priority.  Priority increases the more shifts per week an employee is assigned (so an employee who can work five shifts per week will be favored over an employee who can only work one) but decreases the more availability that employee has throughout the week (so an employee who can only work a particular day of the week will be favored for that day over an employee with open availability).  Finally, an employee who is designated to be exclusively scheduled for bartending shifts receives a massive priority boost when bartending shifts are being filled.\n</p>\n\n<h3>Problem Report & More Info</h3>\n<p>After a schedule has been made, any imperfections will be listed below it.  Most common among these will be shifts that have not been filled, or employees who did not receive their desired amount of shifts for the week.  Next to each problem is a \"MORE INFO\" button.  When clicked, you will see a list of any employees who are available but were not scheduled, either because they have already received their allotted shifts for the week, they have requested that shift off, or scheduling that shift would result in them working a double.  Next to each of these employees are buttons that will assign them to unfilled shifts.  Whenever an employee is added to or removed from a shift, the problem list will automatically be updated.</p>"
+
+/***/ }),
+
+/***/ "./src/app/about/about.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/about/about.component.ts ***!
+  \******************************************/
+/*! exports provided: AboutComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutComponent", function() { return AboutComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AboutComponent = /** @class */ (function () {
+    function AboutComponent() {
+    }
+    AboutComponent.prototype.ngOnInit = function () {
+    };
+    AboutComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-about',
+            template: __webpack_require__(/*! ./about.component.html */ "./src/app/about/about.component.html"),
+            styles: [__webpack_require__(/*! ./about.component.css */ "./src/app/about/about.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AboutComponent);
+    return AboutComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -42,12 +105,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schedule/schedule.component */ "./src/app/schedule/schedule.component.ts");
 /* harmony import */ var _generate_generate_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./generate/generate.component */ "./src/app/generate/generate.component.ts");
 /* harmony import */ var _requests_requests_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./requests/requests.component */ "./src/app/requests/requests.component.ts");
+/* harmony import */ var _about_about_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./about/about.component */ "./src/app/about/about.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -66,6 +131,7 @@ var routes = [
     { path: 'delete/:id', component: _edit_edit_component__WEBPACK_IMPORTED_MODULE_2__["EditComponent"] },
     { path: 'schedule', component: _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_6__["ScheduleComponent"] },
     { path: 'requests', component: _requests_requests_component__WEBPACK_IMPORTED_MODULE_8__["RequestsComponent"] },
+    { path: 'about', component: _about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"] },
     //{path: 'schedule/:mondayAM/:mondayPM/:tuesdayAM/:tuesdayPM/:wednesdayAM/:wednesdayPM/:thursdayAM/:thursdayPM/:fridayAM/:fridayPM/:saturdayAM/:saturdayPM/:sundayAM/:sundayPM', component: ScheduleComponent},
     { path: '', component: _generate_generate_component__WEBPACK_IMPORTED_MODULE_7__["GenerateComponent"] },
 ];
@@ -175,12 +241,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./schedule/schedule.component */ "./src/app/schedule/schedule.component.ts");
 /* harmony import */ var _generate_generate_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./generate/generate.component */ "./src/app/generate/generate.component.ts");
 /* harmony import */ var _requests_requests_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./requests/requests.component */ "./src/app/requests/requests.component.ts");
+/* harmony import */ var _about_about_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./about/about.component */ "./src/app/about/about.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -210,7 +278,8 @@ var AppModule = /** @class */ (function () {
                 _list_list_component__WEBPACK_IMPORTED_MODULE_10__["ListComponent"],
                 _schedule_schedule_component__WEBPACK_IMPORTED_MODULE_12__["ScheduleComponent"],
                 _generate_generate_component__WEBPACK_IMPORTED_MODULE_13__["GenerateComponent"],
-                _requests_requests_component__WEBPACK_IMPORTED_MODULE_14__["RequestsComponent"]
+                _requests_requests_component__WEBPACK_IMPORTED_MODULE_14__["RequestsComponent"],
+                _about_about_component__WEBPACK_IMPORTED_MODULE_15__["AboutComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -453,7 +522,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n    <a [routerLink]=\"['employees']\">View employee directory</a>\n</p>\n<h1>Make new schedule</h1>\n<h3>Select how many servers should be scheduled for each shift</h3>\n<h3>(this count includes shift leader but not bartender)</h3>\n<form name=\"scheduleForm\" #scheduleForm= \"ngForm\" (submit)=\"generateSchedule(scheduleForm)\">\nMonday Morning: \n<input type=\"number\" value=\"4\" name=\"mondayAM\" #mondayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.mondayAMServers\" min=\"1\" max=\"100\">\nMonday Evening:\n<input type=\"number\" value=\"4\" name=\"mondayPM\" #mondayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.mondayPMServers\" min=\"1\" max=\"100\"><br>\nTuesday Morning:\n<input type=\"number\" value=\"4\" name=\"tuesdayAM\" #tuesdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.tuesdayAMServers\" min=\"1\" max=\"100\">\nTuesday Evening:\n<input type=\"number\" value=\"4\" name=\"tuesdayPM\" #tuesdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.tuesdayPMServers\" min=\"1\" max=\"100\"><br>\nWednesday Morning:\n<input type=\"number\" value=\"4\" name=\"wednesdayAM\" #wednesdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.wednesdayAMServers\" min=\"1\" max=\"100\">\nWednesday Evening:\n<input type=\"number\" value=\"4\" name=\"wednesdayPM\" #wednesdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.wednesdayPMServers\" min=\"1\" max=\"100\"><br>\nThursday Morning:\n<input type=\"number\" value=\"5\" name=\"thursdayAM\" #thursdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.thursdayAMServers\" min=\"1\" max=\"100\">\nThursday Evening:\n<input type=\"number\" value=\"5\" name=\"thursdayPM\" #thursdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.thursdayPMServers\" min=\"1\" max=\"100\"><br>\nFriday Morning:\n<input type=\"number\" value=\"6\" name=\"fridayAM\" #fridayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.fridayAMServers\" min=\"1\" max=\"100\">\nFriday Evening:\n<input type=\"number\" value=\"6\" name=\"fridayAM\" #fridayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.fridayPMServers\" min=\"1\" max=\"100\"><br>\nSaturday Morning:\n<input type=\"number\" value=\"6\" name=\"saturdayAM\" #saturdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.saturdayAMServers\" min=\"1\" max=\"100\">\nSaturday Evening:\n<input type=\"number\" value=\"6\" name=\"saturdayPM\" #saturdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.saturdayPMServers\" min=\"1\" max=\"100\"><br>\nSunday Morning:\n<input type=\"number\" value=\"5\" name=\"sundayAM\" #sundayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.sundayAMServers\" min=\"1\" max=\"100\">\nSunday Evening:\n<input type=\"number\" value=\"5\" name=\"sundayPM\" #sundayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.sundayPMServers\" min=\"1\" max=\"100\"><br>\n<button type= \"submit\"> Make schedule! </button>\n</form>"
+module.exports = "<p>\n    <a [routerLink]=\"['employees']\">View employee directory</a>\n</p>\n<h1>Make new schedule</h1>\n<h3>Select how many servers should be scheduled for each shift</h3>\n<h3>(this count includes shift leader but not bartender)</h3>\n<form name=\"scheduleForm\" #scheduleForm= \"ngForm\" (submit)=\"generateSchedule(scheduleForm)\">\nMonday Morning: \n<input type=\"number\" value=\"4\" name=\"mondayAM\" #mondayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.mondayAMServers\" min=\"1\" max=\"100\">\nMonday Evening:\n<input type=\"number\" value=\"4\" name=\"mondayPM\" #mondayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.mondayPMServers\" min=\"1\" max=\"100\"><br>\nTuesday Morning:\n<input type=\"number\" value=\"4\" name=\"tuesdayAM\" #tuesdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.tuesdayAMServers\" min=\"1\" max=\"100\">\nTuesday Evening:\n<input type=\"number\" value=\"4\" name=\"tuesdayPM\" #tuesdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.tuesdayPMServers\" min=\"1\" max=\"100\"><br>\nWednesday Morning:\n<input type=\"number\" value=\"4\" name=\"wednesdayAM\" #wednesdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.wednesdayAMServers\" min=\"1\" max=\"100\">\nWednesday Evening:\n<input type=\"number\" value=\"4\" name=\"wednesdayPM\" #wednesdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.wednesdayPMServers\" min=\"1\" max=\"100\"><br>\nThursday Morning:\n<input type=\"number\" value=\"5\" name=\"thursdayAM\" #thursdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.thursdayAMServers\" min=\"1\" max=\"100\">\nThursday Evening:\n<input type=\"number\" value=\"5\" name=\"thursdayPM\" #thursdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.thursdayPMServers\" min=\"1\" max=\"100\"><br>\nFriday Morning:\n<input type=\"number\" value=\"6\" name=\"fridayAM\" #fridayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.fridayAMServers\" min=\"1\" max=\"100\">\nFriday Evening:\n<input type=\"number\" value=\"6\" name=\"fridayAM\" #fridayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.fridayPMServers\" min=\"1\" max=\"100\"><br>\nSaturday Morning:\n<input type=\"number\" value=\"6\" name=\"saturdayAM\" #saturdayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.saturdayAMServers\" min=\"1\" max=\"100\">\nSaturday Evening:\n<input type=\"number\" value=\"6\" name=\"saturdayPM\" #saturdayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.saturdayPMServers\" min=\"1\" max=\"100\"><br>\nSunday Morning:\n<input type=\"number\" value=\"5\" name=\"sundayAM\" #sundayAMServers=\"ngModel\" [(ngModel)]=\"newSchedule.sundayAMServers\" min=\"1\" max=\"100\">\nSunday Evening:\n<input type=\"number\" value=\"5\" name=\"sundayPM\" #sundayPMServers=\"ngModel\" [(ngModel)]=\"newSchedule.sundayPMServers\" min=\"1\" max=\"100\"><br>\n<button type= \"submit\"> Make schedule! </button>\n</form>\n<h1>For more information about this app, <a [routerLink]=\"['about']\">Click here.</a></h1>"
 
 /***/ }),
 
@@ -936,7 +1005,7 @@ module.exports = "a.more_info {\n    cursor: pointer;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<head>\n    <script>\n      console.log(\"RUNNING SCRIPT TAG...\")\n      var moreInfoSound = new Audio();\n      moreInfoSound.src=\"./static/sounds/moreInfo1.wav\";\n      console.log(boxCheckSound);\n    </script>\n  </head>\n<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/employees/']\">View and edit employees</a>\n<h1 *ngIf=\"!newShifts\">Generating Schedule...</h1>\n<h1 *ngIf=\"!!newShifts\">Your Schedule</h1>\n   <table>\n      <!-- <th>Section</th><th>Employee</th> -->\n      <span *ngFor= \"let newShift of newShifts\">\n          <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>\n        <tr *ngFor= \"let person of newShift\">\n          <td>{{person.section}}:</td><td>{{person.employee}}</td><button (click)= \"remove(person.employee,shifts[newShifts.indexOf(newShift)][0],person.section)\">Remove</button>\n        </tr>\n      </span>\n    </table>    \n<h2 *ngIf=\"this.problems.length>0\">Potential problems with this schedule:</h2>\n  <ul *ngFor= \"let problem of problems\">\n      <!-- onclick=\"console.log('SCROLLING');window.scroll(0,500);\" -->\n      <!-- (onclick)=\"console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);\" -->\n    <li>{{problem}} \n      <button *ngIf= \"problem.indexOf('Could')===0\" class=\"more_info\" (click)=\"moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.'))); \"  onclick=\"console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);\" value= \"moreInfo\"    \n      onmousedown= \n      \"var moreInfoSound = new Audio();\n      moreInfoSound.src= 'moreInfo1.wav';\n      console.log(moreInfoSound); \n      moreInfoSound.load(); \n      moreInfoSound.play();\">\n      MORE INFO</button>\n    </li>\n  </ul>\n<span *ngIf=\"this.scrutinized.name.length>0\">\n  <h2 id=\"scrutinizedHeader\">Viewing details for {{scrutinized.name}}</h2>\n  <h3>Current schedule</h3>\n  <span *ngFor= \"let assignment of scrutinizedShift\">\n    <p>{{assignment[0]}}: {{assignment[1]}}</p> <button (click)= \"remove(assignment[1], scrutinized.name, assignment[0])\">Remove</button>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.eligible.length===0\">No employees eligible without complications</h3>\n  <h3 *ngIf=\"this.scrutinized.eligible.length>0\">Employees eligible without complications:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.eligible\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.requests.length===0\">No employees requesting this shift off</h3>\n  <h3 *ngIf=\"this.scrutinized.requests.length>0\">Employees requesting this shift off:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.requests\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n<span *ngIf=\"this.scrutinized.name[this.scrutinized.name.length-2]!=='A'\">\n  <h3 *ngIf=\"this.scrutinized.doubles.length===0\">No eligible doubles</h3>\n  <h3 *ngIf=\"this.scrutinized.doubles.length>0\">Potential doubles:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.doubles\">\n    <p>{{employee}}</p>\n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n        <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.hourmax.length===0\">No employees available for overtime.</h3>\n<h3 *ngIf=\"this.scrutinized.hourmax.length>0\">Employees available for overtime:</h3>\n<span *ngFor= \"let employee of this.scrutinized.hourmax\">\n  <p>{{employee}}</p>\n  <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy); \">Assign to {{vacancy}}</button>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.barmax.length>0\">Available employees already at capacity for bartending shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.barmax\">\n  <p>{{employee}}</p> <button (click= \"patch(employee, scrutinized.name, section1\")>Assign to section1</button>\n\n</span>\n<h3 *ngIf=\"this.scrutinized.leadmax.length>0\">Available employees already at capacity for leading shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.leadmax\">\n  <p>{{employee}}</p>\n</span>\n\n\n"
+module.exports = "<head>\n    <script>\n      console.log(\"RUNNING SCRIPT TAG...\")\n      var moreInfoSound = new Audio();\n      moreInfoSound.src=\"./static/sounds/moreInfo1.wav\";\n      console.log(boxCheckSound);\n    </script>\n  </head>\n<a [routerLink]=\"['/employees/new']\">Add new employees</a> | <a [routerLink]=\"['/employees/']\">View and edit employees</a>\n<h1 *ngIf=\"!newShifts\">Generating Schedule...</h1>\n<h1 *ngIf=\"!!newShifts\">Your Schedule</h1>\n   <table>\n      <!-- <th>Section</th><th>Employee</th> -->\n      <span *ngFor= \"let newShift of newShifts\">\n          <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>\n        <tr *ngFor= \"let person of newShift\">\n          <td>{{person.section}}:</td><td>{{person.employee}}</td><button (click)= \"remove(person.employee,shifts[newShifts.indexOf(newShift)][0],person.section)\">Remove</button>\n        </tr>\n      </span>\n    </table>    \n<h2 *ngIf=\"this.problems.length>0\">Potential problems with this schedule:</h2>\n  <ul *ngFor= \"let problem of problems\">\n      <!-- onclick=\"console.log('SCROLLING');window.scroll(0,500);\" -->\n      <!-- (onclick)=\"console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);\" -->\n    <li>{{problem}} \n      <button *ngIf= \"problem.indexOf('Could')===0\" class=\"more_info\" (click)=\"moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.'))); window.scrollTo(0,document.body.scrollHeight);\" value= \"moreInfo\"    \n      onmousedown= \n      \"var moreInfoSound = new Audio();\n      moreInfoSound.src= 'moreInfo1.wav';\n      console.log(moreInfoSound); \n      moreInfoSound.load(); \n      moreInfoSound.play();\">\n      MORE INFO</button>\n    </li>\n  </ul>\n<span *ngIf=\"this.scrutinized.name.length>0\">\n  <h2 id=\"scrutinizedHeader\">Viewing details for {{scrutinized.name}}</h2>\n  <h3>Current schedule</h3>\n  <span *ngFor= \"let assignment of scrutinizedShift\">\n    <p>{{assignment[0]}}: {{assignment[1]}}</p> <button (click)= \"remove(assignment[1], scrutinized.name, assignment[0])\">Remove</button>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.eligible.length===0\">No employees eligible without complications</h3>\n  <h3 *ngIf=\"this.scrutinized.eligible.length>0\">Employees eligible without complications:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.eligible\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n  <h3 *ngIf=\"this.scrutinized.requests.length===0\">No employees requesting this shift off</h3>\n  <h3 *ngIf=\"this.scrutinized.requests.length>0\">Employees requesting this shift off:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.requests\">\n    <p>{{employee}}</p> \n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n<span *ngIf=\"this.scrutinized.name[this.scrutinized.name.length-2]!=='A'\">\n  <h3 *ngIf=\"this.scrutinized.doubles.length===0\">No eligible doubles</h3>\n  <h3 *ngIf=\"this.scrutinized.doubles.length>0\">Potential doubles:</h3>\n  <span *ngFor= \"let employee of this.scrutinized.doubles\">\n    <p>{{employee}}</p>\n    <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n        <button (click)=\"patch(employee, scrutinized.name, vacancy)\">Assign to {{vacancy}}</button>\n    </span>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.hourmax.length===0\">No employees available for overtime.</h3>\n<h3 *ngIf=\"this.scrutinized.hourmax.length>0\">Employees available for overtime:</h3>\n<span *ngFor= \"let employee of this.scrutinized.hourmax\">\n  <p>{{employee}}</p>\n  <span *ngFor= \"let vacancy of this.scrutinized.vacancies\">\n      <button (click)=\"patch(employee, scrutinized.name, vacancy); \">Assign to {{vacancy}}</button>\n  </span>\n</span>\n<h3 *ngIf=\"this.scrutinized.barmax.length>0\">Available employees already at capacity for bartending shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.barmax\">\n  <p>{{employee}}</p> <button (click= \"patch(employee, scrutinized.name, section1\")>Assign to section1</button>\n\n</span>\n<h3 *ngIf=\"this.scrutinized.leadmax.length>0\">Available employees already at capacity for leading shifts:</h3>\n<span *ngFor= \"let employee of this.scrutinized.leadmax\">\n  <p>{{employee}}</p>\n</span>\n\n\n"
 
 /***/ }),
 

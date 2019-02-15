@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { GenerateComponent } from './generate/generate.component';
 import { RequestsComponent } from './requests/requests.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RequestsComponent } from './requests/requests.component';
     ListComponent,
     ScheduleComponent,
     GenerateComponent,
-    RequestsComponent
+    RequestsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

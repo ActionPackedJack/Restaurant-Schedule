@@ -7,6 +7,7 @@ import {ViewComponent} from './view/view.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import {GenerateComponent} from './generate/generate.component';
 import {RequestsComponent} from './requests/requests.component';
+import {AboutComponent} from './about/about.component';
 // import { DeleteComponent } from './delete/delete.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'delete/:id', component: EditComponent},
   {path: 'schedule', component: ScheduleComponent},
   {path: 'requests', component: RequestsComponent},
+  {path: 'about', component: AboutComponent},
   //{path: 'schedule/:mondayAM/:mondayPM/:tuesdayAM/:tuesdayPM/:wednesdayAM/:wednesdayPM/:thursdayAM/:thursdayPM/:fridayAM/:fridayPM/:saturdayAM/:saturdayPM/:sundayAM/:sundayPM', component: ScheduleComponent},
   {path: '', component: GenerateComponent},
 ];

@@ -1,0 +1,14 @@
+<p>
+  <a [routerLink]="['employees']">View employee directory</a> | <a [routerLink]="['/']">Make Schedule</a>
+</p>
+
+<h3>Overview</h3>
+<p>Restaurant Scheduler allows you to modify a database of servers and bartenders, then generates a schedule for a week based on everyone's availability, qualifications, and requests off.</p>
+
+<h3>Scheduling Logic</h3>
+<p>Schedules are made for days of the week in order of most traditionally busy to least traditionally busy; Friday and Saturday, then Sunday, then backwards Thursday through Monday.  First all bartender shifts for the week are filled, then all shift leaders are assigned, then all other shifts are scheduled.
+Before any shifts are filled, each employee is given a priority rating; every shift will be given to the available employee with the highest priority.  Priority increases the more shifts per week an employee is assigned (so an employee who can work five shifts per week will be favored over an employee who can only work one) but decreases the more availability that employee has throughout the week (so an employee who can only work a particular day of the week will be favored for that day over an employee with open availability).  Finally, an employee who is designated to be exclusively scheduled for bartending shifts receives a massive priority boost when bartending shifts are being filled.
+</p>
+
+<h3>Problem Report & More Info</h3>
+<p>After a schedule has been made, any imperfections will be listed below it.  Most common among these will be shifts that have not been filled, or employees who did not receive their desired amount of shifts for the week.  Next to each problem is a "MORE INFO" button.  When clicked, you will see a list of any employees who are available but were not scheduled, either because they have already received their allotted shifts for the week, they have requested that shift off, or scheduling that shift would result in them working a double.  Next to each of these employees are buttons that will assign them to unfilled shifts.  Whenever an employee is added to or removed from a shift, the problem list will automatically be updated.</p>

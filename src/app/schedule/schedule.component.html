@@ -23,7 +23,7 @@
       <!-- onclick="console.log('SCROLLING');window.scroll(0,500);" -->
       <!-- (onclick)="console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);" -->
     <li>{{problem}} 
-      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.'))); "  onclick="console.log('SCROLLING');window.scrollTo(0,document.body.scrollHeight);" value= "moreInfo"    
+      <button *ngIf= "problem.indexOf('Could')===0" class="more_info" (click)="moreInfo(problem.slice(problem.indexOf('on ')+3, problem.indexOf('.'))); window.scrollTo(0,document.body.scrollHeight);" value= "moreInfo"    
       onmousedown= 
       "var moreInfoSound = new Audio();
       moreInfoSound.src= 'moreInfo1.wav';
