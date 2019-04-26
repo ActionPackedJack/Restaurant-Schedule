@@ -2,11 +2,11 @@
 
 <form name="employeeForm" #employeeForm= "ngForm" (submit)="addEmployee(employeeForm)">
   Name: <input type="text" name="name" #name= "ngModel" [(ngModel)]="employeeToAdd.name" required><br>
-  <h3 *ngIf="name.errors?.required">Name is required!</h3>
+  <h3 *ngIf="name.errors?.required" class= "validationError">Name is required!</h3>
   Desired shifts per week: <input type="number" name="shiftsPerWeek" #shiftsPerWeek="ngModel" [(ngModel)]="employeeToAdd.shiftsPerWeek" required><br>
-  <h3 *ngIf="shiftsPerWeek.errors?.required">Please specify how many shifts per week this employee should work.</h3>
+  <h3 *ngIf="shiftsPerWeek.errors?.required" class= "validationError">Please specify how many shifts per week this employee should work.</h3>
   Bartender shifts per week: <input type="number" name="bartenderPerWeek" #bartenderPerWeek="ngModel" [(ngModel)]="employeeToAdd.bartenderPerWeek" required><br>
-  <h3 *ngIf="bartenderPerWeek.errors?.required">Please specify how many times per week this employee should bartend.</h3>
+  <h3 *ngIf="bartenderPerWeek.errors?.required" class= "validationError">Please specify how many times per week this employee should bartend.</h3>
   <div *ngIf="employeeToAdd.bartenderPerWeek>0">
     Should this employee also be scheduled as a server?
     <select name="alsoServer" #alsoServer="ngModel" [(ngModel)]="employeeToAdd.alsoServer">
@@ -15,7 +15,7 @@
     </select><br>
   </div>
   Shifts led per week: <input type="number" name="shiftLeaderPerWeek" #shiftLeaderPerWeek="ngModel" [(ngModel)]="employeeToAdd.shiftLeaderPerWeek" required><br>
-  <h3 *ngIf="shiftLeaderPerWeek.errors?.required">Please specify how many shifts per week this employee should lead.</h3>
+  <h3 *ngIf="shiftLeaderPerWeek.errors?.required" class= "validationError">Please specify how many shifts per week this employee should lead.</h3>
   <h2>Availability</h2><br>
   Monday Morning:
   <select name="mondayAM" #mondayAM="ngModel" [(ngModel)]="employeeToAdd.shifts.mondayAM">
