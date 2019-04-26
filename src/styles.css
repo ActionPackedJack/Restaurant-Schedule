@@ -13,3 +13,25 @@
     font-size: 25px;
     box-shadow: 5px 5px 10px grey;
 }
+.loading{
+    font-size: 50px;
+    font-weight: bold;
+    color:black;
+    border-color: repeating-linear-gradient(
+        45deg,
+         yellow,
+         yellow 20px,
+         black 20px,
+         black 40px
+    );
+    border-width: 30px;
+    border-style: solid;
+    background-color: yellow;
+    /* background:repeating-linear-gradient(
+        45deg,
+         yellow,
+         yellow 20px,
+         black 20px,
+         black 40px
+    ) */
+}
