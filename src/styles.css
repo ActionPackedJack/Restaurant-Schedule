@@ -2,3 +2,14 @@
     color: purple;
     font-style: italic;
 }
+#makeSchedule{
+    height: 40px;
+    background-color: green;
+    border-radius: 25px;
+    border-color: darkgreen;
+    border-width: 5px;
+    border-style: solid;
+    color: whitesmoke;
+    font-size: 25px;
+    box-shadow: 5px 5px 10px grey;
+}

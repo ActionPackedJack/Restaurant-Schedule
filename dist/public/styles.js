@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".more_Info{\n    color: purple;\n    font-style: italic;\n}"
+module.exports = ".more_Info{\n    color: purple;\n    font-style: italic;\n}\n#makeSchedule{\n    height: 40px;\n    background-color: green;\n    border-radius: 25px;\n    border-color: darkgreen;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px grey;\n}"
 
 /***/ }),
 
