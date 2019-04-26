@@ -2,7 +2,7 @@
     color: purple;
     font-style: italic;
 }
-#makeSchedule{
+.execute{
     height: 40px;
     background-color: green;
     border-radius: 25px;

@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".more_Info{\n    color: purple;\n    font-style: italic;\n}\n#makeSchedule{\n    height: 40px;\n    background-color: green;\n    border-radius: 25px;\n    border-color: darkgreen;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px grey;\n}\n.loading{\n    font-size: 50px;\n    font-weight: bold;\n    color:black;\n    border-color: repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    );\n    border-width: 30px;\n    border-style: solid;\n    background-color: yellow;\n    /* background:repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    ) */\n}"
+module.exports = ".more_Info{\n    color: purple;\n    font-style: italic;\n}\n.execute{\n    height: 40px;\n    background-color: green;\n    border-radius: 25px;\n    border-color: darkgreen;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px grey;\n}\n.loading{\n    font-size: 50px;\n    font-weight: bold;\n    color:black;\n    border-color: repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    );\n    border-width: 30px;\n    border-style: solid;\n    background-color: yellow;\n    /* background:repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    ) */\n}"
 
 /***/ }),
 
