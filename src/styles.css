@@ -1,7 +1,7 @@
 body{
     background: #183661;
     color: #dae1e7;
-    font-family: "Sans Serif";
+    font-family: "sans-serif";
 }
 h1, h2, h3{
     color: #dd6b4d;
@@ -30,6 +30,12 @@ h1, h2, h3{
 }
 .execute:hover{
     box-shadow: 0 5px 15px  #1c4b82;
+}
+#schedule{
+    border: none;
+}
+#schedule td{
+    border: none;
 }
 #delete{
     margin-top: 15px;

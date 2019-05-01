@@ -9,7 +9,7 @@
 <a [routerLink]="['/employees/new']">Add new employees</a> | <a [routerLink]="['/employees/']">View and edit employees</a>
 <h1 *ngIf="!newShifts" class="loading">Generating Schedule...</h1>
 <h1 *ngIf="!!newShifts">Your Schedule</h1>
-   <table>
+   <table id="schedule">
       <!-- <th>Section</th><th>Employee</th> -->
       <span *ngFor= "let newShift of newShifts">
           <h3>{{shifts[newShifts.indexOf(newShift)][0]}}</h3>
