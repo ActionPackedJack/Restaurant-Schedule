@@ -7,6 +7,9 @@ h1, h2, h3{
     color: #dd6b4d;
     font-family: Futura;
 }
+ul{
+    list-style-type: none;
+}
 /* input{
     text-align: right;
 } */
