@@ -141,7 +141,8 @@
       <option value="false">Unavailable</option>
     </select><br>
   
-  <button type= "submit" [disabled]="!editForm.valid">Update details</button>
+  <button type= "submit" [disabled]="!editForm.valid" class="execute">Update details</button>
   </form>
   
-  <a [routerLink]="['/']">Back to main page</a><button (click)="deleteEmployee(employee['_id'])">Delete</button>
+  <button id="delete" (click)="deleteEmployee(employee['_id'])">Delete employee</button><br>
+  <a [routerLink]="['/']">Back to main page</a>
