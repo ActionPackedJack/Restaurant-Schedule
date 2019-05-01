@@ -5,6 +5,9 @@ body{
 h1, h2, h3{
     color: #dd6b4d;
 }
+/* input{
+    text-align: right;
+} */
 .more_Info{
     color: purple;
     font-style: italic;
@@ -21,6 +24,10 @@ h1, h2, h3{
     color: whitesmoke;
     font-size: 25px;
     box-shadow: 5px 5px 10px #1c4b82;
+    transition: all 0.2s ease-in-out;
+}
+.execute:hover{
+    box-shadow: 0 5px 15px  #1c4b82;
 }
 #delete{
     margin-top: 15px;
@@ -34,8 +41,10 @@ h1, h2, h3{
     color: whitesmoke;
     font-size: 25px;
     box-shadow: 5px 5px 10px #1c4b82;
+    transition: all 0.2s ease-in-out;
+    display: block;
 }
-.execute :hover{
+.execute:hover{
     border-color: lime;
     background-color: black;
     color: yellowgreen;
@@ -74,7 +83,6 @@ button{
     color:  #dae1e7;
     border-radius: 10px;
     border: 2px outset;
-    border-color: linear
 }
 .loading{
     font-size: 50px;
