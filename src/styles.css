@@ -1,3 +1,10 @@
+body{
+    background: #183661;
+    color: #dae1e7;
+}
+h1, h2, h3{
+    color: #dd6b4d;
+}
 .more_Info{
     color: purple;
     font-style: italic;
@@ -13,7 +20,7 @@
     border-style: solid;
     color: whitesmoke;
     font-size: 25px;
-    box-shadow: 5px 5px 10px grey;
+    box-shadow: 5px 5px 10px #1c4b82;
 }
 #delete{
     margin-top: 15px;
@@ -26,7 +33,7 @@
     border-style: solid;
     color: whitesmoke;
     font-size: 25px;
-    box-shadow: 5px 5px 10px grey;
+    box-shadow: 5px 5px 10px #1c4b82;
 }
 .execute :hover{
     border-color: lime;
@@ -35,6 +42,31 @@
 }
 .validationError{
     color: red;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+}
+th{
+    border: 1px solid black;
+}
+a{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: lightgreen;
+}
+a:visited{
+    color: darkgreen;
+}
+a:hover{
+    color: limegreen;
 }
 .loading{
     font-size: 50px;
