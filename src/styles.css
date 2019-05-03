@@ -94,6 +94,7 @@ button{
     color:  #dae1e7;
     border-radius: 10px;
     border: 2px outset;
+    cursor: pointer;
 }
 .loading{
     font-size: 50px;

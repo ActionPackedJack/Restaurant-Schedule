@@ -1,4 +1,4 @@
-<a [routerLink]="['/employees/']">Back to employee directory</a>
+<!-- <a [routerLink]="['/employees/']">Back to employee directory</a> -->
 
 <form name="employeeForm" #employeeForm= "ngForm" (submit)="addEmployee(employeeForm)">
   Name: <input type="text" name="name" #name= "ngModel" [(ngModel)]="employeeToAdd.name" required><br>
@@ -90,5 +90,7 @@
 
 <button type= "submit" [disabled]="!employeeForm.valid" class= "execute"> Add employee! </button>
 </form>
+
+<a [routerLink]="['/employees/']">Back to employee directory</a>
 
 <!-- {{ employeeToAdd | json }} -->
