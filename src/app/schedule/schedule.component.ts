@@ -274,7 +274,8 @@ export class ScheduleComponent implements OnInit {
       var server = sortedEmployees[i];
       if (
         server.shifts[shift] === true &&
-        server.alreadyScheduled[shift] !== true
+        server.alreadyScheduled[shift] !== true &&
+        server.bartenderPerWeek > server.bartenderScheduled
       ) {
         if (
           server.shiftsScheduled >= server.shiftsPerWeek &&
@@ -339,7 +340,8 @@ export class ScheduleComponent implements OnInit {
       if (
         server.alsoServer === true &&
         server.shifts[shift] === true &&
-        server.alreadyScheduled[shift] !== true
+        server.alreadyScheduled[shift] !== true &&
+        server.shiftLeaderPerWeek > server.shiftLeaderScheduled
       ) {
         if (
           server.shiftsScheduled >= server.shiftsPerWeek &&
