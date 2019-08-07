@@ -275,7 +275,8 @@ export class ScheduleComponent implements OnInit {
       if (
         server.shifts[shift] === true &&
         server.alreadyScheduled[shift] !== true &&
-        server.bartenderPerWeek > server.bartenderScheduled
+        server.bartenderPerWeek > server.bartenderScheduled &&
+        server.bartenderPerWeek > 0
       ) {
         if (
           server.shiftsScheduled >= server.shiftsPerWeek &&
@@ -341,7 +342,8 @@ export class ScheduleComponent implements OnInit {
         server.alsoServer === true &&
         server.shifts[shift] === true &&
         server.alreadyScheduled[shift] !== true &&
-        server.shiftLeaderPerWeek > server.shiftLeaderScheduled
+        server.shiftLeaderPerWeek > server.shiftLeaderScheduled &&
+        server.shiftLeaderPerWeek > 0
       ) {
         if (
           server.shiftsScheduled >= server.shiftsPerWeek &&
