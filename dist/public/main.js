@@ -852,6 +852,7 @@ var NewComponent = /** @class */ (function () {
                 fridayAM: true,
                 fridayPM: true,
                 saturdayAM: true,
+                saturdayPM: true,
                 sundayAM: true,
                 sundayPM: true,
             },
