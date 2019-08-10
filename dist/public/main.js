@@ -511,7 +511,7 @@ var EditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input{\n    justify-content: flex-end\n}"
+module.exports = "input{\n    justify-content: flex-end\n}\nlabel{\n    font-size:20px;\n}"
 
 /***/ }),
 

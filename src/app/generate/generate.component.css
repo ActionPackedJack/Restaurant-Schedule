@@ -1,3 +1,6 @@
 input{
     justify-content: flex-end
 }
+label{
+    font-size:20px;
+}
