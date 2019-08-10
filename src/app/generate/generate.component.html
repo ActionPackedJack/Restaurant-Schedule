@@ -2,8 +2,8 @@
     <!-- <a [routerLink]="['employees']">View employee directory</a> -->
 </p>
 <h1>Make new schedule</h1>
-<h3>Select how many servers should be scheduled for each shift</h3>
-<h3>(this count includes shift leader but not bartender)</h3>
+<h2>Select how many servers should be scheduled for each shift</h2>
+<h2>(this count includes shift leader but not bartender)</h2>
 <form name="scheduleForm" #scheduleForm= "ngForm" (submit)="generateSchedule(scheduleForm)">
 Monday Morning: 
 <input type="number" value="4" name="mondayAM" #mondayAMServers="ngModel" [(ngModel)]="newSchedule.mondayAMServers" min="1" max="100">
