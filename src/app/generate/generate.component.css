@@ -3,4 +3,9 @@ input{
 }
 label{
     font-size:20px;
+    margin: 700px 15px 50px 15px;
+}
+th{
+    font-size:24px;
+    padding:5px;
 }

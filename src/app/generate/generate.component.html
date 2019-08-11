@@ -5,7 +5,45 @@
 <h2>Select how many servers should be scheduled for each shift</h2>
 <h2>(this count includes shift leader but not bartender)</h2>
 <form name="scheduleForm" #scheduleForm= "ngForm" (submit)="generateSchedule(scheduleForm)">
-<label for="mondayAM">Monday Morning: </label>
+    <table>
+        <th>Weekday</th> <th>Morning</th> <th>Evening</th>
+        <tr>
+            <td><label for="mondayAM">Monday</label></td>
+            <td><input type="number" value="4" id="mondayAM" name="mondayAM" #mondayAMServers="ngModel" [(ngModel)]="newSchedule.mondayAMServers" min="1" max="100"></td>
+            <td><input type="number" value="4" id="mondayPM" name="mondayPM" #mondayPMServers="ngModel" [(ngModel)]="newSchedule.mondayPMServers" min="1" max="100"></td>
+        </tr>
+        <tr>
+                <td><label for="tuesdayAM">Tuesday</label></td>
+                <td><input type="number" value="4" id="tuesdayAM" name="tuesdayAM" #tuesdayAMServers="ngModel" [(ngModel)]="newSchedule.tuesdayAMServers" min="1" max="100"></td>
+                <td><input type="number" value="4" id="tuesdayPM" name="tuesdayPM" #tuesdayPMServers="ngModel" [(ngModel)]="newSchedule.tuesdayPMServers" min="1" max="100"></td>
+        </tr>
+        <tr>
+                <td><label for="wednesdayAM">Wednesday</label></td>
+                <td><input type="number" value="4" id="wednesdayAM" name="wednesdayAM" #wednesdayAMServers="ngModel" [(ngModel)]="newSchedule.wednesdayAMServers" min="1" max="100"></td>
+                <td><input type="number" value="4" id="wednesdayPM" name="wednesdayPM" #wednesdayPMServers="ngModel" [(ngModel)]="newSchedule.wednesdayPMServers" min="1" max="100"></td>
+        </tr>
+        <tr>
+                <td><label for="thursdayAM">Thursday</label></td>
+                <td><input type="number" value="5" id="thursdayAM" name="thursdayAM" #thursdayAMServers="ngModel" [(ngModel)]="newSchedule.thursdayAMServers" min="1" max="100"></td>
+                <td><input type="number" value="5" id="thursdayPM" name="thursdayPM" #thursdayPMServers="ngModel" [(ngModel)]="newSchedule.thursdayPMServers" min="1" max="100"></td>
+        </tr>
+        <tr>
+                <td><label for="fridayAM">Friday</label></td>
+                <td><input type="number" value="6" id="fridayAM" name="fridayAM" #fridayAMServers="ngModel" [(ngModel)]="newSchedule.fridayAMServers" min="1" max="100"></td>
+                <td><input type="number" value="6" id="fridayPM" name="fridayPM" #fridayPMServers="ngModel" [(ngModel)]="newSchedule.fridayPMServers" min="1" max="100"></td>
+        </tr>
+        <tr>
+                <td><label for="saturdayAM">Saturday</label></td>
+                <td><input type="number" value="6" id="saturdayAM" name="saturdayAM" #saturdayAMServers="ngModel" [(ngModel)]="newSchedule.saturdayAMServers" min="1" max="100"></td>
+                <td><input type="number" value="66" id="saturdayPM" name="saturdayPM" #saturdayPMServers="ngModel" [(ngModel)]="newSchedule.saturdayPMServers" min="1" max="100"></td>
+        </tr>
+        <tr>
+                <td><label for="sundayAM">Sunday</label></td>
+                <td><input type="number" value="4" id="sundayAM" name="sundayAM" #sundayAMServers="ngModel" [(ngModel)]="newSchedule.sundayAMServers" min="1" max="100"></td>
+                <td><input type="number" value="4" id="sundayPM" name="sundayPM" #sundayPMServers="ngModel" [(ngModel)]="newSchedule.sundayPMServers" min="1" max="100"></td>
+        </tr>
+    </table>
+<!-- <label for="mondayAM">Monday Morning: </label>
 <input type="number" value="4" id="mondayAM" name="mondayAM" #mondayAMServers="ngModel" [(ngModel)]="newSchedule.mondayAMServers" min="1" max="100">
 <label for="mondayPM">Monday Evening:</label>
 <input type="number" value="4" id="mondayPM" name="mondayPM" #mondayPMServers="ngModel" [(ngModel)]="newSchedule.mondayPMServers" min="1" max="100"><br>
@@ -32,7 +70,7 @@
 <label for="sundayAM">Sunday Morning:</label>
 <input type="number" value="5" id="sundayAM" name="sundayAM" #sundayAMServers="ngModel" [(ngModel)]="newSchedule.sundayAMServers" min="1" max="100">
 <label for="sundayPM">Sunday Evening:</label>
-<input type="number" value="5" id="sundayPM" name="sundayPM" #sundayPMServers="ngModel" [(ngModel)]="newSchedule.sundayPMServers" min="1" max="100"><br>
+<input type="number" value="5" id="sundayPM" name="sundayPM" #sundayPMServers="ngModel" [(ngModel)]="newSchedule.sundayPMServers" min="1" max="100"><br> -->
 <button type= "submit" class= "execute"> Make schedule! </button>
 </form>
 <h1>For more information about this app, <a [routerLink]="['about']">Click here.</a></h1>
