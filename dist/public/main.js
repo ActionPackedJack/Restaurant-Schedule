@@ -511,7 +511,7 @@ var EditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input{\n    justify-content: flex-end\n}\nlabel{\n    font-size:20px;\n    margin: 700px 15px 50px 15px;\n}\nth{\n    font-size:24px;\n    padding:5px;\n}"
+module.exports = "input{\n    justify-content: flex-end\n}\nlabel{\n    font-size:20px;\n    margin: 700px 15px 50px 15px;\n}\nth{\n    font-size:24px;\n    padding:5px;\n}\ntd{\n    padding-top: 7px;\n    padding-bottom:7px;\n}"
 
 /***/ }),
 
@@ -852,6 +852,7 @@ var NewComponent = /** @class */ (function () {
                 fridayAM: true,
                 fridayPM: true,
                 saturdayAM: true,
+                saturdayPM: true,
                 sundayAM: true,
                 sundayPM: true,
             },
