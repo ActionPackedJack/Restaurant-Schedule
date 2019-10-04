@@ -54,6 +54,7 @@ export class NewComponent implements OnInit {
   ngOnInit() {
   }
 addEmployee(){
+  var validationErrors = [];
   const data = {
     name: this.employeeToAdd.name,
     shiftsPerWeek: this.employeeToAdd.shiftsPerWeek,
@@ -62,10 +63,36 @@ addEmployee(){
     shiftLeaderPerWeek: this.employeeToAdd.shiftLeaderPerWeek,
     shifts: this.employeeToAdd.shifts,
   };
+  console.log("DATA: " data);
+  if(data.name.length < 1){
+    validationErrors.push("Name has not been entered.");
+  }
+  if(!data.shiftsPerWeek && data.shiftsPerWeek !==0){
+    validationErrors.push("Employee has not been assigned a weekly shift limit.");
+  }
+  if(!data.bartenderPerWeek && data.bartenderPerWeek !==0){
+    validationErrors.push("Employee has not been assigned a weekly bartender shift limit.");
+  }
+  if(!data.shiftLeaderPerWeek && data.shiftLeaderPerWeek !==0){
+    validationErrors.push("Employee has not been assigned a weekly shift leader limit.")
+  }
+  console.log("Errors: " + validationErrors);
   console.log("ADDING EMPLOYEE FROM NEW.COMPONENT.TS")
+  if(validationErrors.length > 0){
+    let errorMessage = "Employee could not be created for the following reasons:\n"
+    for (let i = 0; i < validationErrors.length; i++){
+      errorMessage += validationErrors[i];
+      if(i<validationErrors.length-1){
+        errorMessage+= "\n";
+      }
+    }
+    window.alert(errorMessage);
+  }
+  else{
   let observable= this._dataService.addEmployee({newEmployee: data});
   observable.subscribe(data => console.log("Got our data!", data));
   console.log("ROUTER NAVIGATE?")
   this.router.navigate(['/employees'])
+  }
 }
 }
