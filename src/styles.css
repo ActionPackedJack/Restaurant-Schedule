@@ -26,16 +26,16 @@ ul{
 .execute{
     margin-top: 15px;
     margin-bottom: 15px;
-    height: 40px;
     background-color: green;
+    padding: 10px;
     border-radius: 25px;
     border-color: darkgreen;
-    border-width: 5px;
+    border-width: 2px;
     border-style: solid;
     color: whitesmoke;
     font-size: 25px;
     box-shadow: 5px 5px 10px #1c4b82;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 .execute:hover{
     box-shadow: 0 5px 15px  #1c4b82;
@@ -49,17 +49,25 @@ ul{
 #delete{
     margin-top: 15px;
     margin-bottom: 15px;
-    height: 40px;
+    padding: 10px;
     background-color: red;
     border-radius: 25px;
     border-color: darkred;
-    border-width: 5px;
+    border-width: 2px;
     border-style: solid;
     color: whitesmoke;
     font-size: 25px;
     box-shadow: 5px 5px 10px #1c4b82;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
     display: block;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#delete:hover{
+    background-color: black;
+    color: #b30000;
+    border-color: maroon;
 }
 .execute:hover{
     border-color: lime;
