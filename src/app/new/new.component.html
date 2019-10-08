@@ -2,7 +2,8 @@
 
 <form name="employeeForm" #employeeForm= "ngForm" (submit)="addEmployee(employeeForm)">
   Name: <input type="text" name="name" #name= "ngModel" [(ngModel)]="employeeToAdd.name" required>
-  <!-- <em *ngIf="name.errors?.required" class= "validationError">Name is required!</em><br> -->
+  <!-- <em *ngIf="name.errors?.required" class= "validationError">Name is required!</em> -->
+  <br> 
   Desired shifts per week: <input type="number" name="shiftsPerWeek" #shiftsPerWeek="ngModel" [(ngModel)]="employeeToAdd.shiftsPerWeek" required>
   <!-- <em *ngIf="shiftsPerWeek.errors?.required" class= "validationError">Please specify how many shifts per week this employee should work.</em> --><br>
   Bartender shifts per week: <input type="number" name="bartenderPerWeek" #bartenderPerWeek="ngModel" [(ngModel)]="employeeToAdd.bartenderPerWeek" required>
