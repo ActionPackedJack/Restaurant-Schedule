@@ -3,7 +3,7 @@ body{
     color: #dae1e7;
     font-family: "sans-serif";
 }
-h1, h2, h3{
+h1, h2, h3, h4{
     color: #dd6b4d;
     font-family: Futura;
 }
@@ -83,7 +83,7 @@ a{
     color: lightgreen;
 }
 a:visited{
-    color: darkgreen;
+    color: #D30BA5;
 }
 a:hover{
     color: limegreen;
