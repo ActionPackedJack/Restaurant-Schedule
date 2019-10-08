@@ -1,13 +1,13 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["styles"],{
 
-/***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./node_modules/postcss-loader/lib??embedded!./src/styles.css ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src/index.js?!./src/styles.css":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src??embedded!./src/styles.css ***!
+  \*****************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body{\n    background: #183661;\n    color: #dae1e7;\n    font-family: \"sans-serif\";\n}\nh1, h2, h3{\n    color: #dd6b4d;\n    font-family: Futura;\n}\nul{\n    list-style-type: none;\n}\n/* input{\n    text-align: right;\n} */\n.more_Info{\n    color: purple;\n    font-style: italic;\n}\n.execute{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 40px;\n    background-color: green;\n    border-radius: 25px;\n    border-color: darkgreen;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px #1c4b82;\n    transition: all 0.2s ease-in-out;\n}\n.execute:hover{\n    box-shadow: 0 5px 15px  #1c4b82;\n}\n#schedule{\n    border: none;\n}\n#schedule td{\n    border: none;\n}\n#delete{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 40px;\n    background-color: red;\n    border-radius: 25px;\n    border-color: darkred;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px #1c4b82;\n    transition: all 0.2s ease-in-out;\n    display: block;\n}\n.execute:hover{\n    border-color: lime;\n    background-color: black;\n    color: yellowgreen;\n}\n.validationError{\n    color: red;\n}\ntable{\n    margin-left: auto;\n    margin-right: auto;\n    border: 1px solid black;\n    border-collapse: collapse;\n}\ntd{\n    border: 1px solid black;\n}\nth{\n    border: 1px solid black;\n}\na{\n    margin-left: 10px;\n    margin-right: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    color: lightgreen;\n}\na:visited{\n    color: darkgreen;\n}\na:hover{\n    color: limegreen;\n}\nbutton{\n    margin: 10px;\n    background: #1c4b82;\n    color:  #dae1e7;\n    border-radius: 10px;\n    border: 2px outset;\n    cursor: pointer;\n}\n.loading{\n    font-size: 50px;\n    font-weight: bold;\n    color:black;\n    border-color: repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    );\n    border-width: 30px;\n    border-style: solid;\n    background-color: yellow;\n    /* background:repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    ) */\n}"
+module.exports = [[module.i, "body{\n    background: #183661;\n    color: #dae1e7;\n    font-family: \"sans-serif\";\n}\nh1, h2, h3{\n    color: #dd6b4d;\n    font-family: Futura;\n}\nul{\n    list-style-type: none;\n}\n/* input{\n    text-align: right;\n} */\n.more_Info{\n    color: purple;\n    font-style: italic;\n}\n.execute{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 40px;\n    background-color: green;\n    border-radius: 25px;\n    border-color: darkgreen;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px #1c4b82;\n    transition: all 0.2s ease-in-out;\n}\n.execute:hover{\n    box-shadow: 0 5px 15px  #1c4b82;\n}\n#schedule{\n    border: none;\n}\n#schedule td{\n    border: none;\n}\n#delete{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 40px;\n    background-color: red;\n    border-radius: 25px;\n    border-color: darkred;\n    border-width: 5px;\n    border-style: solid;\n    color: whitesmoke;\n    font-size: 25px;\n    box-shadow: 5px 5px 10px #1c4b82;\n    transition: all 0.2s ease-in-out;\n    display: block;\n}\n.execute:hover{\n    border-color: lime;\n    background-color: black;\n    color: yellowgreen;\n}\n.validationError{\n    color: red;\n}\ntable{\n    margin-left: auto;\n    margin-right: auto;\n    border: 1px solid black;\n    border-collapse: collapse;\n}\ntd{\n    border: 1px solid black;\n}\nth{\n    border: 1px solid black;\n}\na{\n    margin-left: 10px;\n    margin-right: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    color: lightgreen;\n}\na:visited{\n    color: darkgreen;\n}\na:hover{\n    color: limegreen;\n}\nbutton{\n    margin: 10px;\n    background: #1c4b82;\n    color:  #dae1e7;\n    border-radius: 10px;\n    border: 2px outset;\n    cursor: pointer;\n}\n.loading{\n    font-size: 50px;\n    font-weight: bold;\n    color:black;\n    border-color: repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    );\n    border-width: 30px;\n    border-style: solid;\n    background-color: yellow;\n    /* background:repeating-linear-gradient(\n        45deg,\n         yellow,\n         yellow 20px,\n         black 20px,\n         black 40px\n    ) */\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0lBQ25CLGNBQWM7SUFDZCx5QkFBeUI7QUFDN0I7QUFDQTtJQUNJLGNBQWM7SUFDZCxtQkFBbUI7QUFDdkI7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBOztHQUVHO0FBQ0g7SUFDSSxhQUFhO0lBQ2Isa0JBQWtCO0FBQ3RCO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsbUJBQW1CO0lBQ25CLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixpQkFBaUI7SUFDakIsbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixlQUFlO0lBQ2YsZ0NBQWdDO0lBQ2hDLGdDQUFnQztBQUNwQztBQUNBO0lBQ0ksK0JBQStCO0FBQ25DO0FBQ0E7SUFDSSxZQUFZO0FBQ2hCO0FBQ0E7SUFDSSxZQUFZO0FBQ2hCO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsbUJBQW1CO0lBQ25CLFlBQVk7SUFDWixxQkFBcUI7SUFDckIsbUJBQW1CO0lBQ25CLHFCQUFxQjtJQUNyQixpQkFBaUI7SUFDakIsbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixlQUFlO0lBQ2YsZ0NBQWdDO0lBQ2hDLGdDQUFnQztJQUNoQyxjQUFjO0FBQ2xCO0FBQ0E7SUFDSSxrQkFBa0I7SUFDbEIsdUJBQXVCO0lBQ3ZCLGtCQUFrQjtBQUN0QjtBQUNBO0lBQ0ksVUFBVTtBQUNkO0FBQ0E7SUFDSSxpQkFBaUI7SUFDakIsa0JBQWtCO0lBQ2xCLHVCQUF1QjtJQUN2Qix5QkFBeUI7QUFDN0I7QUFDQTtJQUNJLHVCQUF1QjtBQUMzQjtBQUNBO0lBQ0ksdUJBQXVCO0FBQzNCO0FBQ0E7SUFDSSxpQkFBaUI7SUFDakIsa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSSxnQkFBZ0I7QUFDcEI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksWUFBWTtJQUNaLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixlQUFlO0FBQ25CO0FBQ0E7SUFDSSxlQUFlO0lBQ2YsaUJBQWlCO0lBQ2pCLFdBQVc7SUFDWDs7Ozs7O0tBTUM7SUFDRCxrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLHdCQUF3QjtJQUN4Qjs7Ozs7O09BTUc7QUFDUCIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHl7XG4gICAgYmFja2dyb3VuZDogIzE4MzY2MTtcbiAgICBjb2xvcjogI2RhZTFlNztcbiAgICBmb250LWZhbWlseTogXCJzYW5zLXNlcmlmXCI7XG59XG5oMSwgaDIsIGgze1xuICAgIGNvbG9yOiAjZGQ2YjRkO1xuICAgIGZvbnQtZmFtaWx5OiBGdXR1cmE7XG59XG51bHtcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG59XG4vKiBpbnB1dHtcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcbn0gKi9cbi5tb3JlX0luZm97XG4gICAgY29sb3I6IHB1cnBsZTtcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XG59XG4uZXhlY3V0ZXtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xuICAgIG1hcmdpbi1ib3R0b206IDE1cHg7XG4gICAgaGVpZ2h0OiA0MHB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICAgIGJvcmRlci1yYWRpdXM6IDI1cHg7XG4gICAgYm9yZGVyLWNvbG9yOiBkYXJrZ3JlZW47XG4gICAgYm9yZGVyLXdpZHRoOiA1cHg7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBjb2xvcjogd2hpdGVzbW9rZTtcbiAgICBmb250LXNpemU6IDI1cHg7XG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAxMHB4ICMxYzRiODI7XG4gICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZS1pbi1vdXQ7XG59XG4uZXhlY3V0ZTpob3ZlcntcbiAgICBib3gtc2hhZG93OiAwIDVweCAxNXB4ICAjMWM0YjgyO1xufVxuI3NjaGVkdWxle1xuICAgIGJvcmRlcjogbm9uZTtcbn1cbiNzY2hlZHVsZSB0ZHtcbiAgICBib3JkZXI6IG5vbmU7XG59XG4jZGVsZXRle1xuICAgIG1hcmdpbi10b3A6IDE1cHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTVweDtcbiAgICBoZWlnaHQ6IDQwcHg7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xuICAgIGJvcmRlci1yYWRpdXM6IDI1cHg7XG4gICAgYm9yZGVyLWNvbG9yOiBkYXJrcmVkO1xuICAgIGJvcmRlci13aWR0aDogNXB4O1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgY29sb3I6IHdoaXRlc21va2U7XG4gICAgZm9udC1zaXplOiAyNXB4O1xuICAgIGJveC1zaGFkb3c6IDVweCA1cHggMTBweCAjMWM0YjgyO1xuICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2UtaW4tb3V0O1xuICAgIGRpc3BsYXk6IGJsb2NrO1xufVxuLmV4ZWN1dGU6aG92ZXJ7XG4gICAgYm9yZGVyLWNvbG9yOiBsaW1lO1xuICAgIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xuICAgIGNvbG9yOiB5ZWxsb3dncmVlbjtcbn1cbi52YWxpZGF0aW9uRXJyb3J7XG4gICAgY29sb3I6IHJlZDtcbn1cbnRhYmxle1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbiAgICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xufVxudGR7XG4gICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG59XG50aHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbn1cbmF7XG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xuICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgICBjb2xvcjogbGlnaHRncmVlbjtcbn1cbmE6dmlzaXRlZHtcbiAgICBjb2xvcjogZGFya2dyZWVuO1xufVxuYTpob3ZlcntcbiAgICBjb2xvcjogbGltZWdyZWVuO1xufVxuYnV0dG9ue1xuICAgIG1hcmdpbjogMTBweDtcbiAgICBiYWNrZ3JvdW5kOiAjMWM0YjgyO1xuICAgIGNvbG9yOiAgI2RhZTFlNztcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIGJvcmRlcjogMnB4IG91dHNldDtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59XG4ubG9hZGluZ3tcbiAgICBmb250LXNpemU6IDUwcHg7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgY29sb3I6YmxhY2s7XG4gICAgYm9yZGVyLWNvbG9yOiByZXBlYXRpbmctbGluZWFyLWdyYWRpZW50KFxuICAgICAgICA0NWRlZyxcbiAgICAgICAgIHllbGxvdyxcbiAgICAgICAgIHllbGxvdyAyMHB4LFxuICAgICAgICAgYmxhY2sgMjBweCxcbiAgICAgICAgIGJsYWNrIDQwcHhcbiAgICApO1xuICAgIGJvcmRlci13aWR0aDogMzBweDtcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHllbGxvdztcbiAgICAvKiBiYWNrZ3JvdW5kOnJlcGVhdGluZy1saW5lYXItZ3JhZGllbnQoXG4gICAgICAgIDQ1ZGVnLFxuICAgICAgICAgeWVsbG93LFxuICAgICAgICAgeWVsbG93IDIwcHgsXG4gICAgICAgICBibGFjayAyMHB4LFxuICAgICAgICAgYmxhY2sgNDBweFxuICAgICkgKi9cbn0iXX0= */", '', '']]
 
 /***/ }),
 
@@ -43,14 +43,17 @@ var isOldIE = memoize(function () {
 	return window && document && document.all && !window.atob;
 });
 
-var getTarget = function (target) {
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
   return document.querySelector(target);
 };
 
 var getElement = (function (fn) {
 	var memo = {};
 
-	return function(target) {
+	return function(target, parent) {
                 // If passing function in options, then use it for resolve "head" element.
                 // Useful for Shadow Root style i.e
                 // {
@@ -60,7 +63,7 @@ var getElement = (function (fn) {
                         return target();
                 }
                 if (typeof memo[target] === "undefined") {
-			var styleTarget = getTarget.call(this, target);
+			var styleTarget = getTarget.call(this, target, parent);
 			// Special case to return head of iframe instead of iframe itself
 			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
 				try {
@@ -201,7 +204,7 @@ function insertStyleElement (options, style) {
 	} else if (options.insertAt === "bottom") {
 		target.appendChild(style);
 	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
-		var nextSibling = getElement(options.insertInto + " " + options.insertAt.before);
+		var nextSibling = getElement(options.insertAt.before, target);
 		target.insertBefore(style, nextSibling);
 	} else {
 		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
@@ -223,6 +226,13 @@ function createStyleElement (options) {
 
 	if(options.attrs.type === undefined) {
 		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
 	}
 
 	addAttrs(style, options.attrs);
@@ -251,12 +261,20 @@ function addAttrs (el, attrs) {
 	});
 }
 
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
 function addStyle (obj, options) {
 	var style, update, remove, result;
 
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
-	    result = options.transform(obj.css);
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
 
 	    if (result) {
 	    	// If transform returns a value, use that instead of the original css.
@@ -510,7 +528,7 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../node_modules/raw-loader!../node_modules/postcss-loader/lib??embedded!./styles.css */ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css");
+var content = __webpack_require__(/*! !../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../node_modules/postcss-loader/src??embedded!./styles.css */ "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src/index.js?!./src/styles.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

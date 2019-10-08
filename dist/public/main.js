@@ -11,7 +11,7 @@ function webpackEmptyAsyncContext(req) {
 	// Here Promise.resolve().then() is used instead of new Promise() to prevent
 	// uncaught exception popping up in devtools
 	return Promise.resolve().then(function() {
-		var e = new Error('Cannot find module "' + req + '".');
+		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	});
@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Fib3V0L2Fib3V0LmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -158,7 +158,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -305,7 +305,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2RlbGV0ZS9kZWxldGUuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -368,7 +368,7 @@ var DeleteComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQvZWRpdC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -511,7 +511,7 @@ var EditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input{\n    justify-content: flex-end\n}\nlabel{\n    font-size:20px;\n    margin: 700px 15px 50px 15px;\n}\nth{\n    font-size:24px;\n    padding:5px;\n}\ntd{\n    padding-top: 7px;\n    padding-bottom:7px;\n}"
+module.exports = "input{\n    justify-content: flex-end\n}\nlabel{\n    font-size:20px;\n    margin: 700px 15px 50px 15px;\n}\nth{\n    font-size:24px;\n    padding:5px;\n}\ntd{\n    padding-top: 7px;\n    padding-bottom:7px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2VuZXJhdGUvZ2VuZXJhdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJO0FBQ0o7QUFDQTtJQUNJLGNBQWM7SUFDZCw0QkFBNEI7QUFDaEM7QUFDQTtJQUNJLGNBQWM7SUFDZCxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixrQkFBa0I7QUFDdEIiLCJmaWxlIjoic3JjL2FwcC9nZW5lcmF0ZS9nZW5lcmF0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW5wdXR7XG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZFxufVxubGFiZWx7XG4gICAgZm9udC1zaXplOjIwcHg7XG4gICAgbWFyZ2luOiA3MDBweCAxNXB4IDUwcHggMTVweDtcbn1cbnRoe1xuICAgIGZvbnQtc2l6ZToyNHB4O1xuICAgIHBhZGRpbmc6NXB4O1xufVxudGR7XG4gICAgcGFkZGluZy10b3A6IDdweDtcbiAgICBwYWRkaW5nLWJvdHRvbTo3cHg7XG59Il19 */"
 
 /***/ }),
 
@@ -706,7 +706,7 @@ var HttpService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xpc3QvbGlzdC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -788,7 +788,7 @@ var ListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25ldy9uZXcuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -799,7 +799,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <a [routerLink]=\"['/employees/']\">Back to employee directory</a> -->\n\n<form name=\"employeeForm\" #employeeForm= \"ngForm\" (submit)=\"addEmployee(employeeForm)\">\n  Name: <input type=\"text\" name=\"name\" #name= \"ngModel\" [(ngModel)]=\"employeeToAdd.name\" required><br>\n  <!-- <h3 *ngIf=\"name.errors?.required\" class= \"validationError\">Name is required!</h3> -->\n  Desired shifts per week: <input type=\"number\" name=\"shiftsPerWeek\" #shiftsPerWeek=\"ngModel\" [(ngModel)]=\"employeeToAdd.shiftsPerWeek\" required><br>\n  <!-- <h3 *ngIf=\"shiftsPerWeek.errors?.required\" class= \"validationError\">Please specify how many shifts per week this employee should work.</h3> -->\n  Bartender shifts per week: <input type=\"number\" name=\"bartenderPerWeek\" #bartenderPerWeek=\"ngModel\" [(ngModel)]=\"employeeToAdd.bartenderPerWeek\" required><br>\n  <!-- <h3 *ngIf=\"bartenderPerWeek.errors?.required\" class= \"validationError\">Please specify how many times per week this employee should bartend.</h3> -->\n  <div *ngIf=\"employeeToAdd.bartenderPerWeek>0\">\n    Should this employee also be scheduled as a server?\n    <select name=\"alsoServer\" #alsoServer=\"ngModel\" [(ngModel)]=\"employeeToAdd.alsoServer\">\n      <option value=\"true\">Yes</option>\n      <option value=\"false\">No</option>\n    </select><br>\n  </div>\n  Shifts led per week: <input type=\"number\" name=\"shiftLeaderPerWeek\" #shiftLeaderPerWeek=\"ngModel\" [(ngModel)]=\"employeeToAdd.shiftLeaderPerWeek\" required><br>\n  <!-- <h3 *ngIf=\"shiftLeaderPerWeek.errors?.required\" class= \"validationError\">Please specify how many shifts per week this employee should lead.</h3> -->\n  <h2>Availability</h2><br>\n  Monday Morning:\n  <select name=\"mondayAM\" #mondayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.mondayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Monday Evening:\n  <select name=\"mondayPM\" #mondayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.mondayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Tuesday Morning:\n  <select name=\"tuesdayAM\" #tuesdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.tuesdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Tuesday Evening:\n  <select name=\"tuesdayPM\" #tuesdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.tuesdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Wednesday Morning:\n  <select name=\"wednesdayAM\" #wednesdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.wednesdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Wednesday Evening:\n  <select name=\"wednesdayPM\" #wednesdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.wednesdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Thursday Morning:\n  <select name=\"thursdayAM\" #thursdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.thursdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Thursday Evening:\n  <select name=\"thursdayPM\" #thursdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.thursdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Friday Morning:\n  <select name=\"fridayAM\" #fridayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.fridayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Friday Evening:\n  <select name=\"fridayPM\" #fridayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.fridayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Saturday Morning:\n  <select name=\"saturdayAM\" #saturdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.saturdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Saturday Evening:\n  <select name=\"saturdayPM\" #saturdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.saturdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Sunday Morning:\n  <select name=\"sundayAM\" #sundayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.sundayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Sunday Evening:\n  <select name=\"sundayPM\" #sundayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.sundayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n\n<button type= \"submit\" \nclass= \"execute\"> Add employee! </button>\n</form>\n<a [routerLink]=\"['/employees/']\">Back to employee directory</a>\n\n<!-- {{ employeeToAdd | json }} -->\n<!-- [disabled]=\"!employeeForm.valid\" -->"
+module.exports = "<!-- <a [routerLink]=\"['/employees/']\">Back to employee directory</a> -->\n\n<form name=\"employeeForm\" #employeeForm= \"ngForm\" (submit)=\"addEmployee(employeeForm)\">\n  Name: <input type=\"text\" name=\"name\" #name= \"ngModel\" [(ngModel)]=\"employeeToAdd.name\" required><br>\n  <h3 *ngIf=\"name.errors?.required && this.validationErrors.length > 1\" class= \"validationError\">Name is required!</h3>\n  Desired shifts per week: <input type=\"number\" name=\"shiftsPerWeek\" #shiftsPerWeek=\"ngModel\" [(ngModel)]=\"employeeToAdd.shiftsPerWeek\" required><br>\n  <!-- <h3 *ngIf=\"shiftsPerWeek.errors?.required\" class= \"validationError\">Please specify how many shifts per week this employee should work.</h3> -->\n  Bartender shifts per week: <input type=\"number\" name=\"bartenderPerWeek\" #bartenderPerWeek=\"ngModel\" [(ngModel)]=\"employeeToAdd.bartenderPerWeek\" required><br>\n  <!-- <h3 *ngIf=\"bartenderPerWeek.errors?.required\" class= \"validationError\">Please specify how many times per week this employee should bartend.</h3> -->\n  <div *ngIf=\"employeeToAdd.bartenderPerWeek>0\">\n    Should this employee also be scheduled as a server?\n    <select name=\"alsoServer\" #alsoServer=\"ngModel\" [(ngModel)]=\"employeeToAdd.alsoServer\">\n      <option value=\"true\">Yes</option>\n      <option value=\"false\">No</option>\n    </select><br>\n  </div>\n  Shifts led per week: <input type=\"number\" name=\"shiftLeaderPerWeek\" #shiftLeaderPerWeek=\"ngModel\" [(ngModel)]=\"employeeToAdd.shiftLeaderPerWeek\" required><br>\n  <!-- <h3 *ngIf=\"shiftLeaderPerWeek.errors?.required\" class= \"validationError\">Please specify how many shifts per week this employee should lead.</h3> -->\n  <h2>Availability</h2><br>\n  Monday Morning:\n  <select name=\"mondayAM\" #mondayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.mondayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Monday Evening:\n  <select name=\"mondayPM\" #mondayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.mondayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Tuesday Morning:\n  <select name=\"tuesdayAM\" #tuesdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.tuesdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Tuesday Evening:\n  <select name=\"tuesdayPM\" #tuesdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.tuesdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Wednesday Morning:\n  <select name=\"wednesdayAM\" #wednesdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.wednesdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Wednesday Evening:\n  <select name=\"wednesdayPM\" #wednesdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.wednesdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Thursday Morning:\n  <select name=\"thursdayAM\" #thursdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.thursdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Thursday Evening:\n  <select name=\"thursdayPM\" #thursdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.thursdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Friday Morning:\n  <select name=\"fridayAM\" #fridayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.fridayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Friday Evening:\n  <select name=\"fridayPM\" #fridayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.fridayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Saturday Morning:\n  <select name=\"saturdayAM\" #saturdayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.saturdayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Saturday Evening:\n  <select name=\"saturdayPM\" #saturdayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.saturdayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Sunday Morning:\n  <select name=\"sundayAM\" #sundayAM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.sundayAM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n  Sunday Evening:\n  <select name=\"sundayPM\" #sundayPM=\"ngModel\" [(ngModel)]=\"employeeToAdd.shifts.sundayPM\">\n    <option value=\"true\">Available</option>\n    <option value=\"false\">Unavailable</option>\n  </select><br>\n\n<button type= \"submit\" \nclass= \"execute\"> Add employee! </button>\n</form>\n<a [routerLink]=\"['/employees/']\">Back to employee directory</a>\n\n<!-- {{ employeeToAdd | json }} -->\n<!-- [disabled]=\"!employeeForm.valid\" -->"
 
 /***/ }),
 
@@ -871,7 +871,7 @@ var NewComponent = /** @class */ (function () {
                 saturdayPMRequest: false,
                 sundayAMRequest: false,
                 sundayPMRequest: false,
-            }
+            },
         };
     }
     NewComponent.prototype.ngOnInit = function () {
@@ -940,7 +940,7 @@ var NewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JlcXVlc3RzL3JlcXVlc3RzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -1022,7 +1022,7 @@ var RequestsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "a.more_info {\n    cursor: pointer;\n}"
+module.exports = "a.more_info {\n    cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2NoZWR1bGUvc2NoZWR1bGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGVBQWU7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9zY2hlZHVsZS9zY2hlZHVsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYS5tb3JlX2luZm8ge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -1868,7 +1868,7 @@ var ScheduleComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXcvdmlldy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 

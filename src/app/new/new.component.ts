@@ -46,7 +46,7 @@ export class NewComponent implements OnInit {
       saturdayPMRequest: false,
       sundayAMRequest: false,
       sundayPMRequest: false,
-      }
+      },
   };
   constructor(private _dataService: HttpService, private _route: ActivatedRoute, private router: Router) { }
 
@@ -63,7 +63,7 @@ addEmployee(){
     shiftLeaderPerWeek: this.employeeToAdd.shiftLeaderPerWeek,
     shifts: this.employeeToAdd.shifts,
   };
-  console.log("DATA: " data);
+  console.log("DATA: ", data);
   if(data.name.length < 1){
     validationErrors.push("Name has not been entered.");
   }
