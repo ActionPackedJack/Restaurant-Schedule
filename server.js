@@ -12,7 +12,7 @@ app.get('*', function(req,res){
 require('./server/config/mongoose.js');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = "mongodb://manager:password1234@ds135514.mlab.com:35514/employees"
+var url = "mongodb://manager:password1234@employees.ejpmewk.mongodb.net/"
 //mongoose.Promise= global.Promise;
 
 MongoClient.connect(url, { useNewUrlParser: true },function (err, db) {
